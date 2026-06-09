@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Colour Atlas — Seasonal Palette Pocket Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F5;--text:#1E1612;--muted:#7A6E66;
+  --border:rgba(0,0,0,0.08);--radius:12px;
+  --transition:0.3s cubic-bezier(.4,0,.2,1);
+  --card-bg:#ffffff;--input-bg:#ffffff;
+  --surface:#F5F2EE;
+}
+
+/* ── DARK MODE VARIABLES ──────────────────────────────── */
+[data-theme="dark"]{
+  --bg:#141210;
+  --text:#F0EDE8;
+  --muted:#8A8078;
+  --border:rgba(255,255,255,0.10);
+  --card-bg:#1E1A17;
+  --input-bg:#252018;
+  --surface:#1A1612;
+}
+[data-theme="dark"] body{background:var(--bg);color:var(--text)}
+[data-theme="dark"] .top-nav{background:rgba(20,18,16,0.97)}
+[data-theme="dark"] .sfcard-name,[data-theme="dark"] .sfcard-desc,[data-theme="dark"] .sfcard-sublabel{color:var(--text)}
+[data-theme="dark"] .season-name,[data-theme="dark"] .season-tagline,[data-theme="dark"] .season-desc{color:inherit}
+[data-theme="dark"] .tip-card h4,[data-theme="dark"] .tip-card li,[data-theme="dark"] .metal-name,[data-theme="dark"] .metal-desc{color:var(--text)}
+[data-theme="dark"] .profile-pill .value,[data-theme="dark"] .profile-pill .label{color:var(--text)}
+[data-theme="dark"] .quiz-opt-title,[data-theme="dark"] .quiz-question,[data-theme="dark"] .quiz-result-title{color:var(--text)}
+[data-theme="dark"] .quiz-opt-desc,[data-theme="dark"] .quiz-sub,[data-theme="dark"] .quiz-result-desc,[data-theme="dark"] .quiz-result-tagline{color:var(--muted)}
+[data-theme="dark"] .home-hero h2,[data-theme="dark"] .home-hero p,[data-theme="dark"] .home-eyebrow{color:var(--text)}
+[data-theme="dark"] .home-hero p,[data-theme="dark"] .home-eyebrow{color:var(--muted)}
+[data-theme="dark"] .quiz-opt,
+[data-theme="dark"] .tip-card,
+[data-theme="dark"] .metal-card,
+[data-theme="dark"] .sg-card,
+[data-theme="dark"] .confidence-block,
+[data-theme="dark"] .hint-drawer,
+[data-theme="dark"] .prefill-review,
+[data-theme="dark"] .profile-pill,
+[data-theme="dark"] .recs-ai-panel,
+[data-theme="dark"] .pb-selected-strip,
+[data-theme="dark"] .neutral-note,
+[data-theme="dark"] .dual-season-card,
+[data-theme="dark"] .returning-banner-btn:not(.primary)
+  {background:var(--card-bg);border-color:var(--border)}
+[data-theme="dark"] .quiz-opt.selected{background:var(--surface)}
+[data-theme="dark"] .sub-tabs-wrap{background:var(--card-bg)}
+[data-theme="dark"] .print-modal{background:var(--card-bg)}
+[data-theme="dark"] .cta-btn.secondary{background:var(--card-bg);color:var(--text)}
+[data-theme="dark"] .avoid-chip{background:var(--surface)}
+[data-theme="dark"] .quiz-illus-banner{background:var(--surface)}
+[data-theme="dark"] .confidence-runner{background:var(--surface)}
+[data-theme="dark"] .cam-hair-question{background:var(--surface)}
+[data-theme="dark"] .cam-hair-opt{background:var(--card-bg);color:var(--muted)}
+[data-theme="dark"] .cam-hair-opt.selected{background:var(--surface);color:var(--text)}
+[data-theme="dark"] .pb-filter-btn{background:var(--card-bg)}
+[data-theme="dark"] .recs-season-pill{background:var(--card-bg)}
+[data-theme="dark"] .home-hero::before{opacity:.05}
+[data-theme="dark"] .home-hero{background:var(--bg)}
+[data-theme="dark"] .season-family-card{background:var(--card-bg);border-color:var(--border)}
+[data-theme="dark"] .sfcard-body{background:var(--card-bg)}
+[data-theme="dark"] #view-home{background:var(--bg)}
+[data-theme="dark"] .season-family-grid{background:var(--bg)}
+[data-theme="dark"] #view-home .home-hero{background:var(--bg)}
+
+/* Fix black→beige buttons: warm cream with dark text */
+[data-theme="dark"] .cta-btn.primary{background:#E8DDD0;border-color:#E8DDD0;color:#1E1612}
+[data-theme="dark"] .cta-btn.primary:hover{background:#D8C8B8;border-color:#D8C8B8;color:#1E1612}
+[data-theme="dark"] .quiz-btn.primary{background:#E8DDD0;border-color:#E8DDD0;color:#1E1612}
+[data-theme="dark"] .quiz-btn.primary:hover{background:#D8C8B8;border-color:#D8C8B8;color:#1E1612}
+[data-theme="dark"] .recs-generate-btn{background:#E8DDD0;border-color:#E8DDD0;color:#1E1612}
+[data-theme="dark"] .recs-generate-btn:hover{background:#D8C8B8}
+[data-theme="dark"] .cam-action-primary{background:#E8DDD0;color:#1E1612}
+[data-theme="dark"] .cam-action-primary:hover{background:#D8C8B8}
+[data-theme="dark"] .btn-print-now{background:#E8DDD0;color:#1E1612}
+[data-theme="dark"] .btn-print-now:hover{background:#D8C8B8}
+[data-theme="dark"] .returning-banner{background:#2A1F18}
+[data-theme="dark"] .returning-banner-btn.primary{background:#E8DDD0;color:#1E1612;border-color:#E8DDD0}
+[data-theme="dark"] .quiz-choice-btn.primary-choice{background:#2A1F18;border-color:#8A7060}
+[data-theme="dark"] .quiz-choice-btn:not(.primary-choice){background:#1E1A17;border-color:#4A3D32;color:var(--text)}
+[data-theme="dark"] .quiz-choice-btn:not(.primary-choice) .quiz-choice-title{color:var(--text)}
+[data-theme="dark"] .quiz-choice-btn:not(.primary-choice) .quiz-choice-desc{color:var(--muted)}
+[data-theme="dark"] .quiz-choice-btn:not(.primary-choice):hover{border-color:#8A7060;background:#252018}
+[data-theme="dark"] .print-btn{background:#1E1A17;border-color:#4A3D32;color:var(--text)}
+[data-theme="dark"] .print-btn:hover{background:#E8DDD0;color:#1E1612;border-color:#E8DDD0}
+[data-theme="dark"] .print-btn svg{stroke:currentColor}
+[data-theme="dark"] .nav-btn.active{border-bottom-color:#E8DDD0;color:#F0EDE8}
+[data-theme="dark"] .dark-toggle:hover{background:#E8DDD0;color:#1E1612;border-color:#E8DDD0}
+
+/* Dark mode toggle button */
+.dark-toggle{
+  background:none;border:1.5px solid var(--border);border-radius:100px;
+  padding:6px 10px;cursor:pointer;font-size:14px;color:var(--muted);
+  transition:all var(--transition);line-height:1;flex-shrink:0;
+  display:flex;align-items:center;gap:5px;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;
+}
+.dark-toggle:hover{background:var(--text);color:white;border-color:var(--text)}
+[data-theme="dark"] .dark-toggle{border-color:var(--border);color:var(--muted)}
+[data-theme="dark"] .dark-toggle:hover{background:var(--text);color:var(--bg)}
+
+/* ── RESPONSIVE NAV (mobile) ─────────────────────────── */
+@media(max-width:480px){
+  .top-nav-inner{padding:0 4px;gap:0}
+  .nav-btn{padding:10px 4px 8px;font-size:10px;letter-spacing:0;gap:3px;min-width:0}
+  .nav-btn .nav-icon{font-size:16px}
+  .nav-btn .nav-label{font-size:9px;letter-spacing:0}
+  .dark-toggle{padding:5px 7px;font-size:10px}
+  .dark-toggle .dark-toggle-label{display:none}
+}
+@media(max-width:360px){
+  .nav-btn{font-size:0;letter-spacing:0}
+  .nav-btn .nav-icon{font-size:17px}
+  .nav-btn .nav-label{font-size:8px;letter-spacing:0}
+}
+
+/* ── SWIPE HINT (mobile quiz) ─────────────────────────── */
+.swipe-hint{
+  display:none;
+  text-align:center;font-size:10px;color:var(--muted);font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;margin-top:16px;
+  animation:swipeHintFade 2.5s ease 1s both;
+}
+@keyframes swipeHintFade{
+  0%{opacity:0;transform:translateX(6px)}
+  20%{opacity:1;transform:translateX(0)}
+  80%{opacity:1}
+  100%{opacity:0}
+}
+@media(max-width:600px){
+  .swipe-hint{display:block}
+  .quiz-options.three{grid-template-columns:1fr 1fr}
+}
+
+/* ── ONBOARDING OVERLAY ───────────────────────────────── */
+.onboard-overlay{
+  position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background:rgba(0,0,0,0);transition:background .4s ease;
+}
+.onboard-overlay.active{background:rgba(0,0,0,.6);pointer-events:all}
+.onboard-spotlight{
+  position:absolute;border-radius:10px;
+  box-shadow:0 0 0 9999px rgba(0,0,0,.6);
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;
+}
+.onboard-card{
+  position:absolute;background:white;border-radius:16px;
+  padding:20px 22px;max-width:280px;width:calc(100vw - 40px);
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  pointer-events:all;
+}
+[data-theme="dark"] .onboard-card{background:#252018;color:var(--text)}
+.onboard-step-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.onboard-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:8px;color:var(--text)}
+.onboard-body{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.onboard-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.onboard-next{background:var(--text);color:white;border:none;border-radius:100px;padding:9px 20px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.onboard-next:hover{opacity:.85}
+.onboard-skip{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);cursor:pointer;padding:0;transition:color .2s}
+.onboard-skip:hover{color:var(--text)}
+.onboard-dots{display:flex;gap:5px;align-items:center}
+.onboard-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s}
+.onboard-dot.active{background:var(--text)}
+
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero{text-align:center;padding:60px 24px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FDF0E8 0%,#F5EEF8 50%,#E8F3F0 100%);opacity:.5;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,76px);font-weight:300;letter-spacing:-1px;line-height:1.05;margin-bottom:18px}
+.hero h1 em{font-style:italic}
+.hero p{font-size:14px;color:var(--muted);max-width:460px;margin:0 auto 32px;font-weight:300}
+.hero-dots{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;max-width:340px;margin:0 auto}
+.hero-dot{width:28px;height:28px;border-radius:50%;transition:transform var(--transition);cursor:default}
+.hero-dot:hover{transform:scale(1.25)}
+
+/* ── TOP-LEVEL TABS (4 seasons) ─────────────────────────── */
+.main-tabs-wrap{position:sticky;top:0;z-index:200;background:rgba(250,248,245,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.main-tabs{display:flex;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.main-tabs::-webkit-scrollbar{display:none}
+.main-tab-btn{flex:1;min-width:100px;padding:16px 10px 12px;background:none;border:none;border-bottom:3px solid transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;color:var(--muted);cursor:pointer;transition:all var(--transition);display:flex;flex-direction:column;align-items:center;gap:5px}
+.main-tab-dot{width:10px;height:10px;border-radius:50%;transition:transform var(--transition)}
+.main-tab-btn:hover{color:var(--text)}
+.main-tab-btn:hover .main-tab-dot{transform:scale(1.4)}
+.main-tab-btn.active{color:var(--text);font-weight:600}
+
+/* ── SUB-SEASON TABS ────────────────────────────────────── */
+.sub-tabs-wrap{background:white;border-bottom:1px solid var(--border);padding:0 16px}
+.sub-tabs{display:flex;gap:0;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.sub-tabs::-webkit-scrollbar{display:none}
+.sub-tab-btn{flex:1;min-width:110px;padding:12px 10px 10px;background:none;border:none;border-bottom:2px solid transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;color:var(--muted);cursor:pointer;transition:all var(--transition);white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:4px}
+.sub-tab-dot{width:7px;height:7px;border-radius:50%;transition:transform var(--transition)}
+.sub-tab-btn:hover{color:var(--text)}
+.sub-tab-btn.active{font-weight:600;color:var(--text)}
+
+/* ── SEASON PANEL ───────────────────────────────────────── */
+.season-panel{display:none;max-width:900px;margin:0 auto;padding:36px 20px 80px;animation:fadeUp .35s ease both}
+.season-panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.season-header{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.season-name{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,82px);font-weight:300;line-height:.95;letter-spacing:-2px}
+.season-sub-label{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-top:10px}
+.season-tagline{font-size:12px;font-weight:400;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:6px}
+.season-desc{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--muted);max-width:300px;line-height:1.55}
+
+.profile-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:36px}
+.profile-pill{display:flex;flex-direction:column;padding:9px 15px;border-radius:100px;border:1.5px solid var(--border);background:white}
+.profile-pill .label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.profile-pill .value{font-size:11px;font-weight:600;color:var(--text)}
+
+/* ── PALETTE SECTIONS ───────────────────────────────────── */
+.palette-section{margin-bottom:36px}
+.palette-section-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.palette-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.swatches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:9px}
+.swatches-grid.wide{grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:7px}
+
+.swatch{cursor:pointer;transition:transform var(--transition)}
+.swatch:hover{transform:translateY(-4px)}
+.swatch-color{width:100%;aspect-ratio:1;border-radius:8px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.10);transition:box-shadow var(--transition)}
+.swatch:hover .swatch-color{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.swatch-name{font-size:9.5px;color:var(--muted);text-align:center;margin-top:5px;line-height:1.3;font-weight:400}
+.swatch-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--text);color:white;font-size:9px;padding:3px 7px;border-radius:5px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity var(--transition);z-index:10;font-family:'DM Sans',sans-serif}
+.swatch-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:3px solid transparent;border-top-color:var(--text)}
+.swatch:hover .swatch-tooltip{opacity:1}
+
+/* ── METALS SECTION ─────────────────────────────────────── */
+.metals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:8px}
+.metal-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}
+.metal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.metal-visual{height:90px;position:relative;display:flex;align-items:center;justify-content:center}
+.metal-ring{width:56px;height:56px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
+.metal-ring::before{content:'';position:absolute;inset:0;border-radius:50%}
+.metal-ring-inner{width:32px;height:32px;border-radius:50%;background:var(--bg);position:relative;z-index:1}
+.metal-gold .metal-ring{background:conic-gradient(from 0deg,#C8960C,#FFD700,#E8B830,#FFE566,#C8960C,#D4A820,#FFD700,#C8960C)}
+.metal-gold .metal-ring-inner{background:linear-gradient(135deg,#FDF0C0,#F5D878)}
+.metal-silver .metal-ring{background:conic-gradient(from 0deg,#8A8A8A,#D8D8D8,#F0F0F0,#B8B8B8,#8A8A8A,#C8C8C8,#F0F0F0,#8A8A8A)}
+.metal-silver .metal-ring-inner{background:linear-gradient(135deg,#F0F0F8,#D8D8E8)}
+.metal-rosegold .metal-ring{background:conic-gradient(from 0deg,#A05030,#E89878,#F8C8B0,#D08060,#A05030,#C87050,#F0A888,#A05030)}
+.metal-rosegold .metal-ring-inner{background:linear-gradient(135deg,#FDE8DC,#F0C0A8)}
+.metal-whitegold .metal-ring{background:conic-gradient(from 0deg,#909098,#D8D8E8,#F0F0FF,#B8B8C8,#909098,#C8C8D8,#F0F0FF,#909098)}
+.metal-whitegold .metal-ring-inner{background:linear-gradient(135deg,#F0F0FF,#E0E0F0)}
+.metal-bronze .metal-ring{background:conic-gradient(from 0deg,#7A4818,#C87830,#E09848,#C07828,#7A4818,#A86020,#D08838,#7A4818)}
+.metal-bronze .metal-ring-inner{background:linear-gradient(135deg,#F0D8B0,#E0C080)}
+.metal-copper .metal-ring{background:conic-gradient(from 0deg,#8A3810,#D86028,#F09060,#C85020,#8A3810,#B04820,#E07848,#8A3810)}
+.metal-copper .metal-ring-inner{background:linear-gradient(135deg,#F8D0B0,#F0B888)}
+
+.metal-info{padding:12px 14px}
+.metal-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.metal-desc{font-size:11px;color:var(--muted);line-height:1.4}
+.metal-best{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+
+/* ── TIPS ───────────────────────────────────────────────── */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){
+  .tips-grid,.season-header{grid-template-columns:1fr}
+  .season-desc{max-width:100%}
+}
+.tip-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.tip-card h4{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}
+.tip-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tip-card li{font-size:13px;color:var(--muted);padding-left:14px;position:relative;line-height:1.4}
+.tip-card li::before{content:'·';position:absolute;left:0;font-weight:700}
+.avoid-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.avoid-chip{padding:5px 12px;border-radius:100px;font-size:11px;background:#F5F0EE;color:var(--muted);border:1px solid var(--border);position:relative;padding-left:20px}
+.avoid-chip::before{content:'×';position:absolute;left:8px;color:#C08080;font-weight:700}
+
+/* ── PRINT BUTTON ───────────────────────────────────────── */
+.print-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:100px;border:1.5px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all var(--transition);color:var(--text);letter-spacing:.3px;margin-top:0}
+.print-btn:hover{background:var(--text);color:white;border-color:var(--text)}
+.print-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.section-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.section-top-row .palette-section-title{margin-bottom:0;flex:1}
+
+/* ── TOAST ──────────────────────────────────────────────── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--text);color:white;padding:9px 18px;border-radius:100px;font-size:12px;font-weight:500;transition:transform .3s ease;z-index:999;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+.footer{text-align:center;padding:28px 24px 44px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;letter-spacing:.4px}
+.footer strong{font-weight:600;color:var(--text)}
+
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:white;margin:0;padding:0}
+  .hero,.main-tabs-wrap,.sub-tabs-wrap,.footer,.toast,
+  .print-btn,.swatch-tooltip,.avoid-chips,.tip-card,.tips-grid{display:none!important}
+  .season-panel{display:none!important;padding:0!important}
+  .season-panel.active{display:none!important}
+  .printable-card{display:block!important}
+}
+
+.printable-card{display:none}
+
+.print-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;overflow-y:auto;padding:24px}
+.print-modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.print-modal{background:white;max-width:680px;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.print-modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border)}
+.print-modal-header h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400}
+.print-modal-actions{display:flex;gap:10px;align-items:center}
+.btn-close-modal{background:none;border:1px solid var(--border);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:12px;color:var(--muted)}
+.btn-print-now{background:var(--text);color:white;border:none;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif}
+.print-modal-body{padding:24px}
+
+.palette-card{width:100%;font-family:'DM Sans',sans-serif;background:white}
+.card-header{padding:20px 24px 16px;border-bottom:2px solid #F0E8E0}
+.card-header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.card-season-name{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:-1px;line-height:1}
+.card-sub-name{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-top:6px;display:inline-block}
+.card-tagline{font-size:10px;color:#7A6E66;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.card-section-label{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7A6E66;padding:10px 24px 6px;border-top:1px solid #F0E8E0}
+.colour-bars{display:flex;flex-direction:column;gap:0}
+.colour-bar{display:flex;align-items:stretch;height:36px}
+.colour-bar-swatch{width:36px;min-width:36px;flex-shrink:0}
+.colour-bar-name{display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:500;color:#1E1612;flex:1;border-bottom:1px solid #F8F4F0}
+.colour-bar-hex{display:flex;align-items:center;padding:0 12px;font-size:9px;color:#7A6E66;font-family:monospace;border-bottom:1px solid #F8F4F0}
+.colour-bar:nth-child(even) .colour-bar-name,
+.colour-bar:nth-child(even) .colour-bar-hex{background:#FDFCFB}
+.card-footer{padding:12px 24px;border-top:1px solid #F0E8E0;display:flex;justify-content:space-between;align-items:center}
+.card-footer-text{font-size:8px;color:#7A6E66;letter-spacing:1px;text-transform:uppercase}
+.card-tips{padding:8px 24px 14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card-tip-col h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7A6E66;margin-bottom:5px}
+.card-tip-col ul{list-style:none}
+.card-tip-col li{font-size:9px;color:#1E1612;line-height:1.5;padding-left:10px;position:relative}
+.card-tip-col li::before{content:'·';position:absolute;left:0;font-weight:700}
+</style>
+<style>
+/* ── NAV ───────────────────────────────────────────────── */
+.top-nav{background:rgba(250,248,245,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:300}
+.top-nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;padding:0 16px}
+.nav-btn{flex:1;min-width:0;padding:14px 8px 12px;background:none;border:none;border-bottom:3px solid transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.4px;color:var(--muted);cursor:pointer;transition:all var(--transition);display:flex;flex-direction:column;align-items:center;gap:4px;white-space:nowrap}
+.nav-btn:hover{color:var(--text)}
+.nav-btn.active{color:var(--text);font-weight:600;border-bottom-color:var(--text)}
+.view{display:none;animation:fadeUp .3s ease both}
+.view.active{display:block}
+.home-hero{text-align:center;padding:52px 24px 36px;position:relative;overflow:hidden}
+.home-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FDF0E8 0%,#F5EEF8 50%,#E8F3F0 100%);opacity:.5;z-index:0}
+.home-hero>*{position:relative;z-index:1}
+.home-eyebrow{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.home-hero h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,64px);font-weight:300;letter-spacing:-1px;line-height:1.05;margin-bottom:14px}
+.home-hero h2 em{font-style:italic}
+.home-hero p{font-size:14px;color:var(--muted);max-width:440px;margin:0 auto 28px;font-weight:300}
+.home-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all var(--transition);letter-spacing:.3px}
+.cta-btn.primary{background:var(--text);color:white;border:none}
+.cta-btn.primary:hover{opacity:.85}
+.cta-btn.secondary{background:white;color:var(--text);border:1.5px solid var(--border)}
+.cta-btn.secondary:hover{background:var(--text);color:white;border-color:var(--text)}
+.season-family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto;padding:0 20px 60px}
+.season-family-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition)}
+.season-family-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
+.sfcard-band{height:8px}
+.sfcard-body{padding:18px 18px 16px}
+.sfcard-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:-1px;line-height:1;margin-bottom:4px}
+.sfcard-sublabel{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.sfcard-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.sfcard-swatches{display:flex;gap:4px}
+.sfcard-swatch{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(0,0,0,.08)}
+.sfcard-subseasonsrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.sfcard-sub-pill{font-size:9px;font-weight:600;letter-spacing:.5px;padding:3px 9px;border-radius:100px;cursor:pointer;transition:opacity var(--transition);border:none}
+.sfcard-sub-pill:hover{opacity:.75}
+.quiz-wrap{max-width:640px;margin:0 auto;padding:36px 20px 80px}
+.quiz-header{text-align:center;margin-bottom:32px}
+.quiz-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;letter-spacing:-1px;margin-bottom:8px}
+.quiz-header p{font-size:13px;color:var(--muted)}
+.quiz-progress-bar{height:2px;background:var(--border);border-radius:2px;margin-bottom:32px;overflow:hidden}
+.quiz-progress-fill{height:100%;background:var(--text);border-radius:2px;transition:width .4s ease}
+.quiz-step{display:none}
+.quiz-step.active{display:block;animation:fadeUp .3s ease both}
+.quiz-step-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.quiz-question{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,28px);font-weight:300;color:var(--text);margin-bottom:6px;line-height:1.3}
+.quiz-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-options.three{grid-template-columns:1fr 1fr 1fr}
+.quiz-opt{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:14px 15px;cursor:pointer;transition:border-color var(--transition),background var(--transition);display:flex;align-items:flex-start;gap:10px}
+.quiz-opt:hover{border-color:rgba(0,0,0,.2)}
+.quiz-opt.selected{border-color:var(--text);background:#FAFAF8}
+.quiz-opt-swatch{width:26px;height:26px;border-radius:50%;flex-shrink:0;margin-top:1px;border:1px solid var(--border)}
+.quiz-opt-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.quiz-opt-desc{font-size:11px;color:var(--muted);line-height:1.4}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.quiz-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:100px;border:1.5px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all var(--transition);color:var(--text)}
+.quiz-btn:hover{background:var(--text);color:white;border-color:var(--text)}
+.quiz-btn.primary{background:var(--text);color:white;border-color:var(--text)}
+.quiz-btn.primary:hover{opacity:.85}
+.quiz-btn:disabled{opacity:.3;cursor:default;pointer-events:none}
+.quiz-result{display:none}
+.quiz-result.active{display:block;animation:fadeUp .35s ease both}
+.quiz-result-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.quiz-result-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,68px);font-weight:300;letter-spacing:-2px;line-height:.95;margin-bottom:8px}
+.quiz-result-tagline{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.quiz-result-desc{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);max-width:480px;line-height:1.6;margin-bottom:24px}
+.quiz-result-palette-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.quiz-result-palette-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.quiz-result-swatches{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.quiz-result-swatch{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:transform var(--transition);position:relative}
+.quiz-result-swatch:hover{transform:translateY(-3px)}
+.quiz-result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.recs-wrap{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+.recs-header{margin-bottom:28px}
+.recs-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,44px);font-weight:300;letter-spacing:-1px;margin-bottom:6px}
+.recs-header p{font-size:13px;color:var(--muted)}
+.recs-season-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.recs-season-pill{padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all var(--transition);color:var(--muted)}
+.recs-season-pill:hover,.recs-season-pill.active{color:var(--text);border-color:var(--text);background:#FAFAF8}
+.recs-type-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px;overflow-x:auto;scrollbar-width:none}
+.recs-type-tabs::-webkit-scrollbar{display:none}
+.recs-type-btn{padding:10px 16px 9px;background:none;border:none;border-bottom:2px solid transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;transition:all var(--transition);white-space:nowrap}
+.recs-type-btn:hover{color:var(--text)}
+.recs-type-btn.active{color:var(--text);font-weight:600;border-bottom-color:var(--text)}
+.recs-ai-panel{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:24px;min-height:200px}
+.recs-ai-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;gap:12px}
+.recs-ai-spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--text);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.recs-ai-loading-text{font-size:12px;color:var(--muted);letter-spacing:.5px}
+.recs-ai-content{font-size:14px;color:var(--text);line-height:1.7}
+.recs-ai-content h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin:18px 0 8px}
+.recs-ai-content h3:first-child{margin-top:0}
+.recs-ai-content p{margin-bottom:10px;color:var(--muted)}
+.recs-ai-content ul{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-direction:column;gap:5px}
+.recs-ai-content li{padding-left:14px;position:relative;color:var(--muted);font-size:13px;line-height:1.5}
+.recs-ai-content li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--text)}
+.recs-ai-content strong{color:var(--text);font-weight:600}
+.recs-generate-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:100px;background:var(--text);color:white;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:opacity var(--transition);margin-bottom:16px}
+.recs-generate-btn:hover{opacity:.85}
+.recs-generate-btn:disabled{opacity:.4;cursor:default}
+.recs-no-season{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px}
+.recs-no-season span{color:var(--text);text-decoration:underline;cursor:pointer}
+
+.quiz-illus-wrap{margin-bottom:20px}
+.quiz-illus-banner{width:100%;border-radius:10px;background:#FDFAF6;border:1px solid var(--border);padding:18px 16px 14px;margin-bottom:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.quiz-illus-banner svg{width:100%;max-width:560px;height:auto;display:block}
+.quiz-illus-note{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+.quiz-illus-note::before{content:'☀';font-size:12px}
+
+.hair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:16px}
+.hair-chip{border:1.5px solid var(--border);border-radius:10px;padding:10px 6px 8px;cursor:pointer;transition:border-color var(--transition),transform var(--transition);text-align:center;background:white}
+.hair-chip:hover{transform:translateY(-2px);border-color:rgba(0,0,0,.25)}
+.hair-chip.selected{border-color:var(--text);background:#FAFAF8}
+.hair-chip-swatch{width:38px;height:38px;border-radius:50%;margin:0 auto 6px;border:1.5px solid rgba(0,0,0,.10)}
+.hair-chip-label{font-size:9px;color:var(--muted);line-height:1.3;font-weight:500}
+
+.eye-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px;margin-bottom:16px}
+.eye-chip{border:1.5px solid var(--border);border-radius:10px;padding:10px 6px 8px;cursor:pointer;transition:border-color var(--transition),transform var(--transition);text-align:center;background:white}
+.eye-chip:hover{transform:translateY(-2px);border-color:rgba(0,0,0,.25)}
+.eye-chip.selected{border-color:var(--text);background:#FAFAF8}
+.eye-chip-illus{width:44px;height:44px;margin:0 auto 6px}
+.eye-chip-label{font-size:9px;color:var(--muted);line-height:1.3;font-weight:500}
+.eye-chip-sublabel{font-size:8px;color:var(--muted);opacity:.7}
+
+.contrast-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.contrast-chip{border:1.5px solid var(--border);border-radius:10px;padding:12px 8px 10px;cursor:pointer;transition:border-color var(--transition),transform var(--transition);text-align:center;background:white}
+.contrast-chip:hover{transform:translateY(-2px);border-color:rgba(0,0,0,.25)}
+.contrast-chip.selected{border-color:var(--text);background:#FAFAF8}
+.contrast-chip svg{width:100%;max-width:80px;height:auto;display:block;margin:0 auto 8px}
+.contrast-chip-label{font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px}
+.contrast-chip-desc{font-size:10px;color:var(--muted);line-height:1.4}
+
+.neutral-note{background:#FDF8F0;border:1px solid #E8D8B8;border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--muted);line-height:1.6}
+.neutral-note strong{color:var(--text)}
+.dual-season-block{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.dual-season-card{flex:1;min-width:160px;border:1px solid var(--border);border-radius:var(--radius);padding:14px;background:white}
+.dual-season-card .dscard-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.dual-season-card .dscard-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:-0.5px;margin-bottom:4px}
+.dual-season-card .dscard-tag{font-size:10px;color:var(--muted)}
+
+.sg-illustrated-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:8px}
+.sg-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}
+.sg-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.sg-card-illus{width:100%;background:#FDFAF6;padding:20px;display:flex;justify-content:center}
+.sg-card-illus svg{width:100%;max-width:220px;height:auto}
+.sg-card-body{padding:14px 16px 16px}
+.sg-card-title{font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--text);margin-bottom:4px}
+.sg-card-annotation{font-size:11px;color:var(--muted);line-height:1.5}
+.sg-card-swatches{display:flex;gap:5px;margin-top:8px}
+.sg-card-swatch{width:20px;height:20px;border-radius:50%;border:1px solid var(--border)}
+
+.palette-builder{max-width:860px;margin:0 auto;padding:0 20px 60px}
+.pb-season-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pb-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pb-filter-btn{padding:6px 14px;border-radius:100px;border:1.5px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all var(--transition);color:var(--muted)}
+.pb-filter-btn:hover,.pb-filter-btn.active{color:var(--text);border-color:var(--text);background:#FAFAF8}
+.pb-swatches{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.pb-swatch{width:52px;cursor:pointer;transition:transform var(--transition);position:relative}
+.pb-swatch:hover{transform:translateY(-3px)}
+.pb-swatch-color{width:52px;height:52px;border-radius:10px;border:1.5px solid rgba(0,0,0,.08);position:relative}
+.pb-swatch.selected .pb-swatch-color::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:white;background:rgba(0,0,0,.25);border-radius:8px}
+.pb-swatch-name{font-size:8.5px;color:var(--muted);text-align:center;margin-top:4px;line-height:1.2}
+.pb-selected-strip{background:#FDFAF6;border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px}
+.pb-selected-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.pb-selected-swatches{display:flex;flex-wrap:wrap;gap:8px;min-height:48px}
+.pb-selected-item{position:relative;cursor:pointer}
+.pb-selected-item:hover .pb-remove{opacity:1}
+.pb-remove{position:absolute;top:-5px;right:-5px;width:16px;height:16px;background:var(--text);color:white;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition);line-height:1}
+.pb-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.quiz-mode-landing{display:block;padding-bottom:20px}
+.quiz-mode-intro{font-size:13px;color:var(--muted);margin-bottom:32px;text-align:center}
+.quiz-choice-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.quiz-choice-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px 16px 24px;border-radius:var(--radius);border:1.5px solid var(--border);background:white;cursor:pointer;text-align:center;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);font-family:'DM Sans',sans-serif;width:100%}
+.quiz-choice-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.09);border-color:rgba(0,0,0,.2)}
+.quiz-choice-btn.primary-choice{background:var(--text);border-color:var(--text)}
+.quiz-choice-btn.primary-choice:hover{opacity:.9;transform:translateY(-3px);box-shadow:0 10px 28px rgba(30,22,18,.25)}
+.quiz-choice-illus{width:72px;height:60px;display:flex;align-items:center;justify-content:center}
+.quiz-choice-illus svg{width:100%;height:100%}
+.quiz-choice-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;letter-spacing:-.3px;line-height:1.1;color:var(--text)}
+.quiz-choice-btn.primary-choice .quiz-choice-title{color:white;font-style:italic}
+.quiz-choice-desc{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--muted);line-height:1.4;max-width:160px;font-style:italic}
+.quiz-choice-btn.primary-choice .quiz-choice-desc{color:rgba(255,255,255,.65)}
+.quiz-entry-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:100px;background:rgba(255,255,255,.2);color:white;margin-top:-4px}
+
+.camera-flow{padding:0}
+.returning-banner{background:var(--text);color:white;border-radius:var(--radius);padding:18px 20px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;animation:fadeUp .35s ease both}
+.returning-banner-left{display:flex;flex-direction:column;gap:4px}
+.returning-banner-season{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:-.5px}
+.returning-banner-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.6}
+.returning-banner-actions{display:flex;gap:8px;flex-wrap:wrap}
+.returning-banner-btn{padding:8px 16px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all var(--transition);border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:white}
+.returning-banner-btn:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.6)}
+.returning-banner-btn.primary{background:white;color:var(--text);border-color:white}
+.returning-banner-btn.primary:hover{opacity:.85}
+
+.confidence-block{background:#FDFAF6;border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:24px}
+.confidence-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.confidence-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.confidence-primary-row{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.confidence-pct{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1;letter-spacing:-2px}
+.confidence-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.confidence-bar-wrap{height:6px;background:var(--border);border-radius:3px;margin-bottom:12px;overflow:hidden}
+.confidence-bar-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.confidence-runners{display:flex;flex-wrap:wrap;gap:8px}
+.confidence-runner{display:flex;align-items:center;gap:7px;padding:5px 12px;background:white;border:1px solid var(--border);border-radius:100px;font-size:11px;color:var(--muted)}
+.confidence-runner-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.confidence-runner-pct{font-weight:700;color:var(--text)}
+
+.hint-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;letter-spacing:.3px;transition:color var(--transition)}
+.hint-toggle:hover{color:var(--text)}
+.hint-toggle-icon{font-size:13px;transition:transform .2s ease;display:inline-block}
+.hint-toggle.open .hint-toggle-icon{transform:rotate(90deg)}
+.hint-drawer{display:none;margin-top:12px;background:#FDFAF6;border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;animation:fadeUp .2s ease both}
+.hint-drawer.open{display:block}
+.hint-drawer-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.hint-drawer p{font-size:13px;color:var(--text);line-height:1.6;margin-bottom:10px}
+.hint-drawer p:last-child{margin-bottom:0}
+.hint-drawer strong{color:var(--text)}
+
+.camera-step{display:none}
+.camera-step.active{display:block;animation:fadeUp .25s ease both}
+.cam-step-progress{display:flex;gap:6px;margin-bottom:20px}
+.cam-step-dot{width:8px;height:8px;border-radius:50%;background:var(--border)}
+.cam-step-dot.active{background:var(--text)}
+.cam-step-dot.done{background:var(--text);opacity:.4}
+.camera-viewport-wrap{position:relative;width:100%;border-radius:var(--radius);overflow:hidden;background:#000;margin-bottom:12px}
+.camera-viewport-wrap video{width:100%;display:block;max-height:340px;object-fit:cover}
+.camera-overlay-guide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.camera-wrist-guide{width:55%;height:35%;border:2px solid rgba(255,255,255,.6);border-radius:40px}
+.camera-face-guide{width:48%;aspect-ratio:3/4;border:2px solid rgba(255,255,255,.6);border-radius:50%}
+.camera-corner{position:absolute;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.75);padding:6px 10px;background:rgba(0,0,0,.3);border-radius:6px}
+.camera-corner.tl{top:10px;left:10px}
+.camera-corner.tr{top:10px;right:10px}
+.camera-captured{position:relative;margin-bottom:12px}
+.camera-captured img{width:100%;border-radius:var(--radius);display:block;max-height:280px;object-fit:cover}
+.camera-captured-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.55);color:white;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.retake-btn{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:white;border:none;border-radius:100px;padding:6px 14px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;appearance:none;line-height:1.4;display:inline-flex;align-items:center}
+.retake-btn:hover{background:rgba(0,0,0,.8)}
+.cam-photo-actions{display:flex;gap:10px;margin-top:14px}
+.cam-action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;appearance:none;line-height:1.4}
+.cam-action-primary{background:var(--text);color:white}
+.cam-action-primary:hover{opacity:.85}
+.cam-action-secondary{background:white;color:var(--text);border:1.5px solid var(--border)!important}
+.cam-action-secondary:hover{background:var(--text);color:white;border-color:var(--text)!important}
+.camera-permission-denied{background:#FDF8F0;border:1px solid #E8D8B8;border-radius:var(--radius);padding:16px;margin-bottom:14px;font-size:13px;color:var(--muted);line-height:1.6}
+.cam-hair-question{background:#FDFAF6;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.cam-hair-q-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px}
+.cam-hair-q-options{display:flex;gap:8px;flex-wrap:wrap}
+.cam-hair-note{font-size:11px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-style:italic}
+.cam-hair-opt{padding:8px 18px;border-radius:100px;border:1.5px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all var(--transition);color:var(--muted);appearance:none;line-height:1.4}
+.cam-hair-opt.selected{border-color:var(--text);color:var(--text);background:#FAFAF8}
+.camera-analysing-spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--text);border-radius:50%;animation:spin .7s linear infinite}
+.camera-analysing-steps{display:flex;flex-direction:column;gap:10px}
+.camera-analysing-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.camera-analysing-step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .3s ease;flex-shrink:0}
+.camera-analysing-step-dot.done{background:var(--text)}
+.prefill-review{background:#FDFAF6;border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px}
+.prefill-review-title{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.prefill-chips{display:flex;flex-wrap:wrap;gap:8px}
+.prefill-chip{display:flex;align-items:center;gap:7px;padding:6px 12px;background:white;border:1px solid var(--border);border-radius:100px;font-size:12px;color:var(--text)}
+.prefill-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="nav-btn active" id="nav-home"><span class="nav-icon">⊹</span><span class="nav-label">Discover</span></button>
+    <button class="nav-btn" id="nav-quiz"><span class="nav-icon">◎</span><span class="nav-label">Find My Season</span></button>
+    <button class="nav-btn" id="nav-palette"><span class="nav-icon">⊞</span><span class="nav-label">Colour Seasons</span></button>
+    <button class="nav-btn" id="nav-recs"><span class="nav-icon">✦</span><span class="nav-label">Style Guide</span></button>
+    <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode"><span id="dark-toggle-icon">◑</span><span class="dark-toggle-label" id="dark-toggle-label">Dark</span></button>
+  </div>
+</nav>
+
+<!-- HOME VIEW -->
+<div class="view active" id="view-home">
+  <div class="home-hero">
+    <p class="home-eyebrow">The Colour Atlas by Mirette A. Esmat</p>
+    <h2>Your Seasonal<br><em>Colour Guide</em></h2>
+    <p>Discover which of the 12 colour seasons flatters you most — palettes, metals, and real-life styling guidance.</p>
+    <div class="home-cta-row">
+      <button class="cta-btn primary" id="btn-quiz">Find my season</button>
+      <button class="cta-btn secondary" id="btn-palette">Browse all palettes</button>
+    </div>
+    <div class="hero-dots" id="homeDots"></div>
+  </div>
+  <div class="season-family-grid" id="seasonGrid"></div>
+</div>
+
+<!-- QUIZ VIEW -->
+<div class="view" id="view-quiz">
+  <div class="quiz-wrap">
+    <div id="quiz-mode-landing">
+      <div id="returning-banner" class="returning-banner" style="display:none">
+        <div class="returning-banner-left">
+          <div class="returning-banner-label">Welcome back — your saved season</div>
+          <div class="returning-banner-season" id="returning-season-name"></div>
+          <div id="returning-confidence-line" style="font-size:11px;opacity:.7;margin-top:2px"></div>
+        </div>
+        <div class="returning-banner-actions">
+          <button class="returning-banner-btn primary" id="returning-view-btn">See my season →</button>
+          <button class="returning-banner-btn" id="returning-retake-btn">Retake quiz</button>
+        </div>
+      </div>
+      <div class="quiz-header">
+        <h2>Find <em>Your Season</em></h2>
+        <p>How would you like to begin?</p>
+      </div>
+      <div class="quiz-choice-row">
+        <button class="quiz-choice-btn" id="entry-manual-btn">
+          <div class="quiz-choice-illus">
+            <svg viewBox="0 0 72 60" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="4" width="52" height="52" rx="5" fill="#F5F0EA" stroke="#D8CDB8" stroke-width="1.5"/>
+              <rect x="26" y="1" width="20" height="9" rx="4.5" fill="#E0D0B8" stroke="#C8B898" stroke-width="1.5"/>
+              <line x1="22" y1="22" x2="52" y2="22" stroke="#D0C4B0" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="22" y1="32" x2="48" y2="32" stroke="#D0C4B0" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="22" y1="42" x2="50" y2="42" stroke="#D0C4B0" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="22" r="3" fill="none" stroke="#C8B080" stroke-width="1.5"/>
+              <circle cx="17" cy="32" r="3" fill="#C8B080"/>
+              <circle cx="17" cy="42" r="3" fill="none" stroke="#C8B080" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="quiz-choice-title">Take the<br>manual quiz</div>
+          <div class="quiz-choice-desc">Find your colour season by answering six guided questions</div>
+        </button>
+        <button class="quiz-choice-btn primary-choice" id="entry-camera-btn">
+          <div class="quiz-choice-illus">
+            <svg viewBox="0 0 72 60" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="14" width="60" height="40" rx="6" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+              <circle cx="36" cy="33" r="12" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+              <circle cx="36" cy="33" r="6" fill="rgba(255,255,255,.25)"/>
+              <rect x="27" y="8" width="18" height="9" rx="4" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+              <circle cx="58" cy="22" r="4" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+              <path d="M8 46 Q16 43 24 46 Q32 49 40 45" stroke="rgba(255,255,255,.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="quiz-choice-title">Scan with<br>camera</div>
+          <div class="quiz-choice-desc">Upload or take photos — AI reads your skin, veins &amp; eyes</div>
+          <span class="quiz-entry-badge">AI-powered</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MANUAL FLOW -->
+    <div id="manual-flow" style="display:none">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qprog" style="width:0%"></div></div>
+      <div class="swipe-hint">← swipe to navigate →</div>
+
+      <div class="quiz-step active" data-step="0">
+        <div class="quiz-step-label">Question 1 of 6 — Undertone</div>
+        <div class="quiz-question">Look at the veins on your inner wrist. What colour are they?</div>
+        <div class="quiz-illus-wrap">
+          <div class="quiz-illus-banner">
+            <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="560" height="160" fill="#FDFAF6" rx="8"/>
+              <rect x="10" y="18" width="72" height="90" rx="4" fill="#E8E0D4" stroke="#C8B89A" stroke-width="1.5"/>
+              <line x1="10" y1="63" x2="82" y2="63" stroke="#C8B89A" stroke-width="1.5"/>
+              <line x1="46" y1="18" x2="46" y2="108" stroke="#C8B89A" stroke-width="1.5"/>
+              <line x1="90" y1="30" x2="130" y2="50" stroke="#F5C842" stroke-width="2" stroke-dasharray="4,3" opacity=".7"/>
+              <line x1="90" y1="55" x2="140" y2="65" stroke="#F5C842" stroke-width="2" stroke-dasharray="4,3" opacity=".7"/>
+              <line x1="90" y1="80" x2="130" y2="80" stroke="#F5C842" stroke-width="2" stroke-dasharray="4,3" opacity=".7"/>
+              <text x="48" y="130" font-family="DM Sans,sans-serif" font-size="9" fill="#A89070" font-weight="600" letter-spacing="1.5" text-anchor="middle">NATURAL SUNLIGHT ONLY</text>
+              <rect x="150" y="25" width="110" height="110" rx="8" fill="#EFF4F8" stroke="#D0DDE8" stroke-width="1"/>
+              <text x="205" y="18" font-family="DM Sans,sans-serif" font-size="8" fill="#7090A8" text-anchor="middle" font-weight="700" letter-spacing="1">COOL</text>
+              <ellipse cx="205" cy="80" rx="42" ry="28" fill="#F0E4DC" stroke="#D8C8BC" stroke-width="1"/>
+              <path d="M178 72 Q190 68 200 72 Q210 76 218 70 Q226 64 232 68" stroke="#5A7FAA" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M182 82 Q194 78 206 82 Q216 78 228 82" stroke="#6890BB" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <text x="205" y="122" font-family="DM Sans,sans-serif" font-size="9" fill="#5A7FAA" text-anchor="middle" font-weight="600">Blue / purple</text>
+              <rect x="275" y="25" width="110" height="110" rx="8" fill="#F2F6EE" stroke="#C8D8B8" stroke-width="1"/>
+              <text x="330" y="18" font-family="DM Sans,sans-serif" font-size="8" fill="#607840" text-anchor="middle" font-weight="700" letter-spacing="1">WARM</text>
+              <ellipse cx="330" cy="80" rx="42" ry="28" fill="#EAD8C0" stroke="#D0BCA8" stroke-width="1"/>
+              <path d="M303 72 Q315 66 325 72 Q335 78 343 70 Q351 64 357 68" stroke="#4A8040" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M307 82 Q319 76 331 82 Q341 78 353 82" stroke="#5A9048" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <text x="330" y="122" font-family="DM Sans,sans-serif" font-size="9" fill="#4A8040" text-anchor="middle" font-weight="600">Green / olive</text>
+              <rect x="400" y="25" width="110" height="110" rx="8" fill="#F4F2F6" stroke="#D0C8D8" stroke-width="1"/>
+              <text x="455" y="18" font-family="DM Sans,sans-serif" font-size="8" fill="#806890" text-anchor="middle" font-weight="700" letter-spacing="1">NEUTRAL</text>
+              <ellipse cx="455" cy="80" rx="42" ry="28" fill="#E8D8C8" stroke="#D0C0B0" stroke-width="1"/>
+              <path d="M428 72 Q440 66 450 72 Q460 76 468 70 Q476 64 482 68" stroke="#7070A0" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M432 82 Q444 76 456 82 Q466 78 478 82" stroke="#688858" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <text x="455" y="122" font-family="DM Sans,sans-serif" font-size="9" fill="#806890" text-anchor="middle" font-weight="600">Blue &amp; green mix</text>
+              <text x="455" y="133" font-family="DM Sans,sans-serif" font-size="8" fill="#9A8898" text-anchor="middle">hard to distinguish</text>
+            </svg>
+            <div class="quiz-illus-note">Step outside or sit by a window. Avoid lamp or phone screen light — it distorts the colour.</div>
+          </div>
+        </div>
+        <div class="quiz-options three">
+          <div class="quiz-opt" data-q="0" data-v="cool"><div class="quiz-opt-swatch" style="background:#7B9DC8"></div><div><div class="quiz-opt-title">Blue or purple</div><div class="quiz-opt-desc">Distinctly blue-violet</div></div></div>
+          <div class="quiz-opt" data-q="0" data-v="warm"><div class="quiz-opt-swatch" style="background:#6B9E6A"></div><div><div class="quiz-opt-title">Green or olive</div><div class="quiz-opt-desc">Greenish tinge visible</div></div></div>
+          <div class="quiz-opt" data-q="0" data-v="neutral"><div class="quiz-opt-swatch" style="background:#8B7BAD"></div><div><div class="quiz-opt-title">Mix of both</div><div class="quiz-opt-desc">Can't tell — see both</div></div></div>
+        </div>
+        <button class="hint-toggle" onclick="toggleHint('hint0')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint0">
+          <div class="hint-drawer-title">How to read your veins</div>
+          <p>Go to a window in <strong>natural daylight</strong>. Hold your inner wrist up and look at the veins running lengthwise.</p>
+          <p><strong>Blueish or purplish?</strong> That's a cool signal. <strong>Greenish or olive?</strong> That's warm. <strong>Can't decide?</strong> Pick "Mix of both."</p>
+        </div>
+        <div class="quiz-nav"><span></span><button class="quiz-btn primary" id="qn0" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="1">
+        <div class="quiz-step-label">Question 2 of 6 — Sun Reaction</div>
+        <div class="quiz-question">How does your skin typically react to sun exposure?</div>
+        <div class="quiz-sub">This confirms your undertone by showing how your skin's pigment behaves under UV light.</div>
+        <div class="quiz-options">
+          <div class="quiz-opt" data-q="1" data-v="cool"><div class="quiz-opt-swatch" style="background:#F4A9A8"></div><div><div class="quiz-opt-title">Burns easily, turns pink or red</div><div class="quiz-opt-desc">Rarely tans — typical of cool undertones</div></div></div>
+          <div class="quiz-opt" data-q="1" data-v="warm"><div class="quiz-opt-swatch" style="background:#C69C6D"></div><div><div class="quiz-opt-title">Tans easily, turns golden</div><div class="quiz-opt-desc">Skin deepens to warm honey or olive</div></div></div>
+          <div class="quiz-opt" data-q="1" data-v="neutral"><div class="quiz-opt-swatch" style="background:#B5916E"></div><div><div class="quiz-opt-title">Burns first, then tans gradually</div><div class="quiz-opt-desc">Often neutral or olive-neutral</div></div></div>
+          <div class="quiz-opt" data-q="1" data-v="neutral"><div class="quiz-opt-swatch" style="background:#4A2C1A"></div><div><div class="quiz-opt-title">Deep skin — minimal burning</div><div class="quiz-opt-desc">Rich melanin; undertone shown by skin's warmth/coolness</div></div></div>
+        </div>
+        <button class="hint-toggle" onclick="toggleHint('hint1')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint1">
+          <div class="hint-drawer-title">Think about your baseline, not one holiday</div>
+          <p>Think about how your skin <strong>typically</strong> reacts across a whole summer. <strong>Deep skin tones:</strong> ask if your skin has a warm (golden, bronze) or cool (ashy, plum) cast in unfiltered photos.</p>
+        </div>
+        <div class="quiz-nav"><button class="quiz-btn" id="qback1">← Back</button><button class="quiz-btn primary" id="qn1" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="2">
+        <div class="quiz-step-label">Question 3 of 6 — Hair Depth</div>
+        <div class="quiz-question">What is your natural hair colour (or before any colouring)?</div>
+        <div class="quiz-sub">Pick the closest match to your natural, uncoloured hair.</div>
+        <div class="hair-grid" id="hairGrid"></div>
+        <button class="hint-toggle" onclick="toggleHint('hint2')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint2">
+          <div class="hint-drawer-title">Picking your hair depth</div>
+          <p>If you colour your hair, think back to your <strong>natural colour before colouring</strong>. <strong>Gone grey?</strong> Pick the shade that best represents what your hair was in your 20s.</p>
+        </div>
+        <div class="quiz-nav"><button class="quiz-btn" id="qback2">← Back</button><button class="quiz-btn primary" id="qn2" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="3">
+        <div class="quiz-step-label">Question 4 of 6 — Eye Colour</div>
+        <div class="quiz-question">What best describes your natural eye colour?</div>
+        <div class="quiz-sub">Look in natural light. Eye colour reveals both warmth and clarity.</div>
+        <div class="eye-grid" id="eyeGrid"></div>
+        <button class="hint-toggle" onclick="toggleHint('hint3')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint3">
+          <div class="hint-drawer-title">Reading your eye colour</div>
+          <p>Look in <strong>natural light</strong>. Hazel eyes often appear to change — pick the colour that appears most often. <strong>Dark brown or near-black?</strong> Select the deepest brown option.</p>
+        </div>
+        <div class="quiz-nav"><button class="quiz-btn" id="qback3">← Back</button><button class="quiz-btn primary" id="qn3" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="4">
+        <div class="quiz-step-label">Question 5 of 6 — Natural Contrast</div>
+        <div class="quiz-question">How much contrast is there between your natural hair and skin tone?</div>
+        <div class="quiz-sub">Compare your hair depth against your bare skin. Ignore highlights, makeup, or colouring.</div>
+        <div class="contrast-grid">
+          <div class="contrast-chip" data-q="4" data-v="low">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="40" cy="32" rx="22" ry="26" fill="#F0DCC8"/>
+              <rect x="18" y="10" width="44" height="22" rx="14" fill="#DFC898"/>
+              <path d="M30 63 Q40 68 50 63" stroke="#C8A898" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="contrast-chip-label">Low contrast</div>
+            <div class="contrast-chip-desc">Hair and skin close in depth — both light, or both medium</div>
+          </div>
+          <div class="contrast-chip" data-q="4" data-v="medium">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="40" cy="32" rx="22" ry="26" fill="#C89870"/>
+              <rect x="18" y="10" width="44" height="22" rx="14" fill="#5C3820"/>
+              <path d="M30 63 Q40 68 50 63" stroke="#A07850" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="contrast-chip-label">Medium contrast</div>
+            <div class="contrast-chip-desc">Noticeable but not dramatic difference</div>
+          </div>
+          <div class="contrast-chip" data-q="4" data-v="high">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="40" cy="32" rx="22" ry="26" fill="#F5E8DC"/>
+              <rect x="18" y="10" width="44" height="22" rx="14" fill="#181008"/>
+              <ellipse cx="32" cy="53" rx="4" ry="3" fill="#3A78B8" opacity=".9"/>
+              <ellipse cx="48" cy="53" rx="4" ry="3" fill="#3A78B8" opacity=".9"/>
+              <path d="M30 63 Q40 68 50 63" stroke="#C0A898" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="contrast-chip-label">High contrast</div>
+            <div class="contrast-chip-desc">Striking difference — very dark hair on fair or medium skin</div>
+          </div>
+        </div>
+        <button class="hint-toggle" onclick="toggleHint('hint4')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint4">
+          <div class="hint-drawer-title">Measuring your natural contrast</div>
+          <p>This is purely about <strong>hair vs. bare skin depth</strong> — ignore eye colour and makeup. <strong>Low:</strong> both fair/light, or both medium-depth. <strong>High:</strong> one dramatically darker than the other.</p>
+        </div>
+        <div class="quiz-nav"><button class="quiz-btn" id="qback4">← Back</button><button class="quiz-btn primary" id="qn4" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="5">
+        <div class="quiz-step-label">Question 6 of 6 — Metal Test</div>
+        <div class="quiz-question">Hold gold and silver near your face. Which makes your skin look more alive?</div>
+        <div class="quiz-sub">Use real jewellery or fabric swatches — hold them under your chin in natural light, no makeup if possible.</div>
+        <div class="quiz-options three">
+          <div class="quiz-opt" data-q="5" data-v="warm"><div class="quiz-opt-swatch" style="background:conic-gradient(#C8960C,#FFD700,#E8B830,#C8960C)"></div><div><div class="quiz-opt-title">Gold</div><div class="quiz-opt-desc">Skin glows; face looks warmer and healthier</div></div></div>
+          <div class="quiz-opt" data-q="5" data-v="cool"><div class="quiz-opt-swatch" style="background:conic-gradient(#8A8A8A,#D8D8D8,#F0F0F0,#8A8A8A)"></div><div><div class="quiz-opt-title">Silver</div><div class="quiz-opt-desc">Face looks brighter and cleaner</div></div></div>
+          <div class="quiz-opt" data-q="5" data-v="neutral"><div class="quiz-opt-swatch" style="background:linear-gradient(135deg,#D4AF37 50%,#C0C0C0 50%)"></div><div><div class="quiz-opt-title">Both work equally</div><div class="quiz-opt-desc">No clear winner — you may be neutral</div></div></div>
+        </div>
+        <button class="hint-toggle" onclick="toggleHint('hint5')"><span class="hint-toggle-icon">›</span> Not sure? Get a hint</button>
+        <div class="hint-drawer" id="hint5">
+          <div class="hint-drawer-title">How to do the metal test properly</div>
+          <p>Use <strong>real jewellery</strong> if you have it. Hold each metal under your chin in <strong>natural light only</strong>, no makeup if possible. Look for which makes skin look more <em>alive</em>.</p>
+        </div>
+        <div class="quiz-nav"><button class="quiz-btn" id="qback5">← Back</button><button class="quiz-btn primary" id="qn5" disabled>Reveal my season →</button></div>
+      </div>
+    </div><!-- /manual-flow -->
+
+    <!-- CAMERA FLOW -->
+    <div class="camera-flow" id="camera-flow" style="display:none">
+      <div class="camera-step active" id="cam-step-wrist">
+        <div class="cam-step-progress"><span class="cam-step-dot active"></span><span class="cam-step-dot"></span><span class="cam-step-dot"></span></div>
+        <div class="quiz-step-label">Step 1 of 3 — Vein test</div>
+        <div class="quiz-question">Photo of your inner wrist</div>
+        <div class="quiz-illus-wrap">
+          <div class="quiz-illus-banner">
+            <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="120" fill="#FDFAF6" rx="8"/>
+              <circle cx="48" cy="40" r="14" fill="#F5C842" opacity=".25"/>
+              <circle cx="48" cy="40" r="8" fill="#F5C842" opacity=".6"/>
+              <text x="48" y="80" font-family="DM Sans,sans-serif" font-size="8" fill="#A89070" font-weight="600" letter-spacing="1" text-anchor="middle">NATURAL SUNLIGHT</text>
+              <ellipse cx="240" cy="62" rx="80" ry="30" fill="#EED8C0" stroke="#D0B898" stroke-width="1.5"/>
+              <path d="M175 58 Q200 52 220 58 Q240 64 260 56 Q280 48 300 54" stroke="#5878A8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M173 68 Q198 62 218 68 Q238 74 258 66 Q278 58 302 64" stroke="#6888B8" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <text x="240" y="106" font-family="DM Sans,sans-serif" font-size="9" fill="#7090A8" font-weight="600" letter-spacing="1" text-anchor="middle">INNER WRIST FACING UP</text>
+            </svg>
+            <div class="quiz-illus-note">Hold your wrist directly in sunlight — veins must be clearly visible</div>
+          </div>
+        </div>
+        <div id="cam-wrist-viewport-wrap" class="camera-viewport-wrap" style="display:none">
+          <video id="cam-wrist-video" autoplay playsinline muted></video>
+          <div class="camera-overlay-guide"><div class="camera-wrist-guide"></div></div>
+          <div class="camera-corner tl">☀ Sunlight</div>
+          <div class="camera-corner tr">Wrist up</div>
+        </div>
+        <div id="cam-wrist-captured" class="camera-captured" style="display:none">
+          <img id="cam-wrist-img" src="" alt="Wrist photo">
+          <div class="camera-captured-label">Wrist ✓</div>
+          <button class="retake-btn" onclick="retakePhoto('wrist')">Retake</button>
+        </div>
+        <canvas id="cam-wrist-canvas" style="display:none"></canvas>
+        <div id="cam-wrist-denied" class="camera-permission-denied" style="display:none"><p>Camera access denied — use the upload option below.</p></div>
+        <div class="cam-photo-actions">
+          <button class="cam-action-btn cam-action-primary" id="cam-wrist-btn"><span id="cam-wrist-btn-icon">●</span><span id="cam-wrist-btn-label">Open camera</span></button>
+          <label class="cam-action-btn cam-action-secondary">↑ Upload<input type="file" accept="image/*" style="display:none" id="cam-wrist-upload"></label>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="quiz-btn" id="cam-back-to-landing">← Back</button>
+          <button class="quiz-btn primary" id="cam-wrist-next" disabled>Next →</button>
+        </div>
+      </div>
+
+      <div class="camera-step" id="cam-step-face">
+        <div class="cam-step-progress"><span class="cam-step-dot done"></span><span class="cam-step-dot active"></span><span class="cam-step-dot"></span></div>
+        <div class="quiz-step-label">Step 2 of 3 — Face photo</div>
+        <div class="quiz-question">Photo of your face</div>
+        <div class="quiz-illus-wrap">
+          <div class="quiz-illus-banner">
+            <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="120" fill="#FDFAF6" rx="8"/>
+              <rect x="20" y="15" width="60" height="75" rx="4" fill="#E8E0D4" stroke="#C8B89A" stroke-width="1.5"/>
+              <ellipse cx="240" cy="58" rx="40" ry="48" fill="#EED8C0" stroke="#D0B898" stroke-width="1.5"/>
+              <ellipse cx="226" cy="50" rx="6" ry="4" fill="#C8A890" opacity=".4"/>
+              <ellipse cx="254" cy="50" rx="6" ry="4" fill="#C8A890" opacity=".4"/>
+              <circle cx="226" cy="50" r="5" fill="#7090A8" opacity=".7"/>
+              <circle cx="254" cy="50" r="5" fill="#7090A8" opacity=".7"/>
+              <path d="M226 70 Q240 78 254 70" stroke="#C8A890" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <text x="240" y="115" font-family="DM Sans,sans-serif" font-size="9" fill="#A89070" font-weight="600" letter-spacing="1" text-anchor="middle">FACE THE WINDOW DIRECTLY</text>
+            </svg>
+            <div class="quiz-illus-note">Face the window directly — pull hair back if possible</div>
+          </div>
+        </div>
+        <div class="cam-hair-question">
+          <div class="cam-hair-q-title">Is your hair currently its natural colour?</div>
+          <div class="cam-hair-q-options">
+            <button class="cam-hair-opt selected" id="hair-opt-yes">Yes</button>
+            <button class="cam-hair-opt" id="hair-opt-no">No — it's coloured</button>
+          </div>
+          <div id="cam-hair-coloured-note" style="display:none" class="cam-hair-note">You'll select your natural hair depth manually after the photos.</div>
+        </div>
+        <div id="cam-face-viewport-wrap" class="camera-viewport-wrap" style="display:none">
+          <video id="cam-face-video" autoplay playsinline muted></video>
+          <div class="camera-overlay-guide"><div class="camera-face-guide"></div></div>
+          <div class="camera-corner tl">☀ Natural light</div>
+          <div class="camera-corner tr">No filters</div>
+        </div>
+        <div id="cam-face-captured" class="camera-captured" style="display:none">
+          <img id="cam-face-img" src="" alt="Face photo">
+          <div class="camera-captured-label">Face ✓</div>
+          <button class="retake-btn" onclick="retakePhoto('face')">Retake</button>
+        </div>
+        <canvas id="cam-face-canvas" style="display:none"></canvas>
+        <div id="cam-face-denied" class="camera-permission-denied" style="display:none"><p>Camera access denied — use the upload option below.</p></div>
+        <div class="cam-photo-actions">
+          <button class="cam-action-btn cam-action-primary" id="cam-face-btn"><span id="cam-face-btn-icon">●</span><span id="cam-face-btn-label">Open camera</span></button>
+          <label class="cam-action-btn cam-action-secondary">↑ Upload<input type="file" accept="image/*" style="display:none" id="cam-face-upload"></label>
+        </div>
+        <div class="quiz-nav" style="margin-top:20px">
+          <button class="quiz-btn" onclick="showCamStep('wrist')">← Back</button>
+          <button class="quiz-btn primary" id="cam-face-next" disabled>Analyse →</button>
+        </div>
+      </div>
+
+      <div class="camera-step" id="cam-step-analysing">
+        <div class="cam-step-progress"><span class="cam-step-dot done"></span><span class="cam-step-dot done"></span><span class="cam-step-dot active"></span></div>
+        <div style="text-align:center;padding:52px 20px 40px">
+          <div class="camera-analysing-spinner" style="margin:0 auto 20px"></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px">Analysing your colouring…</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:28px">Reading vein colour, skin undertone, hair depth, eye colour</div>
+          <div class="camera-analysing-steps" style="max-width:200px;margin:0 auto">
+            <div class="camera-analysing-step"><div class="camera-analysing-step-dot" id="adot0"></div>Vein colour</div>
+            <div class="camera-analysing-step"><div class="camera-analysing-step-dot" id="adot1"></div>Skin undertone</div>
+            <div class="camera-analysing-step"><div class="camera-analysing-step-dot" id="adot2"></div>Hair depth</div>
+            <div class="camera-analysing-step"><div class="camera-analysing-step-dot" id="adot3"></div>Eye colour</div>
+            <div class="camera-analysing-step"><div class="camera-analysing-step-dot" id="adot4"></div>Mapping season</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="camera-step" id="cam-step-review">
+        <div class="cam-step-progress"><span class="cam-step-dot done"></span><span class="cam-step-dot done"></span><span class="cam-step-dot done"></span></div>
+        <div class="quiz-step-label">Analysis complete</div>
+        <div class="quiz-question" style="margin-bottom:16px">Here's what we detected</div>
+        <div class="prefill-review" id="cam-prefill-review">
+          <div class="prefill-review-title">Detected from your photos</div>
+          <div class="prefill-chips" id="cam-prefill-chips"></div>
+        </div>
+        <div id="cam-hair-manual" style="display:none;margin-bottom:20px">
+          <div class="quiz-result-palette-label">Select your natural hair depth</div>
+          <div class="hair-grid" id="cam-hair-grid-manual"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:24px">
+          <button class="quiz-btn primary" style="justify-content:center" onclick="applyCameraAnswers()">Reveal my season →</button>
+          <button class="quiz-btn" style="justify-content:center" onclick="applyCameraAnswersManual()">Review answers manually</button>
+          <button class="quiz-btn" style="justify-content:center;font-size:11px;opacity:.6" onclick="showCamStep('wrist')">← Retake photos</button>
+        </div>
+      </div>
+    </div><!-- /camera-flow -->
+
+    <!-- RESULT -->
+    <div class="quiz-result" id="qresult">
+      <div id="qresult-neutral-note" class="neutral-note" style="display:none"></div>
+      <div id="qresult-primary-block">
+        <div id="qresult-badge" class="quiz-result-badge"></div>
+        <div id="qresult-title" class="quiz-result-title"></div>
+        <div id="qresult-tagline" class="quiz-result-tagline"></div>
+        <div id="qresult-desc" class="quiz-result-desc"></div>
+        <div class="confidence-block" id="qresult-confidence">
+          <div class="confidence-label">How certain is this result?</div>
+          <div class="confidence-primary-row">
+            <div class="confidence-pct" id="conf-pct">—</div>
+            <div class="confidence-desc" id="conf-desc"></div>
+          </div>
+          <div class="confidence-bar-wrap"><div class="confidence-bar-fill" id="conf-bar" style="width:0%"></div></div>
+          <div class="confidence-runners" id="conf-runners"></div>
+        </div>
+        <div class="profile-row" id="qresult-pills"></div>
+        <div class="quiz-result-palette-label">Your best colours</div>
+        <div class="quiz-result-swatches" id="qresult-swatches"></div>
+        <div class="quiz-result-palette-label">Colours to approach with care</div>
+        <div class="quiz-result-swatches" id="qresult-avoid"></div>
+        <div class="quiz-result-actions">
+          <button class="quiz-btn primary" id="qresult-go-palette">See colour season →</button>
+          <button class="quiz-btn" id="qresult-go-recs">Get style guide →</button>
+          <button class="quiz-btn" id="qresult-restart">Retake quiz</button>
+        </div>
+      </div>
+      <div id="qresult-also-block" style="display:none;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)">
+        <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px">Also explore</div>
+        <div id="qresult-also-badge" class="quiz-result-badge"></div>
+        <div id="qresult-also-title" class="quiz-result-title"></div>
+        <div id="qresult-also-tagline" class="quiz-result-tagline"></div>
+        <div id="qresult-also-desc" class="quiz-result-desc"></div>
+        <div class="quiz-result-palette-label">Their best colours</div>
+        <div class="quiz-result-swatches" id="qresult-also-swatches"></div>
+        <div class="quiz-result-actions">
+          <button class="quiz-btn primary" id="qresult-also-go-palette">See this colour season →</button>
+          <button class="quiz-btn" id="qresult-also-go-recs">Get style guide for this season →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PALETTE VIEW -->
+<div class="view" id="view-palette">
+  <div class="main-tabs-wrap">
+    <div class="main-tabs" id="mainTabsContainer"></div>
+  </div>
+  <div class="sub-tabs-wrap">
+    <div class="sub-tabs" id="subTabsContainer"></div>
+  </div>
+  <div id="panelsContainer"></div>
+</div>
+
+<!-- STYLE GUIDE VIEW -->
+<div class="view" id="view-recs">
+  <div class="recs-wrap">
+    <div class="recs-header">
+      <h2>Your Personal <em>Style Guide</em></h2>
+      <p>Select your season to see illustrated guidance — or generate detailed AI advice for any category.</p>
+    </div>
+    <div id="recs-season-selector" class="recs-season-selector"></div>
+    <div style="margin-bottom:20px">
+      <button onclick="showView('home')" class="cta-btn primary" style="font-size:12px;padding:10px 20px;">← Back to home</button>
+    </div>
+    <div class="recs-type-tabs">
+      <button class="recs-type-btn active" data-cat="outfits">Outfit Formulas</button>
+      <button class="recs-type-btn" data-cat="makeup">Makeup</button>
+      <button class="recs-type-btn" data-cat="neutrals">Neutrals &amp; Basics</button>
+      <button class="recs-type-btn" data-cat="avoid">What to Avoid</button>
+      <button class="recs-type-btn" data-cat="metals">Metals &amp; Jewellery</button>
+      <button class="recs-type-btn" data-cat="occasions">Occasion Dressing</button>
+      <button class="recs-type-btn" data-cat="builder">Build My Palette</button>
+      <button class="recs-type-btn" data-cat="wheel">My Palette Frame</button>
+    </div>
+    <div id="recs-no-season" class="recs-no-season">
+      <p>Select a season above, or <span id="recs-quiz-link">take the quiz</span> to find yours.</p>
+    </div>
+    <div id="recs-illus-panel" style="display:none">
+      <div class="sg-illustrated-grid" id="sg-cards-grid"></div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+        <button class="recs-generate-btn" id="recs-gen-btn">✦ Get detailed AI advice for this category</button>
+      </div>
+    </div>
+    <div id="recs-builder-panel" class="palette-builder" style="display:none;padding-left:0;padding-right:0">
+      <div class="pb-season-selector" id="pb-season-note" style="font-size:13px;color:var(--muted)"></div>
+      <div class="pb-filters" id="pb-filters"></div>
+      <div class="pb-selected-strip">
+        <div class="pb-selected-label">Your palette — <span id="pb-count">0</span> colours selected</div>
+        <div class="pb-selected-swatches" id="pb-selected"></div>
+      </div>
+      <div class="pb-swatches" id="pb-swatches"></div>
+      <div class="pb-actions">
+        <button class="recs-generate-btn" id="pb-copy-btn">Copy all hex codes</button>
+        <button class="quiz-btn" id="pb-clear-btn">Clear palette</button>
+      </div>
+    </div>
+    <div class="recs-ai-panel" id="recs-panel" style="display:none">
+      <div id="recs-loading" class="recs-ai-loading" style="display:none">
+        <div class="recs-ai-spinner"></div>
+        <div class="recs-ai-loading-text">Consulting your season…</div>
+      </div>
+      <div class="recs-ai-content" id="recs-content"></div>
+    </div>
+    <div id="recs-wheel-panel" style="display:none;padding-bottom:40px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Your season's colours arranged as a frame. Open your camera and hold your face to the oval to see how each colour drapes against your skin.</p>
+      <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+        <button class="quiz-btn primary" id="frame-cam-btn" onclick="toggleFrameCamera()">Open camera</button>
+        <button class="quiz-btn" id="frame-close-btn" onclick="closeFrameCamera()" style="display:none">Close camera</button>
+      </div>
+      <div id="recs-fan-svg" style="position:relative;display:flex;justify-content:center;align-items:center">
+        <video id="frame-video" autoplay playsinline muted style="display:none;position:absolute;width:52%;height:auto;border-radius:50%;object-fit:cover;z-index:1;aspect-ratio:3/4;border:3px solid var(--border)"></video>
+      </div>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px;font-style:italic">Click any colour strip to copy its hex code</p>
+    </div>
+  </div>
+</div>
+
+<div id="printModal" class="print-modal-overlay">
+  <div class="print-modal">
+    <div class="print-modal-header">
+      <h3>Palette Card Preview</h3>
+      <div class="print-modal-actions">
+        <button class="btn-close-modal" id="btn-close-modal">✕ Close</button>
+        <button class="btn-print-now" id="btn-print-now">Print / Save PDF</button>
+      </div>
+    </div>
+    <div class="print-modal-body"><div id="printCardContainer"></div></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="footer">
+  <strong>The Colour Atlas</strong> &nbsp;·&nbsp; Mirette A. Esmat<br>
+  <span style="margin-top:4px;display:block">Tap any swatch to copy its hex code · Print button exports your season card</span>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════════
+var MAIN_SEASONS=[{key:'spring',name:'Spring',accent:'#D06828',dot:'#E8904A'},{key:'summer',name:'Summer',accent:'#5878A8',dot:'#7090C0'},{key:'autumn',name:'Autumn',accent:'#9A4818',dot:'#B86030'},{key:'winter',name:'Winter',accent:'#303880',dot:'#4858A8'}];
+var SUB_BY_MAIN={spring:['true_spring','light_spring','bright_spring'],summer:['light_summer','true_summer','soft_summer'],autumn:['soft_autumn','true_autumn','dark_autumn'],winter:['bright_winter','true_winter','dark_winter']};
+var METALS={gold:{id:'gold',name:'Gold',cls:'metal-gold',desc:'Warm yellow gold. Enhances warm undertones and adds richness.',best:'Warm seasons',bg:'#FEF8E8',tc:'#8A6010'},silver:{id:'silver',name:'Silver',cls:'metal-silver',desc:'Bright cool silver. Enhances cool undertones and creates crisp luminosity.',best:'Cool seasons',bg:'#F0F0F8',tc:'#505060'},rose_gold:{id:'rose_gold',name:'Rose Gold',cls:'metal-rosegold',desc:'Soft pinkish gold. Bridges warm and cool — flatters many seasons.',best:'Spring & Summer',bg:'#FEF0EC',tc:'#7A4030'},white_gold:{id:'white_gold',name:'White Gold',cls:'metal-whitegold',desc:'Cool-toned gold with silvery finish. Refined and bright.',best:'Cool & Bright seasons',bg:'#F0F0F8',tc:'#404858'},bronze:{id:'bronze',name:'Bronze',cls:'metal-bronze',desc:'Deep warm bronze. Rich and earthy — perfect for Autumn depth.',best:'Autumn seasons',bg:'#FAF0E0',tc:'#6A4010'},copper:{id:'copper',name:'Copper',cls:'metal-copper',desc:'Reddish warm copper. The warmest metal — dramatic for Dark Autumn.',best:'Dark Autumn',bg:'#FAF0EC',tc:'#6A3010'},pewter:{id:'pewter',name:'Pewter',cls:'metal-whitegold',desc:'Muted grey metal between silver and dark. Sophisticated for Soft Summer.',best:'Soft Summer',bg:'#F0F0F0',tc:'#505058'}};
+
+var SEASONS={
+true_spring:{main:'spring',name:'Spring',subName:'True Spring',tagline:'Warm · Bright · Clear',accent:'#D06828',subBg:'#FFF0E4',subTextColor:'#7A3810',desc:'The purest Spring — warm golden skin, clear warm eyes, luminous and fresh.',undertone:'Warm',value:'Light–Medium',chroma:'Bright & Clear',metal:'Gold',contrast:'Low–Medium',
+palette:{'Neutrals & Basics':[{name:'Warm Ivory',hex:'#F8EDD8'},{name:'Camel',hex:'#C89050'},{name:'Golden Beige',hex:'#E0C090'},{name:'Warm White',hex:'#FFF6EE'},{name:'Tan',hex:'#C8A070'},{name:'Warm Sand',hex:'#E0C898'},{name:'Cognac',hex:'#A05428'},{name:'Biscuit',hex:'#E8D0A8'}],'Core Colours':[{name:'Peach',hex:'#F4A878'},{name:'Coral',hex:'#E87050'},{name:'Warm Red',hex:'#D84030'},{name:'Salmon',hex:'#F08868'},{name:'Golden Yellow',hex:'#E8C840'},{name:'Warm Mustard',hex:'#D0A020'},{name:'Butter',hex:'#F0DC80'},{name:'Spring Green',hex:'#88C858'},{name:'Lime',hex:'#A8D840'},{name:'Grass',hex:'#70B848'},{name:'Warm Teal',hex:'#40B0A0'},{name:'Turquoise',hex:'#30C8B8'},{name:'Sky Blue',hex:'#78C0D8'},{name:'Cornflower',hex:'#5898D8'},{name:'Warm Pink',hex:'#F08898'},{name:'Watermelon',hex:'#E85870'},{name:'Soft Orange',hex:'#F09050'},{name:'Apricot',hex:'#F0B880'}],'Accent & Statement':[{name:'Tangerine',hex:'#F07028'},{name:'Poppy Red',hex:'#D83020'},{name:'Electric Teal',hex:'#10D8C0'},{name:'Bright Yellow',hex:'#F8D020'},{name:'Hot Coral',hex:'#F06040'},{name:'Vivid Pink',hex:'#F06080'}],'Makeup Palette':[{name:'Peachy Nude',hex:'#E8B098'},{name:'Warm Coral Lip',hex:'#E07058'},{name:'Soft Terracotta',hex:'#C87850'},{name:'Golden Bronze',hex:'#C89040'},{name:'Warm Blush',hex:'#E8A090'},{name:'Copper Lid',hex:'#B07038'},{name:'Warm Taupe',hex:'#C8A888'},{name:'Brick Liner',hex:'#B05030'}],'Hijab & Scarf':[{name:'Warm Ivory',hex:'#F8EDD8'},{name:'Peach Rose',hex:'#F0B098'},{name:'Soft Coral',hex:'#E8907A'},{name:'Warm Blush',hex:'#E8A090'},{name:'Golden Sand',hex:'#E0C090'},{name:'Camel',hex:'#C89050'},{name:'Sage',hex:'#A8C890'},{name:'Sky Blue',hex:'#90C8E0'}]},
+metals:['gold','rose_gold'],tips:['Peach and coral near the face are your superpower','Gold jewellery always over silver','Swap stark black for warm brown or cognac','Pastels work if they carry a peachy tint','Layer warm neutrals as your foundation'],avoid:['Pure black','Cool grey','Icy blue','Cool fuchsia','Silver alone'],celebrities:'Blake Lively · Jessica Alba · Nicole Kidman (warm era)'},
+
+light_spring:{main:'spring',name:'Spring',subName:'Light Spring',tagline:'Warm · Light · Delicate',accent:'#D09048',subBg:'#FFF8EE',subTextColor:'#8A5018',desc:'A soft bridge between Spring and Summer — light, warm, and airy with a delicate touch.',undertone:'Warm–Neutral',value:'Very Light',chroma:'Soft & Clear',metal:'Gold / Rose Gold',contrast:'Very Low',
+palette:{'Neutrals & Basics':[{name:'Warm White',hex:'#FFF8F0'},{name:'Vanilla',hex:'#F8EED8'},{name:'Peach Cream',hex:'#F8E0C8'},{name:'Warm Beige',hex:'#EDD8B8'},{name:'Light Camel',hex:'#DEC090'},{name:'Soft Tan',hex:'#D8B888'},{name:'Warm Taupe',hex:'#C8A880'},{name:'Sand',hex:'#E8D0A0'}],'Core Colours':[{name:'Peach Blossom',hex:'#F8C8A8'},{name:'Light Salmon',hex:'#F8B898'},{name:'Soft Apricot',hex:'#F8C888'},{name:'Light Coral',hex:'#F4A880'},{name:'Butter Yellow',hex:'#F8E898'},{name:'Pale Gold',hex:'#F0D880'},{name:'Light Lime',hex:'#C8E898'},{name:'Soft Mint',hex:'#B8E8D8'},{name:'Pale Aqua',hex:'#B8E0E8'},{name:'Baby Blue',hex:'#C0D8F0'},{name:'Pale Sky',hex:'#C8E0F8'},{name:'Warm Lilac',hex:'#DCC8E8'},{name:'Light Pink',hex:'#F8D0D8'},{name:'Blush',hex:'#F8C8C8'},{name:'Soft Rose',hex:'#F0C0B8'},{name:'Pale Teal',hex:'#A8D8D0'},{name:'Soft Green',hex:'#B8D8A8'},{name:'Champagne',hex:'#F0DEC0'}],'Accent & Statement':[{name:'Warm Peach',hex:'#F4A068'},{name:'Light Coral',hex:'#F09878'},{name:'Warm Aqua',hex:'#58C8C0'},{name:'Golden Yellow',hex:'#F0D040'},{name:'Soft Pink',hex:'#F0A0B0'},{name:'Light Sage',hex:'#A0C888'}],'Makeup Palette':[{name:'Peach Gloss',hex:'#F0C0A8'},{name:'Light Coral Lip',hex:'#E8A888'},{name:'Peach Blush',hex:'#F0B8A0'},{name:'Golden Shimmer',hex:'#E8D098'},{name:'Warm Pink',hex:'#F0A8A8'},{name:'Light Taupe',hex:'#D8C0A8'},{name:'Peachy Nude',hex:'#E8C0A8'},{name:'Bronze Gloss',hex:'#D0A070'}],'Hijab & Scarf':[{name:'Warm White',hex:'#FFF8F0'},{name:'Vanilla',hex:'#F8EED8'},{name:'Peach Cream',hex:'#F8D8C0'},{name:'Baby Pink',hex:'#F8D0D0'},{name:'Soft Lilac',hex:'#E8D8F0'},{name:'Pale Aqua',hex:'#C8E8F0'},{name:'Soft Mint',hex:'#C0E8D8'},{name:'Butter',hex:'#F8F0C0'}]},
+metals:['gold','rose_gold'],tips:['Your palette is all about airiness and warmth','Stick to light, warm shades close to the face','Heavy dark colours can overpower your natural lightness','Rose gold and yellow gold both flatter you beautifully','Layer light neutrals for a fresh, effortless look'],avoid:['Dark navy','Stark black','Cool grey','Bright neon','Very dark brown'],celebrities:'Reese Witherspoon · Taylor Swift (light era) · Cameron Diaz'},
+
+bright_spring:{main:'spring',name:'Spring',subName:'Bright Spring',tagline:'Warm · Very Bright · High Contrast',accent:'#C83818',subBg:'#FFF0E8',subTextColor:'#7A2010',desc:'The most vivid Spring — bridges Spring and Winter with warm undertones and brilliant saturation.',undertone:'Warm–Neutral',value:'Light–Medium',chroma:'Very Bright',metal:'Gold / White Gold',contrast:'High',
+palette:{'Neutrals & Basics':[{name:'Bright White',hex:'#F8F8F8'},{name:'Warm Ivory',hex:'#F8F0E0'},{name:'Warm Camel',hex:'#D0A050'},{name:'Golden Tan',hex:'#C89858'},{name:'Warm Brown',hex:'#9A6030'},{name:'Cognac',hex:'#A85030'},{name:'Clear Beige',hex:'#E8D8B8'},{name:'Warm Khaki',hex:'#C8B878'}],'Core Colours':[{name:'True Red',hex:'#E82020'},{name:'Hot Coral',hex:'#F05030'},{name:'Tomato',hex:'#E83828'},{name:'Vivid Orange',hex:'#F07020'},{name:'Bright Yellow',hex:'#F8D020'},{name:'Sunny Yellow',hex:'#F8E028'},{name:'Vivid Green',hex:'#50D030'},{name:'Lime',hex:'#A0D828'},{name:'Electric Teal',hex:'#10D8C0'},{name:'Vivid Turquoise',hex:'#10C8D8'},{name:'Vivid Blue',hex:'#1888E8'},{name:'Cornflower',hex:'#4880D8'},{name:'Bright Pink',hex:'#F03080'},{name:'Hot Pink',hex:'#E83098'},{name:'Vivid Watermelon',hex:'#E82858'},{name:'Vivid Violet',hex:'#8030C8'},{name:'Bright Purple',hex:'#9020B8'},{name:'Vivid Fuchsia',hex:'#D010A8'}],'Accent & Statement':[{name:'Neon Coral',hex:'#FF5040'},{name:'Neon Lime',hex:'#B0E820'},{name:'Electric Blue',hex:'#0878F0'},{name:'Neon Pink',hex:'#F020A0'},{name:'Vivid Orange',hex:'#F06000'},{name:'Neon Teal',hex:'#00E0D0'}],'Makeup Palette':[{name:'Vivid Coral Lip',hex:'#E85840'},{name:'Bright Red Lip',hex:'#D83020'},{name:'Hot Pink Lip',hex:'#E02880'},{name:'Warm Bronze',hex:'#C88840'},{name:'Vivid Blush',hex:'#E88070'},{name:'Electric Eye',hex:'#2880E0'},{name:'Warm Taupe',hex:'#C0A070'},{name:'Copper Shadow',hex:'#B87040'}],'Hijab & Scarf':[{name:'Bright White',hex:'#F8F8F8'},{name:'Vivid Coral',hex:'#F07858'},{name:'Hot Pink',hex:'#E82898'},{name:'Vivid Turquoise',hex:'#10C8D8'},{name:'Bright Yellow',hex:'#F8E020'},{name:'Cobalt',hex:'#1058C8'},{name:'Vivid Green',hex:'#50D030'},{name:'Warm Red',hex:'#E83020'}]},
+metals:['gold','white_gold'],tips:['Clear, saturated colours are your greatest strength','You can wear bold contrast as effortlessly as Spring warmth','Pair brights with near-whites rather than stark white','Gold and white gold both work well on you','Avoid dusty or muted versions of colours — you need clarity'],avoid:['Dusty muted tones','Warm brown alone','Soft pastels','Olive','Greyed colours'],celebrities:'Jennifer Lawrence · Julianne Hough · Isla Fisher'},
+
+light_summer:{main:'summer',name:'Summer',subName:'Light Summer',tagline:'Cool · Light · Airy',accent:'#7898B8',subBg:'#EEF4F8',subTextColor:'#304870',desc:'A delicate bridge between Summer and Spring — light, cool, and softly luminous.',undertone:'Cool–Neutral',value:'Very Light',chroma:'Soft & Light',metal:'Silver / Rose Gold',contrast:'Very Low',
+palette:{'Neutrals & Basics':[{name:'Cool White',hex:'#F5F2F2'},{name:'Soft Blush White',hex:'#F8F0F0'},{name:'Rose Taupe',hex:'#D8C0C0'},{name:'Soft Cocoa',hex:'#C0A0A0'},{name:'Cool Beige',hex:'#D8D0C8'},{name:'Lavender Grey',hex:'#D0C8D8'},{name:'Powder',hex:'#E8E0E8'},{name:'Light Stone',hex:'#D8D0D0'}],'Core Colours':[{name:'Baby Pink',hex:'#F8D0D8'},{name:'Blush',hex:'#F5C8C8'},{name:'Soft Rose',hex:'#F0C0C8'},{name:'Light Mauve',hex:'#E0B8C8'},{name:'Soft Lavender',hex:'#D8D0E8'},{name:'Pale Periwinkle',hex:'#C8D0E8'},{name:'Powder Blue',hex:'#C0D0E0'},{name:'Baby Blue',hex:'#B8D0E8'},{name:'Pale Aqua',hex:'#B8D8E0'},{name:'Light Teal',hex:'#A8D0D0'},{name:'Soft Mint',hex:'#B8E0D8'},{name:'Pale Sage',hex:'#C0D0B8'},{name:'Lilac',hex:'#D8C8E8'},{name:'Soft Plum',hex:'#C8B0D0'},{name:'Pale Dusty Rose',hex:'#E8C0C8'},{name:'Antique Rose',hex:'#E0B8B8'},{name:'Soft Sky',hex:'#C8D8E8'},{name:'Light Coral Pink',hex:'#F0C0C0'}],'Accent & Statement':[{name:'Soft Rose',hex:'#D89098'},{name:'Dusty Periwinkle',hex:'#8898C8'},{name:'Soft Teal',hex:'#70A8B0'},{name:'Pale Violet',hex:'#B0A0C8'},{name:'Soft Dusty Pink',hex:'#D0A0A8'},{name:'Muted Sky',hex:'#9CBCD0'}],'Makeup Palette':[{name:'Barely-There Nude',hex:'#E8C8C8'},{name:'Pink Petal Lip',hex:'#E0B0B8'},{name:'Soft Mauve Lip',hex:'#D0A0B0'},{name:'Pearl Blush',hex:'#F0D0D8'},{name:'Soft Champagne',hex:'#F0E0D0'},{name:'Pale Rose Eye',hex:'#E0C0C8'},{name:'Soft Blue Eye',hex:'#B8C8E0'},{name:'Dove Shadow',hex:'#D0C8D0'}],'Hijab & Scarf':[{name:'Soft White',hex:'#F5F2F2'},{name:'Baby Pink',hex:'#F8D0D8'},{name:'Blush',hex:'#F5C8C8'},{name:'Lavender',hex:'#D8D0E8'},{name:'Powder Blue',hex:'#C0D0E0'},{name:'Pale Mint',hex:'#C0E0D8'},{name:'Pale Rose',hex:'#F0C0C0'},{name:'Soft Lilac',hex:'#D8C8E8'}]},
+metals:['silver','rose_gold'],tips:['The lightest shades in your palette are always safe near the face','Avoid wearing heavy dark colours close to the face','Soft rose gold jewellery looks particularly exquisite on you','Let your natural lightness lead — avoid high contrast looks','Layering soft tones creates elegant harmony'],avoid:['Strong orange','Warm brown','Olive','Stark black','Heavy gold jewellery'],celebrities:'Elle Fanning · Diane Kruger · Amanda Seyfried'},
+
+true_summer:{main:'summer',name:'Summer',subName:'True Summer',tagline:'Cool · Soft · Romantic',accent:'#6080A8',subBg:'#EEF2F8',subTextColor:'#283858',desc:'The quintessential Summer — cool, dusty, and softly graceful. Like twilight in bloom.',undertone:'Cool',value:'Light–Medium',chroma:'Soft & Muted',metal:'Silver / Rose Gold',contrast:'Low',
+palette:{'Neutrals & Basics':[{name:'Soft White',hex:'#F5F2F0'},{name:'Rose Taupe',hex:'#C0A0A0'},{name:'Cocoa',hex:'#907878'},{name:'Stone',hex:'#C0B8B8'},{name:'Cool Beige',hex:'#D8C8C0'},{name:'Greige',hex:'#C8C0B8'},{name:'Ash Brown',hex:'#907070'},{name:'Dusty Brown',hex:'#9A8080'}],'Core Colours':[{name:'Dusty Rose',hex:'#D890A0'},{name:'Blush',hex:'#F0C0C0'},{name:'Mauve',hex:'#B88098'},{name:'Soft Lavender',hex:'#C0B0D0'},{name:'Dusty Purple',hex:'#9078A8'},{name:'Cool Berry',hex:'#987098'},{name:'Powder Blue',hex:'#A0C0D8'},{name:'Slate Blue',hex:'#7090B8'},{name:'Periwinkle',hex:'#8898C8'},{name:'Baby Blue',hex:'#A8C8D8'},{name:'Cool Teal',hex:'#70A8B0'},{name:'Sage',hex:'#90A888'},{name:'Dusty Green',hex:'#8098A0'},{name:'Cool Mint',hex:'#A0C8C0'},{name:'Soft Plum',hex:'#987898'},{name:'Lilac',hex:'#C0A8D0'},{name:'Rose Brown',hex:'#B08080'},{name:'Antique Rose',hex:'#C898A0'}],'Accent & Statement':[{name:'Deep Mauve',hex:'#905870'},{name:'Cool Magenta',hex:'#B05880'},{name:'Deep Slate',hex:'#506080'},{name:'Eggplant',hex:'#685078'},{name:'Cool Teal Deep',hex:'#407080'},{name:'Dusty Rose Deep',hex:'#B07080'}],'Makeup Palette':[{name:'Cool Nude',hex:'#D8B0B0'},{name:'Mauve Lip',hex:'#C08898'},{name:'Rose Pink Lip',hex:'#D890A0'},{name:'Plum Lip',hex:'#906080'},{name:'Cool Blush',hex:'#E0B0C0'},{name:'Dusty Rose Eye',hex:'#C098A0'},{name:'Lavender Eye',hex:'#B0A0C8'},{name:'Cool Taupe',hex:'#B0A0A0'}],'Hijab & Scarf':[{name:'Soft White',hex:'#F5F2F0'},{name:'Blush Pink',hex:'#F0C0C0'},{name:'Dusty Rose',hex:'#D890A0'},{name:'Lavender',hex:'#C0B0D0'},{name:'Powder Blue',hex:'#A0C0D8'},{name:'Soft Mauve',hex:'#C098A8'},{name:'Cool Mint',hex:'#A0C8C0'},{name:'Stone',hex:'#C0B8B8'}]},
+metals:['silver','rose_gold'],tips:['Soft, dusty tones are your natural foundation','Blush, mauve and lavender near the face are ethereal','Avoid pure white — use soft rosy white instead','Cool natural light (overcast days) is your best photographic light','Silver and rose gold always over yellow gold'],avoid:['Orange','Warm yellow','Bright warm red','Stark black','Olive green'],celebrities:'Cate Blanchett · Gwyneth Paltrow · Naomi Watts'},
+
+soft_summer:{main:'summer',name:'Summer',subName:'Soft Summer',tagline:'Cool–Neutral · Muted · Refined',accent:'#7888A0',subBg:'#F0F2F5',subTextColor:'#303848',desc:'A sophisticated bridge with Autumn — cool but muted and earthy, with a dusty quality throughout.',undertone:'Cool–Neutral',value:'Medium',chroma:'Very Muted',metal:'Silver / Pewter',contrast:'Low',
+palette:{'Neutrals & Basics':[{name:'Soft Warm White',hex:'#F5F0ED'},{name:'Warm Stone',hex:'#C8C0B0'},{name:'Grey Beige',hex:'#C8C0B8'},{name:'Cool Taupe',hex:'#B8B0A8'},{name:'Dusty Greige',hex:'#C0B8B0'},{name:'Soft Brown',hex:'#9A8870'},{name:'Muted Ash',hex:'#B0A898'},{name:'Cool Khaki',hex:'#B0A890'}],'Core Colours':[{name:'Dusty Rose',hex:'#C89090'},{name:'Muted Pink',hex:'#C8A0A8'},{name:'Soft Mauve',hex:'#B09090'},{name:'Dusty Lavender',hex:'#B0A8C0'},{name:'Muted Periwinkle',hex:'#9098B0'},{name:'Dusty Blue',hex:'#8898A8'},{name:'Muted Teal',hex:'#7898A0'},{name:'Soft Sage',hex:'#8A9A80'},{name:'Dusty Green',hex:'#8090A8'},{name:'Muted Khaki',hex:'#9A9870'},{name:'Dusty Olive',hex:'#8A8870'},{name:'Rose Grey',hex:'#B09898'},{name:'Soft Plum',hex:'#887880'},{name:'Muted Lilac',hex:'#A898B0'},{name:'Dusty Coral',hex:'#C09088'},{name:'Warm Grey',hex:'#A89898'},{name:'Muted Teal Deep',hex:'#607880'},{name:'Cool Brown',hex:'#907870'}],'Accent & Statement':[{name:'Deep Dusty Rose',hex:'#A07070'},{name:'Deep Slate',hex:'#506070'},{name:'Deep Sage',hex:'#607058'},{name:'Muted Plum',hex:'#706070'},{name:'Dusty Teal',hex:'#507070'},{name:'Muted Olive',hex:'#707058'}],'Makeup Palette':[{name:'Nude Taupe',hex:'#C8B0A8'},{name:'Dusty Rose Lip',hex:'#C09090'},{name:'Muted Mauve',hex:'#B08888'},{name:'Rose Brown Blush',hex:'#C0A098'},{name:'Warm Pewter',hex:'#B0A8A0'},{name:'Dusty Purple Eye',hex:'#908090'},{name:'Soft Grey Eye',hex:'#A0A0A8'},{name:'Taupe Liner',hex:'#908070'}],'Hijab & Scarf':[{name:'Soft White',hex:'#F5F0ED'},{name:'Dusty Rose',hex:'#C89090'},{name:'Soft Mauve',hex:'#B09090'},{name:'Dusty Lavender',hex:'#B0A8C0'},{name:'Dusty Blue',hex:'#8898A8'},{name:'Soft Sage',hex:'#8A9A80'},{name:'Cool Taupe',hex:'#B8B0A8'},{name:'Muted Teal',hex:'#7898A0'}]},
+metals:['silver','pewter'],tips:['Dusty, muted tones are always safer than clear bright colours for you','Embrace the beauty of complexity — your palette is the most refined','Pewter and oxidised silver look especially luxurious on you','Avoid both very warm and very bright colours — they compete','The depth of a muted olive or dusty teal is your signature strength'],avoid:['Vivid warm colours','Bright orange','Clear strong contrast','Yellow gold','Neon shades'],celebrities:'Helen Mirren · Julie Andrews · Meryl Streep'},
+
+soft_autumn:{main:'autumn',name:'Autumn',subName:'Soft Autumn',tagline:'Warm–Neutral · Muted · Gentle',accent:'#9A7030',subBg:'#FFF8F0',subTextColor:'#5A3810',desc:'The gentlest Autumn — a warm bridge to Summer, soft and earthy without harshness.',undertone:'Warm–Neutral',value:'Light–Medium',chroma:'Muted & Soft',metal:'Gold / Rose Gold',contrast:'Low',
+palette:{'Neutrals & Basics':[{name:'Soft Cream',hex:'#F5EDD5'},{name:'Warm Beige',hex:'#E0C898'},{name:'Sandy Beige',hex:'#D8C090'},{name:'Light Camel',hex:'#D0A870'},{name:'Warm Tan',hex:'#C89860'},{name:'Khaki',hex:'#C0A868'},{name:'Warm Taupe',hex:'#B89878'},{name:'Soft Brown',hex:'#A07850'}],'Core Colours':[{name:'Dusty Peach',hex:'#E8B898'},{name:'Soft Coral',hex:'#D89878'},{name:'Warm Salmon',hex:'#D09080'},{name:'Dusty Orange',hex:'#D09060'},{name:'Soft Mustard',hex:'#D0A840'},{name:'Warm Olive',hex:'#A09040'},{name:'Soft Sage',hex:'#A0A868'},{name:'Dusty Green',hex:'#889858'},{name:'Muted Teal',hex:'#608080'},{name:'Soft Aqua',hex:'#80A8A0'},{name:'Dusty Sky',hex:'#9AB0C0'},{name:'Soft Periwinkle',hex:'#A0A8C0'},{name:'Warm Rose',hex:'#D09888'},{name:'Dusty Pink',hex:'#C89890'},{name:'Warm Lavender',hex:'#B0A0B8'},{name:'Soft Rust',hex:'#C08060'},{name:'Muted Brick',hex:'#B07858'},{name:'Warm Mauve',hex:'#B08888'}],'Accent & Statement':[{name:'Soft Rust',hex:'#B87050'},{name:'Deep Sage',hex:'#708058'},{name:'Muted Teal Deep',hex:'#507070'},{name:'Warm Bronze',hex:'#A07830'},{name:'Dusty Rose Deep',hex:'#A07070'},{name:'Muted Olive',hex:'#7A7840'}],'Makeup Palette':[{name:'Warm Nude',hex:'#D8B090'},{name:'Dusty Peach Lip',hex:'#D09878'},{name:'Soft Terracotta',hex:'#C07858'},{name:'Warm Bronze Blush',hex:'#C8A070'},{name:'Soft Copper Eye',hex:'#B08050'},{name:'Muted Olive Eye',hex:'#888040'},{name:'Warm Taupe Liner',hex:'#A08060'},{name:'Dusty Rose Blush',hex:'#C09888'}],'Hijab & Scarf':[{name:'Soft Cream',hex:'#F5EDD5'},{name:'Warm Beige',hex:'#E0C898'},{name:'Dusty Peach',hex:'#E8B898'},{name:'Soft Sage',hex:'#A0A868'},{name:'Warm Tan',hex:'#C89860'},{name:'Dusty Teal',hex:'#608080'},{name:'Warm Mauve',hex:'#B08888'},{name:'Light Camel',hex:'#D0A870'}]},
+metals:['gold','rose_gold'],tips:['Muted, warm shades flatter you best — avoid high chroma','Your palette works beautifully in layered tonal outfits','Rose gold and matte gold jewellery are both lovely on you','Warm natural light (golden hour) is your best friend for photos','Think dusty, earthy, and warm — never bright or cold'],avoid:['Cool clear colours','Bright neon','Icy pastels','Silver (strong)','Very deep dark colours'],celebrities:'Julia Roberts · Sandra Bullock · Salma Hayek (lighter tones)'},
+
+true_autumn:{main:'autumn',name:'Autumn',subName:'True Autumn',tagline:'Warm · Rich · Earthy',accent:'#B05828',subBg:'#FFF4EE',subTextColor:'#6A3010',desc:'The quintessential Autumn — deep, golden, complex. Rich like fall leaves at their peak.',undertone:'Warm',value:'Medium–Deep',chroma:'Muted & Earthy',metal:'Gold & Bronze',contrast:'Medium–High',
+palette:{'Neutrals & Basics':[{name:'Warm Brown',hex:'#8C5028'},{name:'Camel',hex:'#C08040'},{name:'Rust',hex:'#A04818'},{name:'Olive',hex:'#787830'},{name:'Chestnut',hex:'#7A3E20'},{name:'Dark Caramel',hex:'#A06030'},{name:'Coffee',hex:'#603820'},{name:'Warm Cream',hex:'#F0DFB8'}],'Core Colours':[{name:'Burnt Orange',hex:'#C86020'},{name:'Rust',hex:'#B84820'},{name:'Terracotta',hex:'#C06838'},{name:'Warm Red',hex:'#B03020'},{name:'Tomato',hex:'#C03818'},{name:'Olive Green',hex:'#7A7830'},{name:'Forest Green',hex:'#3A6028'},{name:'Moss',hex:'#607040'},{name:'Mustard',hex:'#C89820'},{name:'Gold',hex:'#C8A020'},{name:'Amber',hex:'#D09030'},{name:'Ochre',hex:'#C08828'},{name:'Deep Teal',hex:'#286060'},{name:'Bronze Teal',hex:'#407868'},{name:'Warm Purple',hex:'#704058'},{name:'Aubergine',hex:'#603048'},{name:'Dark Chocolate',hex:'#402010'},{name:'Mahogany',hex:'#803828'}],'Accent & Statement':[{name:'Deep Burgundy',hex:'#702030'},{name:'Pumpkin',hex:'#D05818'},{name:'Chartreuse',hex:'#98A818'},{name:'Deep Forest',hex:'#204820'},{name:'Espresso',hex:'#301808'},{name:'Deep Gold',hex:'#B08010'}],'Makeup Palette':[{name:'Warm Nude',hex:'#C89870'},{name:'Terracotta Lip',hex:'#B86840'},{name:'Brick Red Lip',hex:'#B04028'},{name:'Warm Brown Lip',hex:'#8A4828'},{name:'Copper Blush',hex:'#C08858'},{name:'Bronze Eye',hex:'#A07030'},{name:'Olive Eye',hex:'#7A7030'},{name:'Warm Taupe Eye',hex:'#987860'}],'Hijab & Scarf':[{name:'Warm Cream',hex:'#F0DFB8'},{name:'Camel',hex:'#C08040'},{name:'Terracotta',hex:'#C06838'},{name:'Rust',hex:'#B84820'},{name:'Mustard',hex:'#C89820'},{name:'Olive',hex:'#787830'},{name:'Forest Green',hex:'#3A6028'},{name:'Deep Teal',hex:'#286060'}]},
+metals:['gold','bronze'],tips:['Earthy nature-inspired colours are your natural language','Rust, burnt orange, and olive are more powerful than black for you','Gold and bronze jewellery echo your warmth beautifully','Rich textures (velvet, suede, leather) amplify your depth','Warm candlelight is your most flattering light for photos'],avoid:['Pastel pink','Cool blue','Icy grey','Pure white','Cool fuchsia'],celebrities:'Beyoncé · Jennifer Lopez · Halle Berry · Lucy Liu'},
+
+dark_autumn:{main:'autumn',name:'Autumn',subName:'Dark Autumn',tagline:'Warm · Very Deep · Dramatic',accent:'#7A3010',subBg:'#FFF0E8',subTextColor:'#4A1808',desc:'The darkest and most dramatic Autumn — a warm bridge to Winter with intense, smouldering depth.',undertone:'Warm–Neutral',value:'Deep',chroma:'Muted & Dark',metal:'Gold / Bronze / Dark Silver',contrast:'High',
+palette:{'Neutrals & Basics':[{name:'Dark Brown',hex:'#502010'},{name:'Espresso',hex:'#301808'},{name:'Dark Chocolate',hex:'#382010'},{name:'Dark Olive',hex:'#505020'},{name:'Dark Caramel',hex:'#806028'},{name:'Deep Mahogany',hex:'#602018'},{name:'Very Dark Teal',hex:'#184040'},{name:'Off Black Brown',hex:'#201808'}],'Core Colours':[{name:'Deep Rust',hex:'#902810'},{name:'Dark Terracotta',hex:'#903818'},{name:'Deep Burgundy',hex:'#702030'},{name:'Dark Crimson',hex:'#800820'},{name:'Deep Olive',hex:'#606018'},{name:'Dark Forest',hex:'#1E4018'},{name:'Dark Moss',hex:'#404820'},{name:'Deep Mustard',hex:'#987010'},{name:'Dark Amber',hex:'#905010'},{name:'Deep Gold',hex:'#A07808'},{name:'Very Deep Teal',hex:'#1A5050'},{name:'Dark Bronze Teal',hex:'#2A5040'},{name:'Dark Aubergine',hex:'#481830'},{name:'Deep Plum',hex:'#501830'},{name:'Dark Warm Purple',hex:'#502038'},{name:'Dark Cognac',hex:'#803020'},{name:'Very Dark Rust',hex:'#702010'},{name:'Darkest Olive',hex:'#484810'}],'Accent & Statement':[{name:'Very Deep Burgundy',hex:'#501020'},{name:'Deep Pumpkin',hex:'#902808'},{name:'Deep Forest',hex:'#103010'},{name:'Very Deep Teal',hex:'#103838'},{name:'Near Black Olive',hex:'#303010'},{name:'Deep Amber',hex:'#804808'}],'Makeup Palette':[{name:'Dark Nude',hex:'#A07858'},{name:'Deep Terracotta Lip',hex:'#903828'},{name:'Dark Brick Lip',hex:'#802820'},{name:'Dark Brown Lip',hex:'#603018'},{name:'Dark Bronze Blush',hex:'#906040'},{name:'Deep Bronze Eye',hex:'#705020'},{name:'Dark Olive Eye',hex:'#585018'},{name:'Dark Brown Liner',hex:'#401808'}],'Hijab & Scarf':[{name:'Dark Caramel',hex:'#806028'},{name:'Deep Rust',hex:'#902810'},{name:'Dark Terracotta',hex:'#903818'},{name:'Deep Burgundy',hex:'#702030'},{name:'Deep Mustard',hex:'#987010'},{name:'Dark Olive',hex:'#505020'},{name:'Dark Forest',hex:'#1E4018'},{name:'Very Deep Teal',hex:'#1A5050'}]},
+metals:['gold','bronze','copper'],tips:['Your depth can carry very dark, rich colours effortlessly','Do not be afraid of near-black in your season — they are your neutrals','Bronze and aged gold are more exciting than standard yellow gold','Avoid anything too light or cool — it creates stark disconnection','Rich, dim lighting is dramatic and beautiful on you'],avoid:['Pastels','Light colours near face','Cool clear colours','Silver','Icy shades'],celebrities:'Salma Hayek (dark era) · Eva Longoria · Penélope Cruz'},
+
+bright_winter:{main:'winter',name:'Winter',subName:'Bright Winter',tagline:'Cool–Neutral · Very Bright · High Contrast',accent:'#2848A0',subBg:'#EEF0F8',subTextColor:'#18285A',desc:'A bridge to Spring — cool but vivid with maximum brightness and brilliant contrast.',undertone:'Cool–Neutral',value:'Light–Dark',chroma:'Very Bright',metal:'White Gold / Silver',contrast:'Very High',
+palette:{'Neutrals & Basics':[{name:'Pure White',hex:'#F8F8F8'},{name:'Bright White',hex:'#FFFFFF'},{name:'Ice White',hex:'#F0F2F8'},{name:'Charcoal',hex:'#383840'},{name:'Black',hex:'#181820'},{name:'Cool Grey',hex:'#788090'},{name:'Silver Grey',hex:'#9098A8'},{name:'Ink',hex:'#202030'}],'Core Colours':[{name:'True Red',hex:'#D01020'},{name:'Electric Red',hex:'#E00820'},{name:'Vivid Fuchsia',hex:'#D01098'},{name:'Hot Pink',hex:'#E82898'},{name:'Vivid Pink',hex:'#F030A0'},{name:'Royal Blue',hex:'#1040C0'},{name:'Cobalt',hex:'#0858D8'},{name:'Electric Blue',hex:'#1070E0'},{name:'Navy',hex:'#0C1860'},{name:'Cool Lime',hex:'#98D828'},{name:'Electric Green',hex:'#28D840'},{name:'Vivid Teal',hex:'#0898A0'},{name:'Turquoise',hex:'#10C8D0'},{name:'Icy Pink',hex:'#F8C0D8'},{name:'Icy Blue',hex:'#C0D8F8'},{name:'Deep Purple',hex:'#380878'},{name:'Vivid Violet',hex:'#6018C0'},{name:'Electric Teal',hex:'#00D8E0'}],'Accent & Statement':[{name:'Neon Fuchsia',hex:'#F020A8'},{name:'Electric Cobalt',hex:'#0840F0'},{name:'Vivid Scarlet',hex:'#E00820'},{name:'Neon Lime',hex:'#A0E820'},{name:'Electric Teal',hex:'#00D8E0'},{name:'Hot Vivid Pink',hex:'#F02898'}],'Makeup Palette':[{name:'Vivid Red Lip',hex:'#C80820'},{name:'Fuchsia Lip',hex:'#C81090'},{name:'Hot Pink Lip',hex:'#E02888'},{name:'Cool Nude',hex:'#C8B0C0'},{name:'Icy Highlight',hex:'#ECE8F8'},{name:'Electric Eye',hex:'#2878E0'},{name:'Deep Charcoal Eye',hex:'#303040'},{name:'Vivid Purple Eye',hex:'#5010A8'}],'Hijab & Scarf':[{name:'Pure White',hex:'#F8F8F8'},{name:'Icy Pink',hex:'#F8C0D8'},{name:'Hot Pink',hex:'#E82898'},{name:'Royal Blue',hex:'#1040C0'},{name:'Cobalt',hex:'#0858D8'},{name:'Vivid Emerald',hex:'#087850'},{name:'True Red',hex:'#D01020'},{name:'Icy Blue',hex:'#C0D8F8'}]},
+metals:['silver','white_gold'],tips:['Extremely bold, clear colours are your absolute best','High contrast black-and-white is a signature look for you','Both very light and very dark work — the key is clarity','Vivid colours look electric rather than overwhelming on you','White gold and platinum are your best metal choices'],avoid:['Warm orange','Camel','Dusty muted tones','Rose gold','Warm brown'],celebrities:"Lupita Nyong'o · Zendaya (bright era) · Dua Lipa"},
+
+true_winter:{main:'winter',name:'Winter',subName:'True Winter',tagline:'Cool · Bold · High Contrast',accent:'#303880',subBg:'#F0F0F8',subTextColor:'#181C40',desc:'The quintessential Winter — crisp, dramatic, and commanding. Built for bold colour and high contrast.',undertone:'Cool',value:'Deep or High Contrast',chroma:'Clear & Bold',metal:'Silver & White Gold',contrast:'High',
+palette:{'Neutrals & Basics':[{name:'Pure White',hex:'#F8F8F8'},{name:'Cool White',hex:'#EEF0F5'},{name:'Charcoal',hex:'#383838'},{name:'Black',hex:'#181818'},{name:'Cool Grey',hex:'#808898'},{name:'Slate',hex:'#607080'},{name:'Greige (cool)',hex:'#B0B0B8'},{name:'Ink Navy',hex:'#181828'}],'Core Colours':[{name:'True Red',hex:'#C01828'},{name:'Fuchsia',hex:'#C01890'},{name:'Hot Pink',hex:'#E82898'},{name:'Cool Pink',hex:'#E880A8'},{name:'Royal Blue',hex:'#1848B0'},{name:'Cobalt',hex:'#1060C8'},{name:'Navy',hex:'#182060'},{name:'Electric Blue',hex:'#1880E0'},{name:'Emerald',hex:'#107850'},{name:'Forest (cool)',hex:'#105828'},{name:'Cool Teal',hex:'#107890'},{name:'Peacock',hex:'#087880'},{name:'Icy Pink',hex:'#F0B0C8'},{name:'Icy Blue',hex:'#C0D8F0'},{name:'Icy Lavender',hex:'#D0C8F0'},{name:'Deep Purple',hex:'#401878'},{name:'Violet',hex:'#6018B0'},{name:'Plum',hex:'#602060'}],'Accent & Statement':[{name:'Neon Fuchsia',hex:'#F020A0'},{name:'True Cobalt',hex:'#0848E0'},{name:'Scarlet',hex:'#E01020'},{name:'Deep Emerald',hex:'#086040'},{name:'Black',hex:'#101010'},{name:'Shocking Pink',hex:'#E83090'}],'Makeup Palette':[{name:'Cool Nude',hex:'#C8B0B8'},{name:'Berry Lip',hex:'#903060'},{name:'True Red Lip',hex:'#C01828'},{name:'Fuchsia Lip',hex:'#C02080'},{name:'Cool Pink Lip',hex:'#D87098'},{name:'Icy Highlight',hex:'#E8E8F0'},{name:'Charcoal Eye',hex:'#384050'},{name:'Deep Purple Eye',hex:'#502878'}],'Hijab & Scarf':[{name:'Pure White',hex:'#F8F8F8'},{name:'Icy Pink',hex:'#F0B0C8'},{name:'Cool Pink',hex:'#E880A8'},{name:'Icy Lavender',hex:'#D0C8F0'},{name:'Royal Blue',hex:'#1848B0'},{name:'Cobalt',hex:'#1060C8'},{name:'Emerald',hex:'#107850'},{name:'Black',hex:'#181818'}]},
+metals:['silver','white_gold'],tips:['High contrast is your superpower — black and white together','Bold clear colours look striking, never overwhelming','Silver jewellery enhances your cool crisp undertone','Icy pastels work beautifully; warm pastels flatten you','Avoid muted or dusty tones — they wash out your features'],avoid:['Warm orange','Camel','Warm brown','Olive','Dusty tones','Gold jewellery'],celebrities:'Priyanka Chopra · Anne Hathaway · Freida Pinto'},
+
+dark_winter:{main:'winter',name:'Winter',subName:'Dark Winter',tagline:'Cool–Neutral · Deep · Dramatic',accent:'#202860',subBg:'#EEF0F5',subTextColor:'#101428',desc:'The deepest Winter — a bridge to Dark Autumn with intense depth and a cool, magnetic quality.',undertone:'Cool–Neutral',value:'Very Deep',chroma:'Clear & Deep',metal:'Silver / Dark Gold',contrast:'High',
+palette:{'Neutrals & Basics':[{name:'Near Black',hex:'#101018'},{name:'Very Dark Navy',hex:'#0C1030'},{name:'Charcoal Black',hex:'#202028'},{name:'Dark Slate',hex:'#303840'},{name:'Very Dark Brown',hex:'#201808'},{name:'Dark Cool Brown',hex:'#301818'},{name:'Near Black Blue',hex:'#101828'},{name:'Dark Charcoal',hex:'#282830'}],'Core Colours':[{name:'Deep True Red',hex:'#900818'},{name:'Dark Crimson',hex:'#800818'},{name:'Deep Fuchsia',hex:'#900870'},{name:'Dark Berry',hex:'#701058'},{name:'Dark Royal Blue',hex:'#0C2880'},{name:'Very Dark Navy',hex:'#081440'},{name:'Dark Cobalt',hex:'#083090'},{name:'Deep Electric Blue',hex:'#0840B0'},{name:'Dark Emerald',hex:'#065030'},{name:'Very Dark Forest',hex:'#043018'},{name:'Dark Teal',hex:'#065058'},{name:'Deep Peacock',hex:'#044848'},{name:'Muted Icy Pink',hex:'#D898B0'},{name:'Deep Icy Blue',hex:'#8098C0'},{name:'Dark Lavender',hex:'#9080A8'},{name:'Very Deep Purple',hex:'#280850'},{name:'Dark Violet',hex:'#380878'},{name:'Very Deep Plum',hex:'#400838'}],'Accent & Statement':[{name:'Very Deep Red',hex:'#700010'},{name:'Dark Fuchsia',hex:'#800060'},{name:'Very Dark Cobalt',hex:'#042068'},{name:'Dark Emerald',hex:'#044028'},{name:'Near Black',hex:'#080810'},{name:'Deep Berry',hex:'#600840'}],'Makeup Palette':[{name:'Dark Nude',hex:'#A09098'},{name:'Deep Berry Lip',hex:'#801048'},{name:'Dark Crimson Lip',hex:'#780818'},{name:'Very Dark Plum',hex:'#601040'},{name:'Dark Cool Blush',hex:'#9080A0'},{name:'Dark Smoky Eye',hex:'#282838'},{name:'Very Deep Purple Eye',hex:'#400870'},{name:'Dark Teal Eye',hex:'#104848'}],'Hijab & Scarf':[{name:'Near Black',hex:'#101018'},{name:'Very Dark Navy',hex:'#0C1030'},{name:'Dark Crimson',hex:'#800818'},{name:'Dark Cobalt',hex:'#083090'},{name:'Dark Emerald',hex:'#065030'},{name:'Deep Plum',hex:'#400838'},{name:'Dark Slate',hex:'#303840'},{name:'Very Dark Berry',hex:'#600840'}]},
+metals:['silver','white_gold'],tips:['Darkness is your natural energy — very deep colours ground you','Cool near-blacks and dark navies are your most powerful neutrals','White gold and oxidised silver are more interesting than bright silver','Avoid warm tones even in neutrals — they create disconnect','You look extraordinary in monochromatic deep tonal dressing'],avoid:['Warm brown','Camel','Olive','Warm gold','Muted dusty colours','Pastels'],celebrities:'Lucy Liu · Meghan Markle (darker palette) · Halle Berry (winter tones)'}
+};
+
+// ══════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════
+var toast=document.getElementById('toast'),toastTimer;
+function copyHex(hex,el){
+  if(navigator.clipboard)navigator.clipboard.writeText(hex).catch(function(){});
+  var c=el.querySelector('.swatch-color');
+  c.style.outline='3px solid #1E1612';c.style.outlineOffset='2px';
+  setTimeout(function(){c.style.outline='';c.style.outlineOffset='';},700);
+  clearTimeout(toastTimer);
+  toast.textContent='Copied '+hex;
+  toast.classList.add('show');
+  toastTimer=setTimeout(function(){toast.classList.remove('show');},2000);
+}
+
+var LS_KEY='colour_atlas_result';
+function saveResult(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}}
+function loadResult(){try{var r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
+function clearResult(){try{localStorage.removeItem(LS_KEY);}catch(e){}}
+
+// ══════════════════════════════════════════════════════════
+// PALETTE VIEW — build tabs + panels dynamically
+// ══════════════════════════════════════════════════════════
+var activeMain='spring',activeSub='true_spring';
+
+function buildPaletteView(){
+  var mc=document.getElementById('mainTabsContainer');
+  var sc=document.getElementById('subTabsContainer');
+  var pc=document.getElementById('panelsContainer');
+  mc.innerHTML='';sc.innerHTML='';pc.innerHTML='';
+
+  MAIN_SEASONS.forEach(function(m){
+    var btn=document.createElement('button');
+    btn.className='main-tab-btn'+(m.key===activeMain?' active':'');
+    btn.dataset.main=m.key;
+    btn.style.borderBottomColor=m.key===activeMain?m.accent:'transparent';
+    btn.style.color=m.key===activeMain?m.accent:'';
+    btn.innerHTML='<span class="main-tab-dot" style="background:'+m.dot+'"></span>'+m.name;
+    btn.addEventListener('click',function(){switchMain(m.key);});
+    mc.appendChild(btn);
+  });
+
+  Object.keys(SEASONS).forEach(function(k){
+    var s=SEASONS[k];
+    var m=MAIN_SEASONS.find(function(x){return x.key===s.main;});
+    var btn=document.createElement('button');
+    btn.className='sub-tab-btn'+(k===activeSub?' active':'');
+    btn.dataset.sub=k;btn.dataset.main=s.main;
+    btn.style.display=s.main===activeMain?'':'none';
+    btn.style.borderBottomColor=k===activeSub?s.accent:'transparent';
+    btn.style.color=k===activeSub?s.accent:'';
+    btn.innerHTML='<span class="sub-tab-dot" style="background:'+s.accent+'"></span>'+s.subName;
+    btn.addEventListener('click',function(){switchSub(k);});
+    sc.appendChild(btn);
+
+    var panel=document.createElement('div');
+    panel.className='season-panel'+(k===activeSub?' active':'');
+    panel.id='panel-'+k;
+    panel.innerHTML=buildPanelHTML(k);
+    pc.appendChild(panel);
+  });
+}
+
+function buildPanelHTML(k){
+  var s=SEASONS[k];
+  var html='<div class="season-header"><div><div class="season-name" style="color:'+s.accent+'">'+s.name+'</div>'
+    +'<span class="season-sub-label" style="background:'+s.subBg+';color:'+s.subTextColor+'">'+s.subName.toUpperCase()+'</span>'
+    +'<div class="season-tagline">'+s.tagline+'</div></div>'
+    +'<div class="season-desc">'+s.desc+'</div>'
+    +'<button class="print-btn" onclick="openPrintModal(\''+k+'\')" style="white-space:nowrap;margin-top:12px;align-self:flex-end">'
+    +'<svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Save / Print Card</button></div>';
+
+  html+='<div class="profile-row">'
+    +'<div class="profile-pill"><span class="label">Undertone</span><span class="value">'+s.undertone+'</span></div>'
+    +'<div class="profile-pill"><span class="label">Value</span><span class="value">'+s.value+'</span></div>'
+    +'<div class="profile-pill"><span class="label">Chroma</span><span class="value">'+s.chroma+'</span></div>'
+    +'<div class="profile-pill"><span class="label">Metal</span><span class="value">'+s.metal+'</span></div>'
+    +'<div class="profile-pill"><span class="label">Contrast</span><span class="value">'+s.contrast+'</span></div>'
+    +'</div>';
+
+  html+='<div class="profile-row">'
+  Object.entries(s.palette).forEach(function(entry){
+    var secName=entry[0],swatches=entry[1];
+    var wide=secName==='Core Colours';
+    html+='<div class="palette-section"><div class="section-top-row"><div class="palette-section-title">'+secName+'</div></div>'
+      +'<div class="swatches-grid'+(wide?' wide':'')+'">';
+    swatches.forEach(function(sw){
+      html+='<div class="swatch" onclick="copyHex(\''+sw.hex+'\',this)" title="'+sw.name+'">'
+        +'<div class="swatch-color" style="background:'+sw.hex+'"><div class="swatch-tooltip">'+sw.hex+'</div></div>'
+        +'<div class="swatch-name">'+sw.name+'</div></div>';
+    });
+    html+='</div></div>';
+    firstSec=false;
+  });
+
+  // Metals
+  html+='<div class="palette-section"><div class="section-top-row"><div class="palette-section-title">Metals &amp; Accessories</div></div><div class="metals-grid">';
+  s.metals.forEach(function(mid){
+    var m=METALS[mid];
+    if(!m)return;
+    var bg=mid==='gold'?'linear-gradient(135deg,#FEF8E8,white)':mid==='silver'?'linear-gradient(135deg,#F5F5F8,white)':mid==='rose_gold'?'linear-gradient(135deg,#FEF0EC,white)':mid==='white_gold'||mid==='pewter'?'linear-gradient(135deg,#F0F0F8,white)':mid==='bronze'?'linear-gradient(135deg,#F8F0E0,white)':'linear-gradient(135deg,#F8EDE0,white)';
+    html+='<div class="metal-card"><div class="metal-visual" style="background:'+bg+'">'
+      +'<div class="metal-ring '+m.cls+'"><div class="metal-ring-inner"></div></div></div>'
+      +'<div class="metal-info"><div class="metal-name">'+m.name+'</div>'
+      +'<div class="metal-desc">'+m.desc+'</div>'
+      +'<span class="metal-best" style="background:'+m.bg+';color:'+m.tc+'">✦ '+m.best+'</span></div></div>';
+  });
+  html+='</div></div>';
+
+  // Tips
+  html+='<div class="palette-section"><div class="palette-section-title">Styling Guide</div><div class="tips-grid">'
+    +'<div class="tip-card"><h4 style="color:'+s.accent+'">Best Practices</h4><ul>'
+    +s.tips.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul></div>'
+    +'<div class="tip-card"><h4 style="color:'+s.accent+'">Approach with Care</h4>'
+    +'<div class="avoid-chips">'+s.avoid.map(function(a){return '<span class="avoid-chip">'+a+'</span>';}).join('')+'</div>'
+    +'<div style="margin-top:16px"><h4 style="color:'+s.accent+';margin-bottom:6px">Celebrity References</h4>'
+    +'<p style="font-size:12px;color:var(--muted);font-style:italic;line-height:1.5">'+s.celebrities+'</p></div></div></div></div>';
+
+  return html;
+}
+
+function switchMain(mk){
+  activeMain=mk;
+  document.querySelectorAll('.main-tab-btn').forEach(function(b){
+    var m=MAIN_SEASONS.find(function(x){return x.key===b.dataset.main;});
+    var a=b.dataset.main===mk;
+    b.classList.toggle('active',a);
+    b.style.borderBottomColor=a?m.accent:'transparent';
+    b.style.color=a?m.accent:'';
+  });
+  document.querySelectorAll('.sub-tab-btn').forEach(function(b){
+    b.style.display=b.dataset.main===mk?'':'none';
+  });
+  switchSub(SUB_BY_MAIN[mk][0]);
+}
+function switchSub(sk){
+  activeSub=sk;
+  var s=SEASONS[sk];
+  document.querySelectorAll('.sub-tab-btn').forEach(function(b){
+    var a=b.dataset.sub===sk;
+    b.classList.toggle('active',a);
+    b.style.borderBottomColor=a?s.accent:'transparent';
+    b.style.color=a?s.accent:'';
+  });
+  document.querySelectorAll('.season-panel').forEach(function(p){
+    p.classList.toggle('active',p.id==='panel-'+sk);
+  });
+  var mw=document.querySelector('.main-tabs-wrap');
+  if(mw)window.scrollTo({top:mw.offsetTop-8,behavior:'smooth'});
+}
+
+// ══════════════════════════════════════════════════════════
+// PRINT
+// ══════════════════════════════════════════════════════════
+function openPrintModal(sk){
+  var s=SEASONS[sk];
+  var bars='';
+  Object.entries(s.palette).forEach(function(e){
+    bars+='<div class="card-section-label">'+e[0]+'</div><div class="colour-bars">';
+    e[1].forEach(function(sw){
+      bars+='<div class="colour-bar"><div class="colour-bar-swatch" style="background:'+sw.hex+'"></div>'
+        +'<div class="colour-bar-name">'+sw.name+'</div>'
+        +'<div class="colour-bar-hex">'+sw.hex+'</div></div>';
+    });
+    bars+='</div>';
+  });
+  document.getElementById('printCardContainer').innerHTML='<div class="palette-card">'
+    +'<div class="card-header"><div class="card-header-top"><div>'
+    +'<div class="card-season-name" style="color:'+s.accent+'">'+s.name+'</div>'
+    +'<span class="card-sub-name" style="background:'+s.subBg+';color:'+s.subTextColor+'">'+s.subName.toUpperCase()+'</span>'
+    +'<div class="card-tagline">'+s.tagline+'</div></div>'
+    +'<div style="text-align:right;font-size:9px;color:#7A6E66;line-height:1.6">'
+    +'<div><strong>Undertone:</strong> '+s.undertone+'</div><div><strong>Value:</strong> '+s.value+'</div>'
+    +'<div><strong>Chroma:</strong> '+s.chroma+'</div><div><strong>Metal:</strong> '+s.metal+'</div>'
+    +'</div></div></div>'+bars
+    +'<div class="card-tips"><div class="card-tip-col"><h5 style="color:'+s.accent+'">Best Practices</h5><ul>'
+    +s.tips.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul></div>'
+    +'<div class="card-tip-col"><h5 style="color:'+s.accent+'">Approach with Care</h5><ul>'
+    +s.avoid.map(function(a){return '<li>'+a+'</li>';}).join('')+'</ul></div></div>'
+    +'<div class="card-footer"><div class="card-footer-text">The Colour Atlas by Mirette A. Esmat</div>'
+    +'<div class="card-footer-text">'+s.subName+' · '+s.tagline+'</div></div></div>';
+  document.getElementById('printModal').classList.add('open');
+}
+function closePrintModal(){document.getElementById('printModal').classList.remove('open');}
+function printCardOnly(){
+  var html=document.getElementById('printCardContainer').innerHTML;
+  var w=window.open('','_blank','width=740,height=900');
+  if(!w){alert('Please allow popups, then try again.');return;}
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Palette Card</title>'
+    +'<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
+    +'<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:\'DM Sans\',sans-serif;background:white;padding:20px}'
+    +'.palette-card{width:100%}.card-header{padding:20px 24px 16px;border-bottom:2px solid #F0E8E0}'
+    +'.card-header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}'
+    +'.card-season-name{font-family:\'Cormorant Garamond\',serif;font-size:36px;font-weight:300;letter-spacing:-1px;line-height:1}'
+    +'.card-sub-name{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-top:6px;display:inline-block}'
+    +'.card-tagline{font-size:10px;color:#7A6E66;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}'
+    +'.card-section-label{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7A6E66;padding:10px 24px 6px;border-top:1px solid #F0E8E0}'
+    +'.colour-bars{display:flex;flex-direction:column}.colour-bar{display:flex;align-items:stretch;height:36px}'
+    +'.colour-bar-swatch{width:36px;min-width:36px;flex-shrink:0}'
+    +'.colour-bar-name{display:flex;align-items:center;padding:0 12px;font-size:10px;font-weight:500;color:#1E1612;flex:1;border-bottom:1px solid #F8F4F0}'
+    +'.colour-bar-hex{display:flex;align-items:center;padding:0 12px;font-size:9px;color:#7A6E66;font-family:monospace;border-bottom:1px solid #F8F4F0}'
+    +'.colour-bar:nth-child(even) .colour-bar-name,.colour-bar:nth-child(even) .colour-bar-hex{background:#FDFCFB}'
+    +'.card-footer{padding:12px 24px;border-top:1px solid #F0E8E0;display:flex;justify-content:space-between}'
+    +'.card-footer-text{font-size:8px;color:#7A6E66;letter-spacing:1px;text-transform:uppercase}'
+    +'.card-tips{padding:8px 24px 14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}'
+    +'.card-tip-col h5{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7A6E66;margin-bottom:5px}'
+    +'.card-tip-col ul{list-style:none}.card-tip-col li{font-size:9px;color:#1E1612;line-height:1.5;padding-left:10px;position:relative}'
+    +'.card-tip-col li::before{content:"·";position:absolute;left:0;font-weight:700}'
+    +'@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{padding:0}}'
+    +'</style></head><body>'+html+'</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+
+// ══════════════════════════════════════════════════════════
+// HOME
+// ══════════════════════════════════════════════════════════
+var HOME_FAMILIES=[
+  {key:'spring',accent:'#D06828',band:['#E8904A','#D4A040','#C83818'],desc:'Warm, clear, and bright. Golden undertones with fresh vivid energy.',swatches:['#F5A623','#90EE90','#F0E68C','#FF7F50','#FFD700'],subs:['true_spring','light_spring','bright_spring']},
+  {key:'summer',accent:'#6080A8',band:['#7898B8','#6080A8','#7888A0'],desc:'Cool, soft, and muted. Gentle dusty tones that harmonise with rosy skin.',swatches:['#B0C4DE','#C9A0DC','#87CEEB','#D8BFD8','#ADD8E6'],subs:['light_summer','true_summer','soft_summer']},
+  {key:'autumn',accent:'#B05828',band:['#9A7030','#B05828','#7A3010'],desc:'Warm, earthy, and richly muted. Deep golds, rusts, and olives.',swatches:['#C89050','#B84820','#A04818','#787830','#D09030'],subs:['soft_autumn','true_autumn','dark_autumn']},
+  {key:'winter',accent:'#303880',band:['#2848A0','#303880','#202860'],desc:'Cool, bold, and high contrast. Crisp colours with dramatic depth.',swatches:['#181818','#F8F8F8','#C01828','#1060C8','#107850'],subs:['bright_winter','true_winter','dark_winter']}
+];
+
+function buildHomeGrid(){
+  var grid=document.getElementById('seasonGrid');
+  if(!grid)return;
+  grid.innerHTML=HOME_FAMILIES.map(function(f){
+    var sw=f.swatches.map(function(c){return '<div class="sfcard-swatch" style="background:'+c+'"></div>';}).join('');
+    var subs=f.subs.map(function(k){
+      var s=SEASONS[k];
+      return '<button class="sfcard-sub-pill" data-subkey="'+k+'" style="background:'+s.subBg+';color:'+s.subTextColor+'">'+s.subName+'</button>';
+    }).join('');
+    return '<div class="season-family-card" data-mainkey="'+f.key+'">'
+      +'<div class="sfcard-band" style="background:linear-gradient(90deg,'+f.band.join(',')+')"></div>'
+      +'<div class="sfcard-body"><div class="sfcard-name" style="color:'+f.accent+'">'+f.key.charAt(0).toUpperCase()+f.key.slice(1)+'</div>'
+      +'<div class="sfcard-sublabel">'+f.key.toUpperCase()+'</div>'
+      +'<div class="sfcard-desc">'+f.desc+'</div>'
+      +'<div class="sfcard-swatches">'+sw+'</div>'
+      +'<div class="sfcard-subseasonsrow">'+subs+'</div></div></div>';
+  }).join('');
+  grid.querySelectorAll('.season-family-card').forEach(function(card){
+    card.addEventListener('click',function(){goToMainSeason(card.dataset.mainkey);});
+  });
+  grid.querySelectorAll('.sfcard-sub-pill').forEach(function(pill){
+    pill.addEventListener('click',function(e){e.stopPropagation();goToPalette(pill.dataset.subkey);});
+  });
+  var dotColors=['#E07840','#F4A868','#E8C840','#88C858','#78C0D8','#D890A0','#A0C0D8','#B88098','#C0B0D0','#7090B8','#C86020','#C08040','#7A7830','#286060','#C89820','#1848B0','#C01828','#107850','#E82898','#401878'];
+  var de=document.getElementById('homeDots');
+  if(de)de.innerHTML=dotColors.map(function(c){return '<div class="hero-dot" style="background:'+c+'"></div>';}).join('');
+}
+
+function goToMainSeason(mk){showView('palette');setTimeout(function(){switchMain(mk);},80);}
+function goToPalette(sk){var s=SEASONS[sk];showView('palette');setTimeout(function(){switchMain(s.main);setTimeout(function(){switchSub(sk);},120);},80);}
+
+// ══════════════════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════════════════
+function showView(v){
+  document.querySelectorAll('.view').forEach(function(el){el.classList.remove('active');});
+  document.querySelectorAll('.nav-btn').forEach(function(el){el.classList.remove('active');});
+  var vEl=document.getElementById('view-'+v);
+  var bEl=document.getElementById('nav-'+v);
+  if(vEl)vEl.classList.add('active');
+  if(bEl)bEl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(v==='recs')buildRecsSelector();
+  if(v==='wheel'){
+    window.renderWheelFilters();
+    window.renderFanDeck();
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════════════════════════
+var qAnswers={},qStep=0;
+var HAIR_SHADES=[
+  {hex:'#F5EAD0',label:'Platinum blonde',sub:'Ice-cool',v:'light'},{hex:'#E8D5A8',label:'Ash blonde',sub:'Silvery gold',v:'light'},
+  {hex:'#F0C878',label:'Strawberry blonde',sub:'Warm gold',v:'light'},{hex:'#E8C060',label:'Golden blonde',sub:'Clear warm',v:'light'},
+  {hex:'#D4A840',label:'Honey blonde',sub:'Amber-gold',v:'light'},{hex:'#C49030',label:'Dark blonde',sub:'Golden-brown',v:'light'},
+  {hex:'#B87840',label:'Light auburn',sub:'Warm red-brown',v:'medium'},{hex:'#A86030',label:'Medium red',sub:'Classic red',v:'medium'},
+  {hex:'#904820',label:'Deep auburn',sub:'Dark copper',v:'medium'},{hex:'#885030',label:'Light brown',sub:'Warm medium',v:'medium'},
+  {hex:'#6A3820',label:'Medium brown',sub:'Classic brown',v:'medium'},{hex:'#503018',label:'Ash brown',sub:'Cool muted',v:'medium'},
+  {hex:'#4A2A10',label:'Dark brown',sub:'Deep rich',v:'medium'},{hex:'#3A1808',label:'Darkest brown',sub:'Very deep',v:'deep'},
+  {hex:'#281008',label:'Soft black',sub:'Near-black warm',v:'deep'},{hex:'#140808',label:'True black',sub:'Pure deep black',v:'deep'},
+  {hex:'#C0C0B0',label:'Grey / silver',sub:'Natural grey',v:'medium'},{hex:'#E8E0D0',label:'White / platinum',sub:'Silver or white',v:'light'}
+];
+var EYE_SHADES=[
+  {label:'Pale blue',sub:'Cool, soft',v:'cool_light',iris:'#B8D0E8',pupil:'#7098B8',ring:'#90B8D0'},
+  {label:'Grey-blue',sub:'Cool, muted',v:'cool_light',iris:'#A0B8C8',pupil:'#608098',ring:'#80A0B8'},
+  {label:'Steel grey',sub:'Cool, clear',v:'cool_light',iris:'#A0A8B0',pupil:'#607078',ring:'#808898'},
+  {label:'Clear blue',sub:'Vivid, cool',v:'cool_bright',iris:'#5898D8',pupil:'#2060A8',ring:'#3878C0'},
+  {label:'Electric blue',sub:'Very bright',v:'cool_bright',iris:'#3880D0',pupil:'#1848A0',ring:'#2868B8'},
+  {label:'Cool green',sub:'Bright, cool',v:'cool_bright',iris:'#4898A0',pupil:'#206870',ring:'#388090'},
+  {label:'Sage green',sub:'Muted, soft',v:'warm_light',iris:'#809870',pupil:'#486040',ring:'#688058'},
+  {label:'Warm green',sub:'Golden-green',v:'warm_light',iris:'#789058',pupil:'#486028',ring:'#608048'},
+  {label:'Hazel',sub:'Brown-green',v:'warm_light',iris:'#907848',pupil:'#604820',ring:'#786038'},
+  {label:'Amber',sub:'Golden-warm',v:'warm_light',iris:'#C09040',pupil:'#805010',ring:'#A07028'},
+  {label:'Light brown',sub:'Warm, medium',v:'warm_deep',iris:'#905830',pupil:'#603010',ring:'#784020'},
+  {label:'Medium brown',sub:'Rich, warm',v:'warm_deep',iris:'#704020',pupil:'#482010',ring:'#583018'},
+  {label:'Deep brown',sub:'Warm, dark',v:'warm_deep',iris:'#503018',pupil:'#301008',ring:'#402010'},
+  {label:'Dark brown',sub:'Deep, rich',v:'deep',iris:'#381808',pupil:'#200808',ring:'#301008'},
+  {label:'Near black',sub:'Very deep',v:'deep',iris:'#281008',pupil:'#100404',ring:'#200808'},
+  {label:'Dark + rim',sub:'Dark + light rim',v:'deep',iris:'#301008',pupil:'#100404',ring:'#907848'}
+];
+
+function buildHairGrid(){
+  var g=document.getElementById('hairGrid');if(!g)return;
+  g.innerHTML=HAIR_SHADES.map(function(h,i){
+    return '<div class="hair-chip" data-q="2" data-v="'+h.v+'" data-idx="'+i+'">'
+      +'<div class="hair-chip-swatch" style="background:'+h.hex+'"></div>'
+      +'<div class="hair-chip-label">'+h.label+'<br><span style="opacity:.6">'+h.sub+'</span></div></div>';
+  }).join('');
+  g.querySelectorAll('.hair-chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      g.querySelectorAll('.hair-chip').forEach(function(x){x.classList.remove('selected');});
+      c.classList.add('selected');qAnswers[2]=c.dataset.v;
+      var b=document.getElementById('qn2');if(b)b.disabled=false;
+    });
+  });
+}
+
+function buildEyeGrid(){
+  var g=document.getElementById('eyeGrid');if(!g)return;
+  g.innerHTML=EYE_SHADES.map(function(e,i){
+    return '<div class="eye-chip" data-q="3" data-v="'+e.v+'" data-idx="'+i+'">'
+      +'<svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" class="eye-chip-illus">'
+      +'<ellipse cx="22" cy="22" rx="20" ry="13" fill="#F5EEE8" stroke="#D0C0B0" stroke-width="1"/>'
+      +'<circle cx="22" cy="22" r="10" fill="'+e.iris+'"/><circle cx="22" cy="22" r="6" fill="'+e.pupil+'"/>'
+      +'<circle cx="22" cy="22" r="10" fill="none" stroke="'+e.ring+'" stroke-width="1.5"/>'
+      +'<circle cx="24" cy="20" r="1.5" fill="white" opacity=".6"/></svg>'
+      +'<div class="eye-chip-label">'+e.label+'</div>'
+      +'<div class="eye-chip-sublabel">'+e.sub+'</div></div>';
+  }).join('');
+  g.querySelectorAll('.eye-chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      g.querySelectorAll('.eye-chip').forEach(function(x){x.classList.remove('selected');});
+      c.classList.add('selected');qAnswers[3]=c.dataset.v;
+      var b=document.getElementById('qn3');if(b)b.disabled=false;
+    });
+  });
+}
+
+document.querySelectorAll('.quiz-opt').forEach(function(el){
+  el.addEventListener('click',function(){
+    var q=el.dataset.q;
+    document.querySelectorAll('[data-q="'+q+'"]').forEach(function(o){o.classList.remove('selected');});
+    el.classList.add('selected');qAnswers[q]=el.dataset.v;
+    var b=document.getElementById('qn'+q);if(b)b.disabled=false;
+  });
+});
+document.querySelectorAll('.contrast-chip').forEach(function(c){
+  c.addEventListener('click',function(){
+    document.querySelectorAll('.contrast-chip').forEach(function(x){x.classList.remove('selected');});
+    c.classList.add('selected');qAnswers[4]=c.dataset.v;
+    var b=document.getElementById('qn4');if(b)b.disabled=false;
+  });
+});
+
+function qnext(){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
+  qStep++;
+  var n=document.querySelector('[data-step="'+qStep+'"]');
+  if(n)n.classList.add('active');
+  document.getElementById('qprog').style.width=Math.round((qStep/6)*100)+'%';
+}
+function qprev(){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
+  qStep--;
+  document.querySelector('[data-step="'+qStep+'"]').classList.add('active');
+  document.getElementById('qprog').style.width=Math.round((qStep/6)*100)+'%';
+}
+['qn0','qn1','qn2','qn3','qn4'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',qnext);});
+['qback1','qback2','qback3','qback4','qback5'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',qprev);});
+document.getElementById('qn5').addEventListener('click',qanalyze);
+document.getElementById('qresult-restart').addEventListener('click',qrestart);
+
+function toggleHint(id){
+  var d=document.getElementById(id),b=d.previousElementSibling;
+  var o=d.classList.contains('open');
+  d.classList.toggle('open',!o);b.classList.toggle('open',!o);
+}
+
+function qScoreAllSeasons(){
+  var ut=qGetUndertone(),dep=qGetDepth(),chr=qGetChroma(),con=qAnswers[4]||'medium';
+  var P={true_spring:{ut:'warm',dep:'medium',chr:'bright'},light_spring:{ut:'warm',dep:'light',chr:'muted'},bright_spring:{ut:'warm',dep:'medium',chr:'bright',hc:true},light_summer:{ut:'cool',dep:'light',chr:'muted'},true_summer:{ut:'cool',dep:'medium',chr:'muted'},soft_summer:{ut:'neutral',dep:'medium',chr:'muted'},soft_autumn:{ut:'warm',dep:'medium',chr:'muted'},true_autumn:{ut:'warm',dep:'medium',chr:'medium'},dark_autumn:{ut:'warm',dep:'deep',chr:'medium'},bright_winter:{ut:'cool',dep:'medium',chr:'bright',hc:true},true_winter:{ut:'cool',dep:'deep',chr:'bright'},dark_winter:{ut:'neutral',dep:'deep',chr:'medium'}};
+  var scores={};
+  Object.keys(P).forEach(function(k){
+    var p=P[k],sc=0;
+    if(p.ut===ut)sc+=40;else if(p.ut==='neutral'||ut==='neutral')sc+=20;
+    var di=['light','medium','deep'];
+    if(p.dep===dep)sc+=30;else if(Math.abs(di.indexOf(p.dep)-di.indexOf(dep))===1)sc+=14;
+    var ci=['muted','medium','bright'];
+    if(p.chr===chr)sc+=20;else if(p.chr==='medium'||chr==='medium')sc+=10;
+    if(p.hc&&con==='high')sc+=10;else if(!p.hc&&con!=='high')sc+=5;
+    scores[k]=sc;
+  });
+  var sorted=Object.keys(scores).sort(function(a,b){return scores[b]-scores[a];});
+  var pctOf=function(r){return Math.round(40+(r/100)*58);};
+  var runners=sorted.slice(1,4).filter(function(k){return scores[k]>=50;});
+  return{winner:sorted[0],winnerPct:pctOf(scores[sorted[0]]),runners:runners.map(function(k){return{key:k,pct:pctOf(scores[k])};})};
+}
+function qGetUndertone(){var s={warm:0,cool:0,neutral:0};[qAnswers[0],qAnswers[1],qAnswers[5]].forEach(function(v){if(v&&s[v]!==undefined)s[v]++;});if(s.warm>=2)return 'warm';if(s.cool>=2)return 'cool';return 'neutral';}
+function qGetDepth(){var h=qAnswers[2],e=qAnswers[3];if(h==='deep'||e==='deep')return 'deep';if(h==='light'&&e!=='warm_deep'&&e!=='deep')return 'light';return 'medium';}
+function qGetChroma(){var e=qAnswers[3],c=qAnswers[4];if(e==='cool_bright'||(e==='deep'&&c==='high'))return 'bright';if(e==='cool_light'||e==='warm_light')return 'muted';return 'medium';}
+
+function qanalyze(){
+  var scoring=qScoreAllSeasons(),sk=scoring.winner,s=SEASONS[sk];
+  window._quizResultSeason=sk;
+  document.querySelectorAll('.quiz-step').forEach(function(el){el.classList.remove('active');});
+  document.getElementById('qprog').style.width='100%';
+  var badge=document.getElementById('qresult-badge');
+  badge.textContent=s.subName;badge.style.background=s.subBg;badge.style.color=s.subTextColor;
+  var title=document.getElementById('qresult-title');
+  title.textContent=s.name;title.style.color=s.accent;
+  document.getElementById('qresult-tagline').textContent=s.tagline;
+  document.getElementById('qresult-desc').textContent=s.desc;
+
+  var pct=scoring.winnerPct;
+  document.getElementById('conf-pct').textContent=pct+'%';
+  document.getElementById('conf-pct').style.color=s.accent;
+  document.getElementById('conf-bar').style.width=pct+'%';
+  document.getElementById('conf-bar').style.background=s.accent;
+  document.getElementById('conf-desc').textContent=pct>=85?'Your answers align very strongly with '+s.subName+'. This is a clear, confident match.':pct>=70?'Your answers point clearly to '+s.subName+', with some tendencies from adjacent seasons.':'You sit at an interesting crossover point. '+s.subName+' is your best match, but explore the runners-up too.';
+  document.getElementById('conf-runners').innerHTML=scoring.runners.map(function(r){
+    var rs=SEASONS[r.key];if(!rs)return'';
+    return'<div class="confidence-runner"><div class="confidence-runner-dot" style="background:'+rs.accent+'"></div><span>'+rs.subName+'</span><span class="confidence-runner-pct">'+r.pct+'%</span></div>';
+  }).join('')?'<span style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-right:4px">Also consider:</span>'+scoring.runners.map(function(r){var rs=SEASONS[r.key];if(!rs)return'';return'<div class="confidence-runner"><div class="confidence-runner-dot" style="background:'+rs.accent+'"></div><span>'+rs.subName+'</span><span class="confidence-runner-pct">'+r.pct+'%</span></div>';}).join(''):'';
+
+  var ut=qGetUndertone(),dep=qGetDepth(),chr=qGetChroma();
+  var nn=document.getElementById('qresult-neutral-note');
+  if(ut==='neutral'){
+    var leanMap={'warm':'lean slightly warm','cool':'lean slightly cool','neutral':'balanced'};
+    var sc={warm:0,cool:0};[qAnswers[0],qAnswers[1],qAnswers[5]].forEach(function(v){if(v==='warm')sc.warm++;else if(v==='cool')sc.cool++;});
+    var lean=sc.warm>sc.cool+1?'warm':sc.cool>sc.warm+1?'cool':'neutral';
+    var adj={soft_autumn:'soft_summer',soft_summer:'soft_autumn',bright_spring:'bright_winter',bright_winter:'bright_spring',dark_autumn:'dark_winter',dark_winter:'dark_autumn'};
+    var ds=adj[sk]||null;
+    nn.innerHTML='<strong>You\'re neutral — and that\'s a superpower.</strong> Neutral undertones sit between warm and cool families, giving you more flexibility than most. Your signals '+leanMap[lean]+'. Your primary season is below.';
+    nn.style.display='block';
+    if(ds&&SEASONS[ds]){
+      var dss=SEASONS[ds];
+      var ab=document.getElementById('qresult-also-block');ab.style.display='block';
+      var ab2=document.getElementById('qresult-also-badge');ab2.textContent=dss.subName;ab2.style.background=dss.subBg;ab2.style.color=dss.subTextColor;
+      var at=document.getElementById('qresult-also-title');at.textContent=dss.name;at.style.color=dss.accent;
+      document.getElementById('qresult-also-tagline').textContent=dss.tagline;
+      document.getElementById('qresult-also-desc').textContent=dss.desc;
+      var alsoBest=Object.values(dss.palette).reduce(function(a,b){return a.concat(b);}, []).slice(0,12);
+      document.getElementById('qresult-also-swatches').innerHTML=alsoBest.map(function(sw){return'<div class="quiz-result-swatch" style="background:'+sw.hex+'" title="'+sw.name+'"></div>';}).join('');
+      document.getElementById('qresult-also-go-palette').onclick=function(){goToPalette(ds);};
+      document.getElementById('qresult-also-go-recs').onclick=function(){window._preselectedSeason=ds;showView('recs');};
+    }else{document.getElementById('qresult-also-block').style.display='none';}
+  }else{nn.style.display='none';document.getElementById('qresult-also-block').style.display='none';}
+
+  document.getElementById('qresult-pills').innerHTML='<div class="profile-pill"><span class="label">Undertone</span><span class="value">'+ut.charAt(0).toUpperCase()+ut.slice(1)+'</span></div>'+'<div class="profile-pill"><span class="label">Depth</span><span class="value">'+dep.charAt(0).toUpperCase()+dep.slice(1)+'</span></div>'+'<div class="profile-pill"><span class="label">Metal</span><span class="value">'+s.metal+'</span></div>';
+
+  var best=Object.values(s.palette).reduce(function(a,b){return a.concat(b);}, []).slice(0,12);
+  document.getElementById('qresult-swatches').innerHTML=best.map(function(sw){return'<div class="quiz-result-swatch" style="background:'+sw.hex+'" title="'+sw.name+'"></div>';}).join('');
+
+  var avoidMap={'Pastel pink':'#FFB6C1','Cool blue':'#ADD8E6','Icy grey':'#D3D3D3','Pure white':'#F8F8F8','Cool fuchsia':'#FF77FF','Warm orange':'#FF8C00','Camel':'#C19A6B','Warm brown':'#8B4513','Silver':'#C0C0C0'};
+  document.getElementById('qresult-avoid').innerHTML=s.avoid.slice(0,6).map(function(n){return'<div class="quiz-result-swatch" style="background:'+(avoidMap[n]||'#D0C8C0')+';opacity:.75"></div>';}).join('');
+
+  document.getElementById('qresult-go-palette').onclick=function(){goToPalette(sk);};
+  document.getElementById('qresult-go-recs').onclick=function(){window._preselectedSeason=sk;showView('recs');};
+  document.getElementById('qresult').classList.add('active');
+
+  // Force dark mode styles on result buttons after render
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    document.querySelectorAll('.quiz-result-actions button').forEach(function(b){
+      if(!b.classList.contains('primary')){
+        b.style.cssText='background:#252018 !important;border:1.5px solid #3A3028;color:#E8DDD0';
+      }
+    });
+  }
+  saveResult({season:sk,confidence:pct,answers:qAnswers,ts:Date.now()});
+  var rb=document.getElementById('returning-banner');if(rb)rb.style.display='none';
+}
+
+function qrestart(){
+  qAnswers={};qStep=0;
+  document.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('selected');});
+  ['qn0','qn1','qn2','qn3','qn4','qn5'].forEach(function(id){var b=document.getElementById(id);if(b)b.disabled=true;});
+  document.getElementById('qresult').classList.remove('active');
+  document.querySelectorAll('.quiz-step').forEach(function(s,i){s.classList.toggle('active',i===0);});
+  document.getElementById('qprog').style.width='0%';
+  document.querySelectorAll('.hint-drawer.open').forEach(function(d){d.classList.remove('open');});
+  document.querySelectorAll('.hint-toggle.open').forEach(function(b){b.classList.remove('open');});
+}
+
+// ══════════════════════════════════════════════════════════
+// STYLE GUIDE
+// ══════════════════════════════════════════════════════════
+var recsActiveSeason=null,recsActiveCat='outfits',recsCache={};
+
+function buildRecsSelector(){
+  var sel=document.getElementById('recs-season-selector');if(!sel)return;
+  var allSubs=Object.keys(SEASONS);
+  sel.innerHTML=allSubs.map(function(k){
+    var s=SEASONS[k],act=recsActiveSeason===k;
+    return '<button class="recs-season-pill'+(act?' active':'')+'" data-season="'+k+'"'+(act?' style="border-color:'+s.accent+';color:'+s.accent+'"':'')+'>'+s.subName+'</button>';
+  }).join('');
+  sel.querySelectorAll('.recs-season-pill').forEach(function(p){
+    p.addEventListener('click',function(){recsSelectSeason(p.dataset.season);});
+  });
+  document.querySelectorAll('.recs-type-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){recsSelectCat(btn);});
+  });
+  var genBtn=document.getElementById('recs-gen-btn');
+  if(genBtn)genBtn.onclick=recsGenerate;
+  if(window._preselectedSeason){recsSelectSeason(window._preselectedSeason);window._preselectedSeason=null;}
+}
+
+function recsSelectSeason(k){
+  recsActiveSeason=k;var s=SEASONS[k];
+  document.querySelectorAll('.recs-season-pill').forEach(function(p){
+    var a=p.dataset.season===k;p.classList.toggle('active',a);
+    p.style.borderColor=a?s.accent:'';p.style.color=a?s.accent:'';
+  });
+  document.getElementById('recs-no-season').style.display='none';
+  showRecsPanelForCat(recsActiveCat);
+}
+function recsSelectCat(btn){
+  document.querySelectorAll('.recs-type-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');recsActiveCat=btn.dataset.cat;
+  if(recsActiveSeason)showRecsPanelForCat(recsActiveCat);
+}
+function showRecsPanelForCat(cat){
+  var ip=document.getElementById('recs-illus-panel');
+  var bp=document.getElementById('recs-builder-panel');
+  var ap=document.getElementById('recs-panel');
+  var wp=document.getElementById('recs-wheel-panel');
+  ip.style.display='none';bp.style.display='none';ap.style.display='none';  if(wp)wp.style.display='none';closeFrameCamera();
+  if(cat==='builder'){
+    bp.style.display='block';buildPaletteBuilder(recsActiveSeason);
+  } else if(cat==='wheel'){
+    if(wp)wp.style.display='block';
+    buildRecsFanDeck(recsActiveSeason);
+  } else {
+    ip.style.display='block';
+    buildSgCards(recsActiveSeason,cat);
+    var ck=recsActiveSeason+'_'+cat;
+    if(recsCache[ck]){ap.style.display='block';renderRecsContent(recsCache[ck]);}
+  }
+}
+
+function buildRecsFanDeck(sk){
+  var wrap=document.getElementById('recs-fan-svg');
+  if(!wrap||!sk)return;
+  var s=SEASONS[sk];if(!s)return;
+  var allSw=Object.values(s.palette).reduce(function(a,b){return a.concat(b);},[]);
+  var total=allSw.length;
+  var cx=260,cy=280;
+  var innerRx=95,innerRy=118; // oval inner edge
+  var outerRx=155,outerRy=178; // oval outer edge
+  var stripW=Math.min(22,Math.floor(360/total)-1);
+  var parts=['<svg viewBox="0 0 520 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto">'];
+
+  // Draw each strip as a trapezoid around the oval
+  allSw.forEach(function(sw,i){
+    var a1=((i/total)*360-90)*Math.PI/180;
+    var a2=(((i+0.92)/total)*360-90)*Math.PI/180;
+    // Inner arc points
+    var ix1=cx+Math.cos(a1)*innerRx, iy1=cy+Math.sin(a1)*innerRy;
+    var ix2=cx+Math.cos(a2)*innerRx, iy2=cy+Math.sin(a2)*innerRy;
+    // Outer arc points
+    var ox1=cx+Math.cos(a1)*outerRx, oy1=cy+Math.sin(a1)*outerRy;
+    var ox2=cx+Math.cos(a2)*outerRx, oy2=cy+Math.sin(a2)*outerRy;
+    // Mid angle for tooltip
+    var am=((i+0.46)/total*360-90)*Math.PI/180;
+    var tx=cx+Math.cos(am)*(innerRx+outerRx)/2;
+    var ty=cy+Math.sin(am)*(innerRy+outerRy)/2;
+    parts.push('<g style="cursor:pointer" onclick="copyHex(\''+sw.hex+'\',document.getElementById(\'frame-dummy\'))">');
+    parts.push('<path d="M'+ix1+' '+iy1+' L'+ox1+' '+oy1+' L'+ox2+' '+oy2+' L'+ix2+' '+iy2+' Z" fill="'+sw.hex+'"/>');
+    parts.push('<title>'+sw.name+' · '+sw.hex+'</title>');
+    parts.push('</g>');
+  });
+
+  // Inner oval cutout (white/bg fill to create the frame hole)
+  parts.push('<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+(innerRx-2)+'" ry="'+(innerRy-2)+'" fill="var(--bg)" stroke="var(--border)" stroke-width="1.5"/>');
+
+  // Camera icon hint (hidden when camera is active)
+  parts.push('<text x="'+cx+'" y="'+(cy-14)+'" font-family="\'Cormorant Garamond\',serif" font-size="18" font-weight="300" text-anchor="middle" fill="var(--muted)" opacity="0.5" id="frame-hint-line1">Hold your face</text>');
+  parts.push('<text x="'+cx+'" y="'+(cy+10)+'" font-family="\'Cormorant Garamond\',serif" font-size="18" font-weight="300" text-anchor="middle" fill="var(--muted)" opacity="0.5" id="frame-hint-line2">to the frame</text>');
+
+  parts.push('</svg>');
+  // Dummy element for copyHex
+  parts.push('<div id="frame-dummy" style="display:none"></div>');
+  wrap.innerHTML=parts.join('');
+
+  // Size the video overlay to match the inner oval
+  var vid=document.getElementById('frame-video');
+  if(vid){
+    var pct=((innerRx*2)/520*100).toFixed(1);
+    vid.style.width=pct+'%';
+  }
+}
+
+var _frameStream=null;
+
+function toggleFrameCamera(){
+  var vid=document.getElementById('frame-video');
+  if(!vid)return;
+  if(_frameStream){closeFrameCamera();return;}
+  navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'user'}}}).then(function(stream){
+    _frameStream=stream;
+    vid.srcObject=stream;
+    vid.style.display='block';
+    var h1=document.getElementById('frame-hint-line1');
+    var h2=document.getElementById('frame-hint-line2');
+    if(h1)h1.style.display='none';
+    if(h2)h2.style.display='none';
+    document.getElementById('frame-cam-btn').textContent='Camera on';
+    document.getElementById('frame-close-btn').style.display='';
+  }).catch(function(){
+    alert('Camera access denied — please allow camera access and try again.');
+  });
+}
+
+function closeFrameCamera(){
+  if(_frameStream){_frameStream.getTracks().forEach(function(t){t.stop();});_frameStream=null;}
+  var vid=document.getElementById('frame-video');
+  if(vid){vid.style.display='none';vid.srcObject=null;}
+  var h1=document.getElementById('frame-hint-line1');
+  var h2=document.getElementById('frame-hint-line2');
+  if(h1)h1.style.display='';if(h2)h2.style.display='';
+  var btn=document.getElementById('frame-cam-btn');
+  if(btn)btn.textContent='Open camera';
+  var cb=document.getElementById('frame-close-btn');
+  if(cb)cb.style.display='none';
+}
+
+function buildSgCards(sk,cat){
+  if(!sk)return;
+  var s=SEASONS[sk];
+  var p=Object.values(s.palette).reduce(function(a,b){return a.concat(b);},[]);
+  var c1=p[0]?p[0].hex:'#808080',c2=p[2]?p[2].hex:'#606060',c3=p[4]?p[4].hex:'#A0A0A0';
+  var cards=[
+    {title:'Your signature colour story',annotation:'The colours your season is famous for — wear them closest to your face for maximum impact.',swatches:[c1,c2,c3],svg:'<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="65" r="48" fill="'+c1+'" opacity=".2"/><circle cx="100" cy="65" r="32" fill="'+c1+'" opacity=".5"/><circle cx="100" cy="65" r="16" fill="'+c1+'"/><text x="100" y="128" font-family="DM Sans,sans-serif" font-size="9" fill="#7A6E66" text-anchor="middle">Hero colour</text></svg>'},
+    {title:'Tonal dressing formula',annotation:'Layer 2–3 shades from the same family. Keeps the eye moving without clash.',swatches:[c1,c2,c3],svg:'<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="20" width="80" height="100" rx="6" fill="'+c1+'" opacity=".9"/><rect x="50" y="35" width="50" height="75" rx="5" fill="'+c2+'" opacity=".85"/><rect x="100" y="35" width="50" height="75" rx="5" fill="'+c3+'" opacity=".85"/><text x="100" y="135" font-family="DM Sans,sans-serif" font-size="9" fill="#7A6E66" text-anchor="middle">Tonal layers</text></svg>'},
+    {title:'Neutral base + one accent',annotation:'Build on your best neutral and add one season colour as an accent piece.',swatches:[p[0]?p[0].hex:'#E0D0B8',p[6]?p[6].hex:'#D04020'],svg:'<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="20" width="120" height="100" rx="6" fill="'+(p[0]?p[0].hex:'#E0D0B8')+'"/><rect x="140" y="40" width="30" height="60" rx="4" fill="'+(p[6]?p[6].hex:'#D04020')+'" opacity=".9"/><text x="100" y="135" font-family="DM Sans,sans-serif" font-size="9" fill="#7A6E66" text-anchor="middle">Neutral + accent</text></svg>'},
+    {title:'Metal guide',annotation:(s.undertone.includes('Warm')?'Gold and bronze echo your warmth.':s.undertone==='Cool'?'Silver and white gold enhance your clarity.':'Rose gold bridges warm and cool beautifully.'),swatches:[],svg:'<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="62" r="36" fill="none" stroke="'+(s.undertone.includes('Warm')?'#D4AF37':'#C0C0C0')+'" stroke-width="10"/><circle cx="100" cy="62" r="24" fill="'+(s.undertone.includes('Warm')?'#FDF0C0':'#F0F0F8')+'"/><text x="100" y="120" font-family="DM Sans,sans-serif" font-size="9" fill="#7A6E66" text-anchor="middle">Your best metal</text></svg>'}
+  ];
+  document.getElementById('sg-cards-grid').innerHTML=cards.map(function(card){
+    return'<div class="sg-card"><div class="sg-card-illus">'+card.svg+'</div>'
+      +'<div class="sg-card-body"><div class="sg-card-title">'+card.title+'</div>'
+      +'<div class="sg-card-annotation">'+card.annotation+'</div>'
+      +(card.swatches.length?'<div class="sg-card-swatches">'+card.swatches.map(function(c){return'<div class="sg-card-swatch" style="background:'+c+'"></div>';}).join('')+'</div>':'')
+      +'</div></div>';
+  }).join('');
+}
+
+async function recsGenerate(){
+  if(!recsActiveSeason||recsActiveCat==='builder')return;
+  var s=SEASONS[recsActiveSeason],sn=s.subName,ck=recsActiveSeason+'_'+recsActiveCat;
+  var genBtn=document.getElementById('recs-gen-btn');genBtn.disabled=true;
+  var ap=document.getElementById('recs-panel');ap.style.display='block';
+  document.getElementById('recs-loading').style.display='flex';
+  document.getElementById('recs-content').innerHTML='';
+  var prompts={
+    outfits:'You are a personal stylist. Give practical outfit formula advice for a '+sn+' ('+s.tagline+'). Undertone: '+s.undertone+', value: '+s.value+', chroma: '+s.chroma+'. Write 4 outfit formulas (casual, work, evening, weekend). Format with ### headings.',
+    makeup:'You are a makeup artist. Give makeup recommendations for a '+sn+' ('+s.tagline+', undertone: '+s.undertone+'). Cover foundation, blush, eyeshadow, lips, highlighter. Day and evening look. Format with ### headings.',
+    neutrals:'You are a wardrobe stylist. Explain the neutrals strategy for a '+sn+' ('+s.tagline+'). Best black, white, camel alternatives. Capsule base. Format with ### headings.',
+    avoid:'You are a colour stylist. Explain what '+sn+' ('+s.tagline+') should avoid and why. Their avoid list: '+s.avoid.join(', ')+'. Format with ### headings.',
+    metals:'You are a jewellery stylist. Give metal and jewellery advice for a '+sn+' ('+s.tagline+'). Best metals: '+s.metal+'. Format with ### headings.',
+    occasions:'You are a personal stylist. Give occasion-specific advice for a '+sn+'. Cover: job interview, first date, wedding guest, casual weekend, black tie. Format with ### headings.'
+  };
+  try{
+    var resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompts[recsActiveCat]||''}]})});
+    var data=await resp.json();
+    var text=(data.content||[]).map(function(i){return i.text||'';}).join('\n')||'No response.';
+    recsCache[ck]=text;renderRecsContent(text);
+  }catch(e){document.getElementById('recs-content').innerHTML='<p style="color:#C08080">Something went wrong. Please try again.</p>';}
+  finally{document.getElementById('recs-loading').style.display='none';genBtn.disabled=false;}
+}
+function renderRecsContent(text){
+  document.getElementById('recs-loading').style.display='none';
+  var html=text.replace(/###\s*(.+)/g,'<h3>$1</h3>').replace(/##\s*(.+)/g,'<h3>$1</h3>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/^[-*] (.+)/gm,'<li>$1</li>').replace(/(<li>[\s\S]*?<\/li>)/g,'<ul>$1</ul>').replace(/\n\n+/g,'</p><p>').replace(/\n/g,' ');
+  document.getElementById('recs-content').innerHTML='<p>'+html+'</p>';
+}
+
+// Palette builder
+var pbSelected=[];
+function buildPaletteBuilder(sk){
+  if(!sk)return;
+  var s=SEASONS[sk];
+  document.getElementById('pb-season-note').textContent='Building a custom palette from '+s.subName;
+  var cats=Object.keys(s.palette);
+  var pf=document.getElementById('pb-filters');
+  pf.innerHTML=['All'].concat(cats).map(function(c){return'<button class="pb-filter-btn'+(c==='All'?' active':'')+'" data-cat="'+c+'">'+c+'</button>';}).join('');
+  pf.querySelectorAll('.pb-filter-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){pf.querySelectorAll('.pb-filter-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');renderPbSwatches(sk,btn.dataset.cat);});
+  });
+  renderPbSwatches(sk,'All');
+  document.getElementById('pb-copy-btn').onclick=function(){
+    var hexes=pbSelected.map(function(sw){return sw.hex;}).join(', ');
+    if(navigator.clipboard)navigator.clipboard.writeText(hexes);
+    document.getElementById('pb-copy-btn').textContent='Copied '+pbSelected.length+' hex codes!';
+    setTimeout(function(){document.getElementById('pb-copy-btn').innerHTML='&#10023;&nbsp; Copy all hex codes';},2000);
+  };
+  document.getElementById('pb-clear-btn').onclick=function(){pbSelected=[];renderPbSelected();document.querySelectorAll('.pb-swatch').forEach(function(el){el.classList.remove('selected');});};
+}
+function renderPbSwatches(sk,cf){
+  var s=SEASONS[sk];
+  var all=cf==='All'?Object.values(s.palette).reduce(function(a,b){return a.concat(b);},[]):(s.palette[cf]||[]);
+  var con=document.getElementById('pb-swatches');
+  con.innerHTML=all.map(function(sw){
+    var sel=pbSelected.some(function(x){return x.hex===sw.hex;});
+    return'<div class="pb-swatch'+(sel?' selected':'')+'" data-hex="'+sw.hex+'" data-name="'+sw.name+'">'
+      +'<div class="pb-swatch-color" style="background:'+sw.hex+'"><div class="swatch-tooltip">'+sw.hex+'</div></div>'
+      +'<div class="pb-swatch-name">'+sw.name+'</div></div>';
+  }).join('');
+  con.querySelectorAll('.pb-swatch').forEach(function(el){
+    el.addEventListener('click',function(){
+      var hex=el.dataset.hex,name=el.dataset.name;
+      var idx=pbSelected.findIndex(function(x){return x.hex===hex;});
+      if(idx>-1){pbSelected.splice(idx,1);el.classList.remove('selected');}
+      else{pbSelected.push({hex:hex,name:name});el.classList.add('selected');}
+      renderPbSelected();
+    });
+  });
+}
+function renderPbSelected(){
+  document.getElementById('pb-count').textContent=pbSelected.length;
+  document.getElementById('pb-selected').innerHTML=pbSelected.map(function(sw){
+    return'<div class="pb-selected-item" data-hex="'+sw.hex+'"><div style="width:44px;height:44px;border-radius:8px;background:'+sw.hex+';border:1px solid rgba(0,0,0,.08)"></div><div class="pb-remove" title="Remove">✕</div></div>';
+  }).join('');
+  document.querySelectorAll('.pb-selected-item .pb-remove').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var hex=btn.parentElement.dataset.hex;
+      pbSelected=pbSelected.filter(function(x){return x.hex!==hex;});
+      document.querySelectorAll('.pb-swatch[data-hex="'+hex+'"]').forEach(function(el){el.classList.remove('selected');});
+      renderPbSelected();
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════
+// CAMERA FLOW
+// ══════════════════════════════════════════════════════════
+var camStreams={face:null,wrist:null},camCaptures={face:null,wrist:null};
+var camAnalysisResult=null,camHairIsNatural=true,camManualHairDepth=null;
+
+function showQuizLanding(){
+  stopAllCamStreams();
+  document.getElementById('quiz-mode-landing').style.display='block';
+  var cf=document.getElementById('camera-flow');cf.style.display='none';cf.classList.remove('active');
+  document.getElementById('manual-flow').style.display='none';
+  var qp=document.getElementById('qprog');if(qp)qp.style.display='none';
+}
+function startManualQuiz(){
+  document.getElementById('quiz-mode-landing').style.display='none';
+  document.getElementById('camera-flow').classList.remove('active');
+  document.getElementById('manual-flow').style.display='block';
+  var qp=document.getElementById('qprog');if(qp)qp.style.display='block';
+}
+function startCameraFlow(){
+  document.getElementById('quiz-mode-landing').style.display='none';
+  document.getElementById('manual-flow').style.display='none';
+  var qp=document.getElementById('qprog');if(qp)qp.style.display='none';
+  var cf=document.getElementById('camera-flow');cf.style.display='block';cf.classList.add('active');
+  showCamStep('wrist');
+}
+function showCamStep(step){
+  document.querySelectorAll('.camera-step').forEach(function(el){el.classList.remove('active');el.style.display='none';});
+  var el=document.getElementById('cam-step-'+step);
+  if(el){el.classList.add('active');el.style.display='block';}
+}
+async function openCamera(type){
+  var videoEl=document.getElementById('cam-'+type+'-video');
+  var vpWrap=document.getElementById('cam-'+type+'-viewport-wrap');
+  var deniedEl=document.getElementById('cam-'+type+'-denied');
+  var btn=document.getElementById('cam-'+type+'-btn');
+  var btnLabel=document.getElementById('cam-'+type+'-btn-label');
+  stopStream(type);btn.disabled=true;btnLabel.textContent='Requesting…';
+  var attempts=type==='wrist'?[{video:{facingMode:{ideal:'environment'}}},{video:{facingMode:'environment'}},{video:true}]:[{video:{facingMode:{ideal:'user'}}},{video:{facingMode:'user'}},{video:true}];
+  var stream=null;
+  for(var i=0;i<attempts.length;i++){try{stream=await navigator.mediaDevices.getUserMedia(attempts[i]);break;}catch(e){}}
+  btn.disabled=false;
+  if(!stream){btnLabel.textContent='Open camera';vpWrap.style.display='none';deniedEl.style.display='block';return;}
+  camStreams[type]=stream;videoEl.srcObject=stream;vpWrap.style.display='block';deniedEl.style.display='none';
+  btn.dataset.state='capture';document.getElementById('cam-'+type+'-btn-icon').textContent='●';btnLabel.textContent='Capture photo';
+}
+function capturePhoto(type){
+  var v=document.getElementById('cam-'+type+'-video');
+  var c=document.getElementById('cam-'+type+'-canvas');
+  c.width=v.videoWidth||640;c.height=v.videoHeight||480;
+  c.getContext('2d').drawImage(v,0,0);
+  camCaptures[type]=c.toDataURL('image/jpeg',0.82);
+  document.getElementById('cam-'+type+'-img').src=camCaptures[type];
+  document.getElementById('cam-'+type+'-captured').style.display='block';
+  document.getElementById('cam-'+type+'-viewport-wrap').style.display='none';
+  stopStream(type);
+  var btn=document.getElementById('cam-'+type+'-btn');btn.dataset.state='open';
+  document.getElementById('cam-'+type+'-btn-label').textContent='Retake';
+  var nxt=document.getElementById('cam-'+type+'-next');if(nxt)nxt.disabled=false;
+}
+function retakePhoto(type){
+  camCaptures[type]=null;stopStream(type);
+  document.getElementById('cam-'+type+'-captured').style.display='none';
+  document.getElementById('cam-'+type+'-viewport-wrap').style.display='none';
+  var btn=document.getElementById('cam-'+type+'-btn');btn.dataset.state='open';
+  document.getElementById('cam-'+type+'-btn-icon').textContent='●';
+  document.getElementById('cam-'+type+'-btn-label').textContent='Open camera';
+  var nxt=document.getElementById('cam-'+type+'-next');if(nxt)nxt.disabled=true;
+}
+function handleFileUpload(type,input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    camCaptures[type]=e.target.result;
+    document.getElementById('cam-'+type+'-img').src=e.target.result;
+    document.getElementById('cam-'+type+'-captured').style.display='block';
+    document.getElementById('cam-'+type+'-viewport-wrap').style.display='none';
+    var nxt=document.getElementById('cam-'+type+'-next');if(nxt)nxt.disabled=false;
+  };
+  reader.readAsDataURL(file);
+}
+function stopStream(type){if(camStreams[type]){camStreams[type].getTracks().forEach(function(t){t.stop();});camStreams[type]=null;}}
+function stopAllCamStreams(){stopStream('face');stopStream('wrist');}
+
+async function runCameraAnalysis(){
+  showCamStep('analysing');
+  [0,600,1200,1800,2400].forEach(function(d,i){setTimeout(function(){var el=document.getElementById('adot'+i);if(el)el.classList.add('done');},d);});
+  var mc=[{type:'text',text:'You are a professional colour analyst. Analyse these photos (inner wrist first, then face) and return ONLY valid JSON, no markdown. Keys: undertone(warm/cool/neutral), undertone_confidence(high/medium/low), vein_colour(blue/green/mixed), hair_depth(light/medium/deep), eye_value(cool_light/cool_bright/warm_light/warm_deep/deep), contrast(low/medium/high), notes(one short sentence). Rules: blue-purple veins=cool, green veins=warm, mixed=neutral. Default to neutral/medium if unclear.'}];
+  if(camCaptures.wrist){var wb=camCaptures.wrist.split(',')[1],wm=(camCaptures.wrist.split(';')[0].split(':')[1])||'image/jpeg';mc.push({type:'image',source:{type:'base64',media_type:wm,data:wb}});}
+  if(camCaptures.face){var fb=camCaptures.face.split(',')[1],fm=(camCaptures.face.split(';')[0].split(':')[1])||'image/jpeg';mc.push({type:'image',source:{type:'base64',media_type:fm,data:fb}});}
+  try{
+    var resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:mc}]})});
+    var data=await resp.json();
+    var raw=(data.content||[]).map(function(i){return i.text||'';}).join('').replace(/```[a-z]*/gi,'').trim();
+    camAnalysisResult=JSON.parse(raw);showCameraReview(camAnalysisResult);
+  }catch(err){alert('Photo analysis failed. The manual quiz will open.');startManualQuiz();}
+}
+function showCameraReview(r){
+  showCamStep('review');
+  var chips=[
+    {label:'Undertone',value:r.undertone.charAt(0).toUpperCase()+r.undertone.slice(1),dot:r.undertone==='warm'?'#D4A840':r.undertone==='cool'?'#7B9DC8':'#A090B8'},
+    {label:'Vein colour',value:r.vein_colour==='blue'?'Blue / purple':r.vein_colour==='green'?'Green / olive':'Mixed',dot:r.vein_colour==='blue'?'#7B9DC8':r.vein_colour==='green'?'#6B9E6A':'#8B7BAD'},
+    {label:'Hair depth',value:camHairIsNatural?r.hair_depth.charAt(0).toUpperCase()+r.hair_depth.slice(1):'Manual selection needed',dot:'#907870'},
+    {label:'Eye colour',value:r.eye_value.replace(/_/g,' ').split(' ').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' '),dot:'#8090A0'},
+    {label:'Contrast',value:r.contrast.charAt(0).toUpperCase()+r.contrast.slice(1),dot:'#A09080'}
+  ];
+  document.getElementById('cam-prefill-chips').innerHTML=chips.map(function(c){return'<div class="prefill-chip"><div class="prefill-chip-dot" style="background:'+c.dot+'"></div><strong style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.5px">'+c.label+':</strong>&nbsp;'+c.value+'</div>';}).join('');
+  if(r.notes)document.getElementById('cam-prefill-review').innerHTML+='<div style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic">"'+r.notes+'"</div>';
+  if(!camHairIsNatural){document.getElementById('cam-hair-manual').style.display='block';buildCamHairGrid();}
+}
+function buildCamHairGrid(){
+  var g=document.getElementById('cam-hair-grid-manual');if(!g)return;
+  g.innerHTML=HAIR_SHADES.map(function(h,i){return'<div class="hair-chip" data-v="'+h.v+'" data-idx="'+i+'"><div class="hair-chip-swatch" style="background:'+h.hex+'"></div><div class="hair-chip-label">'+h.label+'</div></div>';}).join('');
+  g.querySelectorAll('.hair-chip').forEach(function(c){c.addEventListener('click',function(){g.querySelectorAll('.hair-chip').forEach(function(x){x.classList.remove('selected');});c.classList.add('selected');camManualHairDepth=c.dataset.v;});});
+}
+function applyResults(r){
+  qAnswers[0]=r.undertone==='warm'?'warm':r.undertone==='cool'?'cool':'neutral';
+  qAnswers[1]=qAnswers[0];qAnswers[2]=(!camHairIsNatural&&camManualHairDepth)?camManualHairDepth:r.hair_depth;
+  qAnswers[3]=r.eye_value;qAnswers[4]=r.contrast;qAnswers[5]=qAnswers[0];
+}
+function applyCameraAnswers(){if(!camAnalysisResult)return;applyResults(camAnalysisResult);stopAllCamStreams();qanalyze();}
+function applyCameraAnswersManual(){
+  if(!camAnalysisResult)return;applyResults(camAnalysisResult);startManualQuiz();
+  setTimeout(function(){
+    var map=[['[data-q="0"][data-v="'+qAnswers[0]+'"]','qn0'],['#hairGrid .hair-chip[data-v="'+qAnswers[2]+'"]','qn2'],['.eye-chip[data-v="'+qAnswers[3]+'"]','qn3'],['.contrast-chip[data-v="'+qAnswers[4]+'"]','qn4'],['[data-q="5"][data-v="'+qAnswers[5]+'"]','qn5']];
+    map.forEach(function(m){var el=document.querySelector(m[0]);var btn=document.getElementById(m[1]);if(el)el.classList.add('selected');if(btn)btn.disabled=false;});
+  },150);
+}
+
+// ══════════════════════════════════════════════════════════
+// RETURNING VISITOR
+// ══════════════════════════════════════════════════════════
+function checkReturningVisitor(){
+  var saved=loadResult();if(!saved||!SEASONS[saved.season])return;
+  var s=SEASONS[saved.season];
+  var banner=document.getElementById('returning-banner');
+  document.getElementById('returning-season-name').textContent=s.subName;
+  var cl=document.getElementById('returning-confidence-line');
+  if(saved.confidence)cl.textContent=saved.confidence+'% match · '+s.tagline;else cl.textContent=s.tagline;
+  banner.style.display='flex';
+  document.getElementById('returning-view-btn').onclick=function(){if(saved.answers){qAnswers=saved.answers;qanalyze();showView('quiz');}else{goToPalette(saved.season);}};
+  document.getElementById('returning-retake-btn').onclick=function(){banner.style.display='none';clearResult();};
+}
+
+// ══════════════════════════════════════════════════════════
+// DARK MODE
+// ══════════════════════════════════════════════════════════
+(function(){
+  var LS='colour_atlas_dark',html=document.documentElement,btn=document.getElementById('dark-toggle'),icon=document.getElementById('dark-toggle-icon'),lbl=document.getElementById('dark-toggle-label');
+  function apply(dark){html.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'◐':'◑';if(lbl)lbl.textContent=dark?'Light':'Dark';try{localStorage.setItem(LS,dark?'1':'0');}catch(e){}}
+  var s=null;try{s=localStorage.getItem(LS);}catch(e){}
+  if(s==='1')apply(true);
+  btn.addEventListener('click',function(){apply(html.getAttribute('data-theme')!=='dark');});
+})();
+
+// ══════════════════════════════════════════════════════════
+// SWIPE (quiz)
+// ══════════════════════════════════════════════════════════
+(function(){
+  var flow=document.getElementById('manual-flow');if(!flow)return;
+  var tx=0,ty=0;
+  flow.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  flow.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)<52||Math.abs(dx)<Math.abs(dy)*1.4)return;
+    if(dx<0){var nb=document.getElementById('qn'+qStep);if(nb&&!nb.disabled)nb.click();}
+    else{if(qStep===0)return;var bb=document.getElementById('qback'+qStep);if(bb)bb.click();}
+  },{passive:true});
+})();
+
+// ══════════════════════════════════════════════════════════
+// WIRE UP EVENT LISTENERS
+// ══════════════════════════════════════════════════════════
+document.getElementById('nav-home').addEventListener('click',function(){stopAllCamStreams();showView('home');});
+document.getElementById('nav-palette').addEventListener('click',function(){stopAllCamStreams();showView('palette');});
+document.getElementById('nav-recs').addEventListener('click',function(){stopAllCamStreams();showView('recs');});
+document.getElementById('nav-quiz').addEventListener('click',function(){stopAllCamStreams();showView('quiz');showQuizLanding();});
+document.getElementById('btn-quiz').addEventListener('click',function(){showView('quiz');showQuizLanding();});
+document.getElementById('btn-palette').addEventListener('click',function(){showView('palette');});
+document.getElementById('entry-manual-btn').addEventListener('click',startManualQuiz);
+document.getElementById('entry-camera-btn').addEventListener('click',startCameraFlow);
+document.getElementById('cam-back-to-landing').addEventListener('click',showQuizLanding);
+document.getElementById('cam-wrist-next').addEventListener('click',function(){showCamStep('face');});
+document.getElementById('cam-face-next').addEventListener('click',runCameraAnalysis);
+document.getElementById('hair-opt-yes').addEventListener('click',function(){camHairIsNatural=true;document.getElementById('hair-opt-yes').classList.add('selected');document.getElementById('hair-opt-no').classList.remove('selected');document.getElementById('cam-hair-coloured-note').style.display='none';});
+document.getElementById('hair-opt-no').addEventListener('click',function(){camHairIsNatural=false;document.getElementById('hair-opt-no').classList.add('selected');document.getElementById('hair-opt-yes').classList.remove('selected');document.getElementById('cam-hair-coloured-note').style.display='block';});
+document.getElementById('cam-wrist-upload').addEventListener('change',function(){handleFileUpload('wrist',this);});
+document.getElementById('cam-face-upload').addEventListener('change',function(){handleFileUpload('face',this);});
+document.getElementById('cam-wrist-btn').addEventListener('click',function(){if(this.dataset.state==='capture')capturePhoto('wrist');else openCamera('wrist');});
+document.getElementById('cam-face-btn').addEventListener('click',function(){if(this.dataset.state==='capture')capturePhoto('face');else openCamera('face');});
+var rql=document.getElementById('recs-quiz-link');if(rql)rql.addEventListener('click',function(){showView('quiz');showQuizLanding();});
+document.getElementById('btn-close-modal').addEventListener('click',closePrintModal);
+document.getElementById('btn-print-now').addEventListener('click',printCardOnly);
+document.getElementById('printModal').addEventListener('click',function(e){if(e.target===this)closePrintModal();});
+
+// ══════════════════════════════════════════════════════════
+// FACE DEMO
+// ══════════════════════════════════════════════════════════
+var SKIN_TONES = [
+  // Fair — cool
+  {hex:'#FDEEE8',label:'Porcelain cool',ut:'cool'},
+  {hex:'#F8E0D5',label:'Fair cool',ut:'cool'},
+  {hex:'#F2CEC0',label:'Light cool',ut:'cool'},
+  // Fair — neutral
+  {hex:'#FCEADC',label:'Porcelain neutral',ut:'neutral'},
+  {hex:'#F5D8C4',label:'Fair neutral',ut:'neutral'},
+  {hex:'#EDCAAE',label:'Light neutral',ut:'neutral'},
+  // Fair — warm
+  {hex:'#F8E0C0',label:'Porcelain warm',ut:'warm'},
+  {hex:'#F0C898',label:'Fair warm',ut:'warm'},
+  {hex:'#E8B880',label:'Light warm',ut:'warm'},
+  // Medium — cool
+  {hex:'#D4A090',label:'Medium cool',ut:'cool'},
+  {hex:'#C08878',label:'Medium-deep cool',ut:'cool'},
+  // Medium — neutral
+  {hex:'#D4A870',label:'Medium neutral',ut:'neutral'},
+  {hex:'#C09058',label:'Medium-deep neutral',ut:'neutral'},
+  // Medium — warm
+  {hex:'#C89060',label:'Medium warm',ut:'warm'},
+  {hex:'#B87840',label:'Medium-deep warm',ut:'warm'},
+  // Tan — cool
+  {hex:'#A07060',label:'Tan cool',ut:'cool'},
+  {hex:'#8A5848',label:'Deep tan cool',ut:'cool'},
+  // Tan — warm
+  {hex:'#9A7040',label:'Tan warm',ut:'warm'},
+  {hex:'#886030',label:'Deep tan warm',ut:'warm'},
+  // Deep — cool
+  {hex:'#704840',label:'Deep cool',ut:'cool'},
+  {hex:'#583030',label:'Rich cool',ut:'cool'},
+  // Deep — neutral/warm
+  {hex:'#604030',label:'Deep neutral',ut:'neutral'},
+  {hex:'#482010',label:'Rich warm',ut:'warm'},
+  // Very deep
+  {hex:'#301408',label:'Deepest warm',ut:'warm'},
+  {hex:'#281010',label:'Deepest cool',ut:'cool'},
+];
+
+var _faceDemoSkinIdx = 4; // default: fair neutral
+
+function buildFaceDemo(seasonKey) {
+  var s = SEASONS[seasonKey];
+  if (!s) return '';
+
+  // Best colours: first 6 from Core Colours
+  var core = s.palette['Core Colours'] || [];
+  var best = core.slice(0, 6);
+  // Avoid colour approximate hexes
+  var avoidHexMap = {
+    'Pure black':'#181818','Stark black':'#181818','Cool grey':'#A0A8B0','Icy blue':'#C0D8F8',
+    'Cool fuchsia':'#E040A0','Silver alone':'#C0C0C0','Strong orange':'#E86820','Warm brown':'#8B4513',
+    'Olive':'#707030','Warm gold':'#D4A820','Camel':'#C8A050','Dusty tones':'#A89880',
+    'Bright neon':'#A0E820','Cool clear colours':'#78A8D0','Orange':'#E07030',
+    'Warm yellow':'#E0C030','Bright warm red':'#C83020','Warm orange':'#E07028',
+    'Pastel pink':'#F0C0C8','Cool blue':'#7090C8','Icy grey':'#C8D0D8',
+    'Pure white':'#F8F8F8','Cool blue alone':'#7090C8','Vivid warm colours':'#E07030',
+    'Neon shades':'#A0E820','Yellow gold':'#D4A820','Very dark brown':'#402010',
+    'Dark navy':'#182060','Very deep dark colours':'#201810'
+  };
+  var avoidColors = s.avoid.slice(0, 6).map(function(a) {
+    return avoidHexMap[a] || '#A0A0A0';
+  });
+
+  var skinTone = SKIN_TONES[_faceDemoSkinIdx];
+
+  var skinChips = SKIN_TONES.map(function(t, i) {
+    return '<div class="skin-chip' + (i === _faceDemoSkinIdx ? ' active' : '') + '" '
+      + 'style="background:' + t.hex + '" '
+      + 'title="' + t.label + '" '
+      + 'data-idx="' + i + '" '
+      + 'onclick="updateFaceDemo(\'' + seasonKey + '\',' + i + ')"></div>';
+  }).join('');
+
+  var bestSwatches = best.map(function(sw) {
+    return '<div class="face-demo-swatch" style="background:' + sw.hex + '" title="' + sw.name + '"></div>';
+  }).join('');
+  var avoidSwatches = avoidColors.map(function(c, i) {
+    return '<div class="face-demo-swatch" style="background:' + c + '" title="' + s.avoid[i] + '"></div>';
+  }).join('');
+
+  return '<div class="face-demo-wrap" id="face-demo-' + seasonKey + '">'
+    + '<div class="face-demo-skin-label">Select your skin tone</div>'
+    + '<div class="skin-tone-grid">' + skinChips + '</div>'
+    + '<div class="face-demo-panels">'
+      // GOOD side
+      + '<div class="face-demo-panel">'
+        + '<div class="face-demo-panel-label" style="color:#508050"><div class="dot" style="background:#70B850"></div>Wearing your season</div>'
+        + '<div class="face-demo-svg-wrap">' + drawFaceSVG(skinTone.hex, best.length ? best[0].hex : '#E8A890', best.length > 1 ? best[1].hex : '#D89070', 'glow') + '</div>'
+        + '<div class="face-demo-swatches">' + bestSwatches + '</div>'
+        + '<div class="face-demo-verdict">Skin looks radiant, even, and alive. Features are enhanced.</div>'
+      + '</div>'
+      // BAD side
+      + '<div class="face-demo-panel">'
+        + '<div class="face-demo-panel-label" style="color:#A05050"><div class="dot" style="background:#C07070"></div>Wrong undertone near face</div>'
+        + '<div class="face-demo-svg-wrap">' + drawFaceSVG(skinTone.hex, avoidColors[0] || '#A0A0A0', avoidColors[1] || '#808080', 'wash') + '</div>'
+        + '<div class="face-demo-swatches">' + avoidSwatches + '</div>'
+        + '<div class="face-demo-verdict">Skin can appear dull, sallow, or washed out. Fine lines more visible.</div>'
+      + '</div>'
+    + '</div>'
+  + '</div>';
+}
+
+function drawFaceSVG(skinHex, drape1, drape2, mode) {
+  // Derive shadow/highlight from skin
+  var isDeep = parseInt(skinHex.slice(1,3),16) < 100;
+  var shadowCol = isDeep ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.12)';
+  var highlightCol = isDeep ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.55)';
+  var glowRing = mode === 'glow' ? '<circle cx="80" cy="68" r="54" fill="none" stroke="' + drape1 + '" stroke-width="3" opacity="0.35"/>' : '';
+  var washOverlay = mode === 'wash' ? '<ellipse cx="80" cy="62" rx="36" ry="46" fill="rgba(200,200,210,0.13)"/>' : '';
+  var eyeBag = mode === 'wash' ? '<ellipse cx="64" cy="76" rx="7" ry="2.5" fill="rgba(100,80,80,0.12)"/><ellipse cx="96" cy="76" rx="7" ry="2.5" fill="rgba(100,80,80,0.12)"/>' : '';
+
+  return '<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" style="width:130px;height:130px">'
+    // drape / scarf behind face
+    + '<ellipse cx="80" cy="138" rx="62" ry="28" fill="' + drape1 + '" opacity="0.9"/>'
+    + '<ellipse cx="80" cy="138" rx="48" ry="22" fill="' + drape2 + '" opacity="0.8"/>'
+    // neck
+    + '<rect x="67" y="108" width="26" height="32" rx="8" fill="' + skinHex + '"/>'
+    + '<rect x="67" y="108" width="26" height="16" rx="0" fill="' + shadowCol.replace(')',', 0.5)').replace('rgba','rgba') + '" opacity="0.3"/>'
+    // face shape
+    + '<ellipse cx="80" cy="66" rx="38" ry="46" fill="' + skinHex + '"/>'
+    // glow ring (good side)
+    + glowRing
+    // wash overlay (bad side)
+    + washOverlay
+    // shadow under jaw
+    + '<ellipse cx="80" cy="108" rx="28" ry="6" fill="' + shadowCol + '" opacity="0.4"/>'
+    // ear left
+    + '<ellipse cx="42" cy="70" rx="5" ry="8" fill="' + skinHex + '"/>'
+    // ear right
+    + '<ellipse cx="118" cy="70" rx="5" ry="8" fill="' + skinHex + '"/>'
+    // hair
+    + '<ellipse cx="80" cy="26" rx="38" ry="22" fill="#3A2418"/>'
+    + '<rect x="42" y="22" width="76" height="18" fill="#3A2418"/>'
+    // forehead highlight
+    + '<ellipse cx="72" cy="42" rx="10" ry="6" fill="' + highlightCol + '" opacity="0.6"/>'
+    // eyebrows
+    + '<path d="M58 60 Q65 56 72 59" stroke="#2A1A10" stroke-width="2.2" fill="none" stroke-linecap="round"/>'
+    + '<path d="M88 59 Q95 56 102 60" stroke="#2A1A10" stroke-width="2.2" fill="none" stroke-linecap="round"/>'
+    // eyes
+    + '<ellipse cx="65" cy="70" rx="9" ry="6" fill="white"/>'
+    + '<ellipse cx="95" cy="70" rx="9" ry="6" fill="white"/>'
+    + '<circle cx="65" cy="70" r="5" fill="#3A2010"/>'
+    + '<circle cx="95" cy="70" r="5" fill="#3A2010"/>'
+    + '<circle cx="67" cy="68" r="1.5" fill="white" opacity="0.8"/>'
+    + '<circle cx="97" cy="68" r="1.5" fill="white" opacity="0.8"/>'
+    // eye bags (bad side)
+    + eyeBag
+    // nose
+    + '<path d="M77 75 Q74 85 70 88 Q78 91 90 88 Q86 85 83 75" stroke="' + shadowCol + '" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>'
+    // lips
+    + '<path d="M68 98 Q80 103 92 98" stroke="#C07080" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>'
+    + '<path d="M68 98 Q74 95 80 96 Q86 95 92 98" stroke="#C07080" stroke-width="1" fill="none" opacity="0.5"/>'
+    // cheeks (good side glow)
+    + (mode === 'glow' ? '<ellipse cx="55" cy="82" rx="9" ry="5" fill="' + drape1 + '" opacity="0.18"/><ellipse cx="105" cy="82" rx="9" ry="5" fill="' + drape1 + '" opacity="0.18"/>' : '')
+  + '</svg>';
+}
+
+function updateFaceDemo(seasonKey, skinIdx) {
+  _faceDemoSkinIdx = skinIdx;
+  var container = document.getElementById('face-demo-' + seasonKey);
+  if (!container) return;
+  var parent = container.parentNode;
+  var newHTML = buildFaceDemo(seasonKey);
+  var tmp = document.createElement('div');
+  tmp.innerHTML = newHTML;
+  parent.replaceChild(tmp.firstChild, container);
+}
+function startOnboarding(){
+  var LS_OB='colour_atlas_onboarded_v2';
+  try{if(localStorage.getItem(LS_OB))return;}catch(e){}
+
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+
+  var STEPS=[
+    {targetId:'view-home',anchorId:'nav-home',
+     title:'Welcome to The Colour Atlas',
+     body:'Your personal seasonal colour guide by Mirette A. Esmat. We\'ll show you around in 4 quick steps.',
+     arrow:'arrow-top',pos:'below'},
+    {targetId:'btn-quiz',anchorId:'btn-quiz',
+     title:'Find your colour season',
+     body:'Take the guided 6-question quiz — or use your camera for an AI-powered reading of your skin tone, veins, and eye colour.',
+     arrow:'arrow-top',pos:'below'},
+    {targetId:'nav-palette',anchorId:'nav-palette',
+     title:'Explore all 12 seasons',
+     body:'Browse every seasonal palette with swatches, metals, and styling tips. Tap any swatch to copy its hex code.',
+     arrow:'arrow-top',pos:'below'},
+    {targetId:'nav-recs',anchorId:'nav-recs',
+     title:'Your personal style guide',
+     body:'Once you know your season, get illustrated outfit formulas, makeup guidance, and AI-generated advice tailored just for you.',
+     arrow:'arrow-top',pos:'below'},
+  ];
+
+  var overlay=document.createElement('div');
+  overlay.className='onboard-overlay';
+  var spotlight=document.createElement('div');
+  spotlight.className='onboard-spotlight';
+  var card=document.createElement('div');
+  card.className='onboard-card';
+
+  overlay.appendChild(spotlight);
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+
+  var step=0;
+
+  function getColors(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    return dark
+      ?{card:'#2A1F18',text:'#F0EDE8',muted:'rgba(240,237,232,0.6)',dot:'#E8DDD0',btn:'#E8DDD0',btnText:'#1E1612',skip:'#F0EDE8'}
+      :{card:'#1E1612',text:'#FAF8F5',muted:'rgba(250,248,245,0.65)',dot:'#E8DDD0',btn:'#E8DDD0',btnText:'#1E1612',skip:'#FAF8F5'};
+  }
+
+  function posSpotlight(el){
+    var r=el.getBoundingClientRect(),pad=8;
+    spotlight.style.cssText='left:'+(r.left-pad)+'px;top:'+(r.top-pad+window.scrollY)+'px;width:'+(r.width+pad*2)+'px;height:'+(r.height+pad*2)+'px;border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.65);transition:all .45s cubic-bezier(.4,0,.2,1);position:absolute;pointer-events:none;z-index:1';
+  }
+
+  function posCard(anchorEl,arrowClass){
+    var r=anchorEl.getBoundingClientRect();
+    var cw=Math.min(290,window.innerWidth-40);
+    var margin=16;
+    var top=r.bottom+window.scrollY+margin;
+    var left=Math.max(16,Math.min(r.left,window.innerWidth-cw-16));
+    card.style.left=left+'px';
+    card.style.top=top+'px';
+    card.style.width=cw+'px';
+    var bc=card.querySelector('.onboard-card-before');
+    if(bc){
+      var arrowLeft=Math.max(16,Math.min(r.left+r.width/2-left-6,cw-28));
+      bc.style.left=arrowLeft+'px';
+    }
+  }
+
+  function render(i){
+    var s=STEPS[i];
+    var col=getColors();
+    var anchorEl=document.getElementById(s.anchorId);
+    if(!anchorEl){next();return;}
+
+    card.className='onboard-card '+s.arrow;
+    card.style.cssText='background:'+col.card+';color:'+col.text+';position:absolute;border-radius:18px;padding:22px 24px;max-width:290px;width:calc(100vw - 40px);box-shadow:0 24px 64px rgba(0,0,0,.4);z-index:9002;pointer-events:all;';
+
+    var dots=STEPS.map(function(_,di){
+      return'<div style="width:6px;height:6px;border-radius:50%;background:'+col.dot+';transition:all .2s;opacity:'+(di===i?'1':'.3')+';transform:scale('+(di===i?'1.3':'1')+')"></div>';
+    }).join('');
+
+    card.innerHTML='<div style="position:absolute;width:12px;height:12px;background:'+col.card+';transform:rotate(45deg);top:-6px;left:32px;border-radius:2px" class="onboard-card-before"></div>'
+      +'<div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px;color:'+col.muted+'">Step '+(i+1)+' of '+STEPS.length+'</div>'
+      +'<div style="font-family:\'Cormorant Garamond\',serif;font-size:24px;font-weight:300;line-height:1.15;margin-bottom:8px;color:'+col.text+'">'+s.title+'</div>'
+      +'<div style="font-size:13px;line-height:1.65;margin-bottom:18px;color:'+col.muted+'">'+s.body+'</div>'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">'
+        +'<div style="display:flex;gap:5px;align-items:center">'+dots+'</div>'
+        +'<div style="display:flex;gap:10px;align-items:center">'
+          +(i<STEPS.length-1?'<button onclick="window._obSkip()" style="background:none;border:none;font-family:\'DM Sans\',sans-serif;font-size:11px;cursor:pointer;color:'+col.muted+';padding:0;letter-spacing:.3px">Skip tour</button>':'')
+          +'<button onclick="window._obNext()" style="background:'+col.btn+';color:'+col.btnText+';border:none;border-radius:100px;padding:9px 20px;font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.3px">'
+            +(i===STEPS.length-1?'Let\'s go ✦':'Next →')
+          +'</button>'
+        +'</div>'
+      +'</div>';
+
+    posSpotlight(anchorEl);
+    posCard(anchorEl,s.arrow);
+  }
+
+  function next(){
+    step++;
+    if(step>=STEPS.length){finish();return;}
+    render(step);
+  }
+  function finish(){
+    overlay.classList.remove('active');
+    setTimeout(function(){if(overlay.parentNode)overlay.parentNode.removeChild(overlay);},400);
+    try{localStorage.setItem('colour_atlas_onboarded_v2','1');}catch(e){}
+    window._obNext=null;window._obSkip=null;
+  }
+
+  window._obNext=next;
+  window._obSkip=finish;
+
+  setTimeout(function(){
+    overlay.classList.add('active');
+    render(0);
+  },900);
+}
+
+// ══════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════
+buildPaletteView();
+buildHomeGrid();
+switchMain('spring');
+buildHairGrid();
+buildEyeGrid();
+showQuizLanding();
+checkReturningVisitor();
+startOnboarding();
+</script>
+</body>
+</html>
